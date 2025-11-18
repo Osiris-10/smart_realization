@@ -1,0 +1,1034 @@
+2025-11-09 11:12:30 - FaceRecognitionSystem - INFO - Pool de connexions PostgreSQL créé avec succès
+2025-11-09 11:12:30 - FaceRecognitionSystem - INFO - Connecté à PostgreSQL: PostgreSQL 18.0 on x86_64-windows, compiled by msvc-19.44.35217, 64-bit
+2025-11-09 11:12:30 - FaceRecognitionSystem - INFO - Gestionnaire d'authentification initialisé
+2025-11-09 11:12:30 - FaceRecognitionSystem - INFO - Service utilisateur initialisé
+2025-11-09 11:13:10 - FaceRecognitionSystem - INFO - Mot de passe hashé sans salt
+2025-11-09 11:13:11 - FaceRecognitionSystem - INFO - Utilisateur créé: jordan (ID: 1)
+2025-11-09 11:13:11 - FaceRecognitionSystem - INFO - Compte admin créé: jordan (ID: 1)
+2025-11-09 11:13:11 - FaceRecognitionSystem - INFO - Connexion à la base de données fermée
+2025-11-16 16:57:50 - FaceRecognitionSystem - INFO - Pool de connexions PostgreSQL créé avec succès
+2025-11-16 16:57:50 - FaceRecognitionSystem - INFO - Connecté à PostgreSQL: PostgreSQL 18.0 on x86_64-windows, compiled by msvc-19.44.35217, 64-bit
+2025-11-16 16:57:50 - FaceRecognitionSystem - INFO - Gestionnaire d'authentification initialisé
+2025-11-16 16:57:50 - FaceRecognitionSystem - INFO - Service utilisateur initialisé
+2025-11-16 16:57:50 - FaceRecognitionSystem - INFO - Service de profils initialisé
+2025-11-16 16:57:50 - FaceRecognitionSystem - INFO - Service d'accès initialisé
+2025-11-16 16:57:50 - FaceRecognitionSystem - INFO - Moteur de reconnaissance faciale initialisé
+2025-11-16 16:57:51 - FaceRecognitionSystem - INFO - Panel admin ouvert par admin
+2025-11-16 16:57:59 - FaceRecognitionSystem - INFO - Connexion à la base de données fermée
+2025-11-16 16:57:59 - FaceRecognitionSystem - INFO - Admin admin déconnecté
+2025-11-16 16:58:06 - FaceRecognitionSystem - INFO - Pool de connexions PostgreSQL créé avec succès
+2025-11-16 16:58:06 - FaceRecognitionSystem - INFO - Connecté à PostgreSQL: PostgreSQL 18.0 on x86_64-windows, compiled by msvc-19.44.35217, 64-bit
+2025-11-16 16:58:06 - FaceRecognitionSystem - INFO - Gestionnaire d'authentification initialisé
+2025-11-16 16:58:06 - FaceRecognitionSystem - INFO - Service utilisateur initialisé
+2025-11-16 16:58:06 - FaceRecognitionSystem - INFO - Service de profils initialisé
+2025-11-16 16:58:06 - FaceRecognitionSystem - INFO - Service d'accès initialisé
+2025-11-16 16:58:06 - FaceRecognitionSystem - INFO - Moteur de reconnaissance faciale initialisé
+2025-11-16 16:58:06 - FaceRecognitionSystem - INFO - Panel admin ouvert par admin
+2025-11-16 16:58:26 - FaceRecognitionSystem - INFO - Connexion à la base de données fermée
+2025-11-16 17:23:30 - FaceRecognitionSystem - INFO - ============================================================
+2025-11-16 17:23:30 - FaceRecognitionSystem - INFO - DÉMARRAGE DE L'APPLICATION
+2025-11-16 17:23:30 - FaceRecognitionSystem - INFO - ============================================================
+2025-11-16 17:23:30 - FaceRecognitionSystem - INFO - Dossiers créés/vérifiés
+2025-11-16 17:23:30 - FaceRecognitionSystem - INFO - Connexion à la base de données...
+2025-11-16 17:23:30 - FaceRecognitionSystem - INFO - Pool de connexions PostgreSQL créé avec succès
+2025-11-16 17:23:30 - FaceRecognitionSystem - INFO - Connecté à PostgreSQL: PostgreSQL 18.0 on x86_64-windows, compiled by msvc-19.44.35217, 64-bit
+2025-11-16 17:23:30 - FaceRecognitionSystem - INFO - Initialisation des services...
+2025-11-16 17:23:30 - FaceRecognitionSystem - INFO - Service d'accès initialisé
+2025-11-16 17:23:30 - FaceRecognitionSystem - INFO - Gestionnaire d'authentification initialisé
+2025-11-16 17:23:30 - FaceRecognitionSystem - INFO - Service utilisateur initialisé
+2025-11-16 17:23:30 - FaceRecognitionSystem - INFO - Service de profils initialisé
+2025-11-16 17:23:30 - FaceRecognitionSystem - INFO - Initialisation du moteur de reconnaissance faciale...
+2025-11-16 17:23:30 - FaceRecognitionSystem - INFO - Moteur de reconnaissance faciale initialisé
+2025-11-16 17:23:30 - FaceRecognitionSystem - INFO - Gestionnaire d'authentification initialisé
+2025-11-16 17:23:30 - FaceRecognitionSystem - INFO - Détecteur anti-spoofing initialisé
+2025-11-16 17:23:30 - FaceRecognitionSystem - INFO - Chargement des profils faciaux...
+2025-11-16 17:23:30 - FaceRecognitionSystem - WARNING - Aucun profil trouvé dans la base de données
+2025-11-16 17:23:30 - FaceRecognitionSystem - INFO - Application initialisée avec succès ✓
+2025-11-16 17:23:35 - FaceRecognitionSystem - INFO - Lancement du mode utilisateur...
+2025-11-16 17:23:35 - FaceRecognitionSystem - INFO - Fenêtre principale initialisée
+2025-11-16 17:23:35 - FaceRecognitionSystem - INFO - Lancement de l'interface graphique
+2025-11-16 17:23:38 - FaceRecognitionSystem - INFO - Widget caméra initialisé
+2025-11-16 17:23:46 - FaceRecognitionSystem - INFO - Caméra arrêtée
+2025-11-16 17:23:46 - FaceRecognitionSystem - INFO - Retour à la page d'accueil
+2025-11-16 17:24:06 - FaceRecognitionSystem - INFO - Widget caméra initialisé
+2025-11-16 17:24:15 - FaceRecognitionSystem - INFO - Caméra arrêtée
+2025-11-16 17:24:15 - FaceRecognitionSystem - INFO - Caméra arrêtée
+2025-11-16 17:24:15 - FaceRecognitionSystem - INFO - Nettoyage des ressources...
+2025-11-16 17:24:15 - FaceRecognitionSystem - INFO - Connexion à la base de données fermée
+2025-11-16 17:24:15 - FaceRecognitionSystem - INFO - ============================================================
+2025-11-16 17:24:15 - FaceRecognitionSystem - INFO - APPLICATION FERMÉE
+2025-11-16 17:24:15 - FaceRecognitionSystem - INFO - ============================================================
+2025-11-16 17:26:24 - FaceRecognitionSystem - INFO - ============================================================
+2025-11-16 17:26:24 - FaceRecognitionSystem - INFO - DÉMARRAGE DE L'APPLICATION
+2025-11-16 17:26:24 - FaceRecognitionSystem - INFO - ============================================================
+2025-11-16 17:26:24 - FaceRecognitionSystem - INFO - Dossiers créés/vérifiés
+2025-11-16 17:26:24 - FaceRecognitionSystem - INFO - Connexion à la base de données...
+2025-11-16 17:26:24 - FaceRecognitionSystem - INFO - Pool de connexions PostgreSQL créé avec succès
+2025-11-16 17:26:24 - FaceRecognitionSystem - INFO - Connecté à PostgreSQL: PostgreSQL 18.0 on x86_64-windows, compiled by msvc-19.44.35217, 64-bit
+2025-11-16 17:26:24 - FaceRecognitionSystem - INFO - Initialisation des services...
+2025-11-16 17:26:24 - FaceRecognitionSystem - INFO - Service d'accès initialisé
+2025-11-16 17:26:24 - FaceRecognitionSystem - INFO - Gestionnaire d'authentification initialisé
+2025-11-16 17:26:24 - FaceRecognitionSystem - INFO - Service utilisateur initialisé
+2025-11-16 17:26:24 - FaceRecognitionSystem - INFO - Service de profils initialisé
+2025-11-16 17:26:24 - FaceRecognitionSystem - INFO - Initialisation du moteur de reconnaissance faciale...
+2025-11-16 17:26:24 - FaceRecognitionSystem - INFO - Moteur de reconnaissance faciale initialisé
+2025-11-16 17:26:24 - FaceRecognitionSystem - INFO - Gestionnaire d'authentification initialisé
+2025-11-16 17:26:24 - FaceRecognitionSystem - INFO - Détecteur anti-spoofing initialisé
+2025-11-16 17:26:24 - FaceRecognitionSystem - INFO - Chargement des profils faciaux...
+2025-11-16 17:26:24 - FaceRecognitionSystem - WARNING - Aucun profil trouvé dans la base de données
+2025-11-16 17:26:24 - FaceRecognitionSystem - INFO - Application initialisée avec succès ✓
+2025-11-16 17:28:14 - FaceRecognitionSystem - INFO - 
+Application interrompue par l'utilisateur (Ctrl+C)
+2025-11-16 17:28:19 - FaceRecognitionSystem - INFO - ============================================================
+2025-11-16 17:28:19 - FaceRecognitionSystem - INFO - DÉMARRAGE DE L'APPLICATION
+2025-11-16 17:28:19 - FaceRecognitionSystem - INFO - ============================================================
+2025-11-16 17:28:19 - FaceRecognitionSystem - INFO - Dossiers créés/vérifiés
+2025-11-16 17:28:19 - FaceRecognitionSystem - INFO - Connexion à la base de données...
+2025-11-16 17:28:19 - FaceRecognitionSystem - INFO - Pool de connexions PostgreSQL créé avec succès
+2025-11-16 17:28:19 - FaceRecognitionSystem - INFO - Connecté à PostgreSQL: PostgreSQL 18.0 on x86_64-windows, compiled by msvc-19.44.35217, 64-bit
+2025-11-16 17:28:19 - FaceRecognitionSystem - INFO - Initialisation des services...
+2025-11-16 17:28:19 - FaceRecognitionSystem - INFO - Service d'accès initialisé
+2025-11-16 17:28:19 - FaceRecognitionSystem - INFO - Gestionnaire d'authentification initialisé
+2025-11-16 17:28:19 - FaceRecognitionSystem - INFO - Service utilisateur initialisé
+2025-11-16 17:28:19 - FaceRecognitionSystem - INFO - Service de profils initialisé
+2025-11-16 17:28:19 - FaceRecognitionSystem - INFO - Initialisation du moteur de reconnaissance faciale...
+2025-11-16 17:28:19 - FaceRecognitionSystem - INFO - Moteur de reconnaissance faciale initialisé
+2025-11-16 17:28:19 - FaceRecognitionSystem - INFO - Gestionnaire d'authentification initialisé
+2025-11-16 17:28:19 - FaceRecognitionSystem - INFO - Détecteur anti-spoofing initialisé
+2025-11-16 17:28:19 - FaceRecognitionSystem - INFO - Chargement des profils faciaux...
+2025-11-16 17:28:19 - FaceRecognitionSystem - WARNING - Aucun profil trouvé dans la base de données
+2025-11-16 17:28:19 - FaceRecognitionSystem - INFO - Application initialisée avec succès ✓
+2025-11-16 17:29:39 - FaceRecognitionSystem - INFO - ============================================================
+2025-11-16 17:29:39 - FaceRecognitionSystem - INFO - DÉMARRAGE DE L'APPLICATION
+2025-11-16 17:29:39 - FaceRecognitionSystem - INFO - ============================================================
+2025-11-16 17:29:39 - FaceRecognitionSystem - INFO - Dossiers créés/vérifiés
+2025-11-16 17:29:39 - FaceRecognitionSystem - INFO - Connexion à la base de données...
+2025-11-16 17:29:39 - FaceRecognitionSystem - INFO - Pool de connexions PostgreSQL créé avec succès
+2025-11-16 17:29:39 - FaceRecognitionSystem - INFO - Connecté à PostgreSQL: PostgreSQL 18.0 on x86_64-windows, compiled by msvc-19.44.35217, 64-bit
+2025-11-16 17:29:39 - FaceRecognitionSystem - INFO - Initialisation des services...
+2025-11-16 17:29:39 - FaceRecognitionSystem - INFO - Service d'accès initialisé
+2025-11-16 17:29:39 - FaceRecognitionSystem - INFO - Gestionnaire d'authentification initialisé
+2025-11-16 17:29:39 - FaceRecognitionSystem - INFO - Service utilisateur initialisé
+2025-11-16 17:29:39 - FaceRecognitionSystem - INFO - Service de profils initialisé
+2025-11-16 17:29:39 - FaceRecognitionSystem - INFO - Initialisation du moteur de reconnaissance faciale...
+2025-11-16 17:29:39 - FaceRecognitionSystem - INFO - Moteur de reconnaissance faciale initialisé
+2025-11-16 17:29:39 - FaceRecognitionSystem - INFO - Gestionnaire d'authentification initialisé
+2025-11-16 17:29:39 - FaceRecognitionSystem - INFO - Détecteur anti-spoofing initialisé
+2025-11-16 17:29:39 - FaceRecognitionSystem - INFO - Chargement des profils faciaux...
+2025-11-16 17:29:39 - FaceRecognitionSystem - WARNING - Aucun profil trouvé dans la base de données
+2025-11-16 17:29:39 - FaceRecognitionSystem - INFO - Application initialisée avec succès ✓
+2025-11-16 17:29:43 - FaceRecognitionSystem - INFO - Lancement du mode utilisateur...
+2025-11-16 17:29:44 - FaceRecognitionSystem - INFO - Fenêtre principale initialisée
+2025-11-16 17:29:44 - FaceRecognitionSystem - INFO - Lancement de l'interface graphique
+2025-11-16 17:29:49 - FaceRecognitionSystem - INFO - Widget caméra initialisé
+2025-11-16 17:29:51 - FaceRecognitionSystem - INFO - Caméra arrêtée
+2025-11-16 17:29:51 - FaceRecognitionSystem - INFO - Retour à la page d'accueil
+2025-11-16 17:30:01 - FaceRecognitionSystem - INFO - Caméra arrêtée
+2025-11-16 17:30:01 - FaceRecognitionSystem - INFO - Caméra arrêtée
+2025-11-16 17:30:01 - FaceRecognitionSystem - INFO - Nettoyage des ressources...
+2025-11-16 17:30:01 - FaceRecognitionSystem - INFO - Connexion à la base de données fermée
+2025-11-16 17:30:01 - FaceRecognitionSystem - INFO - ============================================================
+2025-11-16 17:30:01 - FaceRecognitionSystem - INFO - APPLICATION FERMÉE
+2025-11-16 17:30:01 - FaceRecognitionSystem - INFO - ============================================================
+2025-11-16 17:30:07 - FaceRecognitionSystem - INFO - ============================================================
+2025-11-16 17:30:07 - FaceRecognitionSystem - INFO - DÉMARRAGE DE L'APPLICATION
+2025-11-16 17:30:07 - FaceRecognitionSystem - INFO - ============================================================
+2025-11-16 17:30:07 - FaceRecognitionSystem - INFO - Dossiers créés/vérifiés
+2025-11-16 17:30:07 - FaceRecognitionSystem - INFO - Connexion à la base de données...
+2025-11-16 17:30:07 - FaceRecognitionSystem - INFO - Pool de connexions PostgreSQL créé avec succès
+2025-11-16 17:30:07 - FaceRecognitionSystem - INFO - Connecté à PostgreSQL: PostgreSQL 18.0 on x86_64-windows, compiled by msvc-19.44.35217, 64-bit
+2025-11-16 17:30:07 - FaceRecognitionSystem - INFO - Initialisation des services...
+2025-11-16 17:30:07 - FaceRecognitionSystem - INFO - Service d'accès initialisé
+2025-11-16 17:30:07 - FaceRecognitionSystem - INFO - Gestionnaire d'authentification initialisé
+2025-11-16 17:30:07 - FaceRecognitionSystem - INFO - Service utilisateur initialisé
+2025-11-16 17:30:07 - FaceRecognitionSystem - INFO - Service de profils initialisé
+2025-11-16 17:30:07 - FaceRecognitionSystem - INFO - Initialisation du moteur de reconnaissance faciale...
+2025-11-16 17:30:07 - FaceRecognitionSystem - INFO - Moteur de reconnaissance faciale initialisé
+2025-11-16 17:30:07 - FaceRecognitionSystem - INFO - Gestionnaire d'authentification initialisé
+2025-11-16 17:30:07 - FaceRecognitionSystem - INFO - Détecteur anti-spoofing initialisé
+2025-11-16 17:30:07 - FaceRecognitionSystem - INFO - Chargement des profils faciaux...
+2025-11-16 17:30:07 - FaceRecognitionSystem - WARNING - Aucun profil trouvé dans la base de données
+2025-11-16 17:30:07 - FaceRecognitionSystem - INFO - Application initialisée avec succès ✓
+2025-11-16 17:31:08 - FaceRecognitionSystem - INFO - ============================================================
+2025-11-16 17:31:08 - FaceRecognitionSystem - INFO - DÉMARRAGE DE L'APPLICATION
+2025-11-16 17:31:08 - FaceRecognitionSystem - INFO - ============================================================
+2025-11-16 17:31:08 - FaceRecognitionSystem - INFO - Dossiers créés/vérifiés
+2025-11-16 17:31:08 - FaceRecognitionSystem - INFO - Connexion à la base de données...
+2025-11-16 17:31:08 - FaceRecognitionSystem - INFO - Pool de connexions PostgreSQL créé avec succès
+2025-11-16 17:31:08 - FaceRecognitionSystem - INFO - Connecté à PostgreSQL: PostgreSQL 18.0 on x86_64-windows, compiled by msvc-19.44.35217, 64-bit
+2025-11-16 17:31:08 - FaceRecognitionSystem - INFO - Initialisation des services...
+2025-11-16 17:31:08 - FaceRecognitionSystem - INFO - Service d'accès initialisé
+2025-11-16 17:31:08 - FaceRecognitionSystem - INFO - Gestionnaire d'authentification initialisé
+2025-11-16 17:31:08 - FaceRecognitionSystem - INFO - Service utilisateur initialisé
+2025-11-16 17:31:08 - FaceRecognitionSystem - INFO - Service de profils initialisé
+2025-11-16 17:31:08 - FaceRecognitionSystem - INFO - Initialisation du moteur de reconnaissance faciale...
+2025-11-16 17:31:08 - FaceRecognitionSystem - INFO - Moteur de reconnaissance faciale initialisé
+2025-11-16 17:31:08 - FaceRecognitionSystem - INFO - Gestionnaire d'authentification initialisé
+2025-11-16 17:31:08 - FaceRecognitionSystem - INFO - Détecteur anti-spoofing initialisé
+2025-11-16 17:31:08 - FaceRecognitionSystem - INFO - Chargement des profils faciaux...
+2025-11-16 17:31:09 - FaceRecognitionSystem - WARNING - Aucun profil trouvé dans la base de données
+2025-11-16 17:31:09 - FaceRecognitionSystem - INFO - Application initialisée avec succès ✓
+2025-11-16 17:31:55 - FaceRecognitionSystem - INFO - Lancement du mode utilisateur...
+2025-11-16 17:31:56 - FaceRecognitionSystem - INFO - Fenêtre principale initialisée
+2025-11-16 17:31:56 - FaceRecognitionSystem - INFO - Lancement de l'interface graphique
+2025-11-16 17:32:03 - FaceRecognitionSystem - INFO - Widget caméra initialisé
+2025-11-16 17:32:16 - FaceRecognitionSystem - INFO - Caméra arrêtée
+2025-11-16 17:32:16 - FaceRecognitionSystem - INFO - Retour à la page d'accueil
+2025-11-16 17:32:24 - FaceRecognitionSystem - INFO - Widget caméra initialisé
+2025-11-16 17:33:08 - FaceRecognitionSystem - INFO - Caméra arrêtée
+2025-11-16 17:33:08 - FaceRecognitionSystem - INFO - Retour à la page d'accueil
+2025-11-16 17:34:15 - FaceRecognitionSystem - INFO - Caméra arrêtée
+2025-11-16 17:34:15 - FaceRecognitionSystem - INFO - Caméra arrêtée
+2025-11-16 17:34:15 - FaceRecognitionSystem - INFO - Nettoyage des ressources...
+2025-11-16 17:34:15 - FaceRecognitionSystem - INFO - Connexion à la base de données fermée
+2025-11-16 17:34:15 - FaceRecognitionSystem - INFO - ============================================================
+2025-11-16 17:34:15 - FaceRecognitionSystem - INFO - APPLICATION FERMÉE
+2025-11-16 17:34:15 - FaceRecognitionSystem - INFO - ============================================================
+2025-11-16 21:26:38 - FaceRecognitionSystem - INFO - ============================================================
+2025-11-16 21:26:38 - FaceRecognitionSystem - INFO - DÉMARRAGE DE L'APPLICATION
+2025-11-16 21:26:38 - FaceRecognitionSystem - INFO - ============================================================
+2025-11-16 21:26:38 - FaceRecognitionSystem - INFO - Dossiers créés/vérifiés
+2025-11-16 21:26:38 - FaceRecognitionSystem - INFO - Connexion à la base de données...
+2025-11-16 21:26:38 - FaceRecognitionSystem - INFO - Pool de connexions PostgreSQL créé avec succès
+2025-11-16 21:26:38 - FaceRecognitionSystem - INFO - Connecté à PostgreSQL: PostgreSQL 18.0 on x86_64-windows, compiled by msvc-19.44.35217, 64-bit
+2025-11-16 21:26:38 - FaceRecognitionSystem - INFO - Initialisation des services...
+2025-11-16 21:26:38 - FaceRecognitionSystem - INFO - Service d'accès initialisé
+2025-11-16 21:26:38 - FaceRecognitionSystem - INFO - Gestionnaire d'authentification initialisé
+2025-11-16 21:26:38 - FaceRecognitionSystem - INFO - Service utilisateur initialisé
+2025-11-16 21:26:38 - FaceRecognitionSystem - INFO - Service de profils initialisé
+2025-11-16 21:26:38 - FaceRecognitionSystem - INFO - Initialisation du moteur de reconnaissance faciale...
+2025-11-16 21:26:38 - FaceRecognitionSystem - INFO - Moteur de reconnaissance faciale initialisé
+2025-11-16 21:26:38 - FaceRecognitionSystem - INFO - Gestionnaire d'authentification initialisé
+2025-11-16 21:26:38 - FaceRecognitionSystem - INFO - Détecteur anti-spoofing initialisé
+2025-11-16 21:26:38 - FaceRecognitionSystem - INFO - Chargement des profils faciaux...
+2025-11-16 21:26:38 - FaceRecognitionSystem - WARNING - Aucun profil trouvé dans la base de données
+2025-11-16 21:26:38 - FaceRecognitionSystem - INFO - Application initialisée avec succès ✓
+2025-11-16 21:28:03 - FaceRecognitionSystem - INFO - Lancement du mode utilisateur...
+2025-11-16 21:28:03 - FaceRecognitionSystem - INFO - Fenêtre principale initialisée
+2025-11-16 21:28:03 - FaceRecognitionSystem - INFO - Lancement de l'interface graphique
+2025-11-16 21:34:59 - FaceRecognitionSystem - INFO - Widget caméra initialisé
+2025-11-16 21:35:02 - FaceRecognitionSystem - INFO - Caméra arrêtée
+2025-11-16 21:35:02 - FaceRecognitionSystem - INFO - Retour à la page d'accueil
+2025-11-16 21:35:07 - FaceRecognitionSystem - INFO - Caméra arrêtée
+2025-11-16 21:35:07 - FaceRecognitionSystem - INFO - Caméra arrêtée
+2025-11-16 21:35:07 - FaceRecognitionSystem - INFO - Nettoyage des ressources...
+2025-11-16 21:35:07 - FaceRecognitionSystem - INFO - Connexion à la base de données fermée
+2025-11-16 21:35:07 - FaceRecognitionSystem - INFO - ============================================================
+2025-11-16 21:35:07 - FaceRecognitionSystem - INFO - APPLICATION FERMÉE
+2025-11-16 21:35:07 - FaceRecognitionSystem - INFO - ============================================================
+2025-11-16 21:35:21 - FaceRecognitionSystem - INFO - ============================================================
+2025-11-16 21:35:21 - FaceRecognitionSystem - INFO - DÉMARRAGE DE L'APPLICATION
+2025-11-16 21:35:21 - FaceRecognitionSystem - INFO - ============================================================
+2025-11-16 21:35:21 - FaceRecognitionSystem - INFO - Dossiers créés/vérifiés
+2025-11-16 21:35:21 - FaceRecognitionSystem - INFO - Connexion à la base de données...
+2025-11-16 21:35:21 - FaceRecognitionSystem - INFO - Pool de connexions PostgreSQL créé avec succès
+2025-11-16 21:35:21 - FaceRecognitionSystem - INFO - Connecté à PostgreSQL: PostgreSQL 18.0 on x86_64-windows, compiled by msvc-19.44.35217, 64-bit
+2025-11-16 21:35:21 - FaceRecognitionSystem - INFO - Initialisation des services...
+2025-11-16 21:35:21 - FaceRecognitionSystem - INFO - Service d'accès initialisé
+2025-11-16 21:35:21 - FaceRecognitionSystem - INFO - Gestionnaire d'authentification initialisé
+2025-11-16 21:35:21 - FaceRecognitionSystem - INFO - Service utilisateur initialisé
+2025-11-16 21:35:21 - FaceRecognitionSystem - INFO - Service de profils initialisé
+2025-11-16 21:35:21 - FaceRecognitionSystem - INFO - Initialisation du moteur de reconnaissance faciale...
+2025-11-16 21:35:21 - FaceRecognitionSystem - INFO - Moteur de reconnaissance faciale initialisé
+2025-11-16 21:35:21 - FaceRecognitionSystem - INFO - Gestionnaire d'authentification initialisé
+2025-11-16 21:35:21 - FaceRecognitionSystem - INFO - Détecteur anti-spoofing initialisé
+2025-11-16 21:35:21 - FaceRecognitionSystem - INFO - Chargement des profils faciaux...
+2025-11-16 21:35:21 - FaceRecognitionSystem - WARNING - Aucun profil trouvé dans la base de données
+2025-11-16 21:35:21 - FaceRecognitionSystem - INFO - Application initialisée avec succès ✓
+2025-11-16 21:41:18 - FaceRecognitionSystem - INFO - Pool de connexions PostgreSQL créé avec succès
+2025-11-16 21:41:18 - FaceRecognitionSystem - INFO - Connecté à PostgreSQL: PostgreSQL 18.0 on x86_64-windows, compiled by msvc-19.44.35217, 64-bit
+2025-11-16 21:41:18 - FaceRecognitionSystem - INFO - Gestionnaire d'authentification initialisé
+2025-11-16 21:41:18 - FaceRecognitionSystem - INFO - Service utilisateur initialisé
+2025-11-16 21:41:18 - FaceRecognitionSystem - INFO - Service de profils initialisé
+2025-11-16 21:41:18 - FaceRecognitionSystem - INFO - Service d'accès initialisé
+2025-11-16 21:41:18 - FaceRecognitionSystem - INFO - Moteur de reconnaissance faciale initialisé
+2025-11-16 21:41:19 - FaceRecognitionSystem - INFO - Panel admin ouvert par admin
+2025-11-16 21:41:55 - FaceRecognitionSystem - INFO - Mot de passe hashé sans salt
+2025-11-16 21:41:55 - FaceRecognitionSystem - INFO - Utilisateur créé: genie (ID: 2)
+2025-11-16 21:45:22 - FaceRecognitionSystem - INFO - Connexion à la base de données fermée
+2025-11-17 12:25:52 - FaceRecognitionSystem - INFO - ============================================================
+2025-11-17 12:25:52 - FaceRecognitionSystem - INFO - DÉMARRAGE DE L'APPLICATION
+2025-11-17 12:25:52 - FaceRecognitionSystem - INFO - ============================================================
+2025-11-17 12:25:52 - FaceRecognitionSystem - INFO - Dossiers créés/vérifiés
+2025-11-17 12:25:52 - FaceRecognitionSystem - INFO - Connexion à la base de données...
+2025-11-17 12:25:52 - FaceRecognitionSystem - INFO - Pool de connexions PostgreSQL créé avec succès
+2025-11-17 12:25:52 - FaceRecognitionSystem - INFO - Connecté à PostgreSQL: PostgreSQL 18.0 on x86_64-windows, compiled by msvc-19.44.35217, 64-bit
+2025-11-17 12:25:52 - FaceRecognitionSystem - INFO - Initialisation des services...
+2025-11-17 12:25:52 - FaceRecognitionSystem - INFO - Service d'accès initialisé
+2025-11-17 12:25:52 - FaceRecognitionSystem - INFO - Gestionnaire d'authentification initialisé
+2025-11-17 12:25:52 - FaceRecognitionSystem - INFO - Service utilisateur initialisé
+2025-11-17 12:25:52 - FaceRecognitionSystem - INFO - Service de profils initialisé
+2025-11-17 12:25:52 - FaceRecognitionSystem - INFO - Initialisation du moteur de reconnaissance faciale...
+2025-11-17 12:25:52 - FaceRecognitionSystem - INFO - Moteur de reconnaissance faciale initialisé
+2025-11-17 12:25:52 - FaceRecognitionSystem - INFO - Gestionnaire d'authentification initialisé
+2025-11-17 12:25:52 - FaceRecognitionSystem - INFO - Détecteur anti-spoofing initialisé
+2025-11-17 12:25:52 - FaceRecognitionSystem - INFO - Chargement des profils faciaux...
+2025-11-17 12:25:52 - FaceRecognitionSystem - WARNING - Aucun profil trouvé dans la base de données
+2025-11-17 12:25:52 - FaceRecognitionSystem - INFO - Application initialisée avec succès ✓
+2025-11-17 12:26:11 - FaceRecognitionSystem - INFO - Pool de connexions PostgreSQL créé avec succès
+2025-11-17 12:26:11 - FaceRecognitionSystem - INFO - Connecté à PostgreSQL: PostgreSQL 18.0 on x86_64-windows, compiled by msvc-19.44.35217, 64-bit
+2025-11-17 12:26:11 - FaceRecognitionSystem - INFO - Gestionnaire d'authentification initialisé
+2025-11-17 12:26:11 - FaceRecognitionSystem - INFO - Service utilisateur initialisé
+2025-11-17 12:26:11 - FaceRecognitionSystem - INFO - Service de profils initialisé
+2025-11-17 12:26:11 - FaceRecognitionSystem - INFO - Service d'accès initialisé
+2025-11-17 12:26:11 - FaceRecognitionSystem - INFO - Moteur de reconnaissance faciale initialisé
+2025-11-17 12:26:12 - FaceRecognitionSystem - INFO - Panel admin ouvert par admin
+2025-11-17 12:38:16 - FaceRecognitionSystem - INFO - Connexion à la base de données fermée
+2025-11-17 12:38:24 - FaceRecognitionSystem - INFO - Pool de connexions PostgreSQL créé avec succès
+2025-11-17 12:38:24 - FaceRecognitionSystem - INFO - Connecté à PostgreSQL: PostgreSQL 18.0 on x86_64-windows, compiled by msvc-19.44.35217, 64-bit
+2025-11-17 12:38:24 - FaceRecognitionSystem - INFO - Gestionnaire d'authentification initialisé
+2025-11-17 12:38:24 - FaceRecognitionSystem - INFO - Service utilisateur initialisé
+2025-11-17 12:38:24 - FaceRecognitionSystem - INFO - Service de profils initialisé
+2025-11-17 12:38:24 - FaceRecognitionSystem - INFO - Service d'accès initialisé
+2025-11-17 12:38:24 - FaceRecognitionSystem - INFO - Moteur de reconnaissance faciale initialisé
+2025-11-17 12:38:24 - FaceRecognitionSystem - INFO - Panel admin ouvert par admin
+2025-11-17 12:38:30 - FaceRecognitionSystem - INFO - Connexion à la base de données fermée
+2025-11-17 12:38:30 - FaceRecognitionSystem - INFO - Admin admin déconnecté
+2025-11-17 19:11:56 - FaceRecognitionSystem - INFO - Pool de connexions PostgreSQL créé avec succès
+2025-11-17 19:11:56 - FaceRecognitionSystem - INFO - Connecté à PostgreSQL: PostgreSQL 18.0 on x86_64-windows, compiled by msvc-19.44.35217, 64-bit
+2025-11-17 19:11:56 - FaceRecognitionSystem - INFO - Gestionnaire d'authentification initialisé
+2025-11-17 19:11:56 - FaceRecognitionSystem - INFO - Service utilisateur initialisé
+2025-11-17 19:11:56 - FaceRecognitionSystem - INFO - Service de profils initialisé
+2025-11-17 19:11:56 - FaceRecognitionSystem - INFO - Service d'accès initialisé
+2025-11-17 19:11:56 - FaceRecognitionSystem - INFO - Moteur de reconnaissance faciale initialisé
+2025-11-17 19:11:57 - FaceRecognitionSystem - INFO - Panel admin ouvert par admin
+2025-11-17 19:13:24 - FaceRecognitionSystem - INFO - Mot de passe hashé sans salt
+2025-11-17 19:13:24 - FaceRecognitionSystem - INFO - Utilisateur créé: bo (ID: 3)
+2025-11-17 19:14:06 - FaceRecognitionSystem - INFO - ============================================================
+2025-11-17 19:14:06 - FaceRecognitionSystem - INFO - DÉMARRAGE DE L'APPLICATION
+2025-11-17 19:14:06 - FaceRecognitionSystem - INFO - ============================================================
+2025-11-17 19:14:06 - FaceRecognitionSystem - INFO - Dossiers créés/vérifiés
+2025-11-17 19:14:06 - FaceRecognitionSystem - INFO - Connexion à la base de données...
+2025-11-17 19:14:06 - FaceRecognitionSystem - INFO - Pool de connexions PostgreSQL créé avec succès
+2025-11-17 19:14:06 - FaceRecognitionSystem - INFO - Connecté à PostgreSQL: PostgreSQL 18.0 on x86_64-windows, compiled by msvc-19.44.35217, 64-bit
+2025-11-17 19:14:06 - FaceRecognitionSystem - INFO - Initialisation des services...
+2025-11-17 19:14:06 - FaceRecognitionSystem - INFO - Service d'accès initialisé
+2025-11-17 19:14:06 - FaceRecognitionSystem - INFO - Gestionnaire d'authentification initialisé
+2025-11-17 19:14:06 - FaceRecognitionSystem - INFO - Service utilisateur initialisé
+2025-11-17 19:14:06 - FaceRecognitionSystem - INFO - Service de profils initialisé
+2025-11-17 19:14:06 - FaceRecognitionSystem - INFO - Initialisation du moteur de reconnaissance faciale...
+2025-11-17 19:14:06 - FaceRecognitionSystem - INFO - Moteur de reconnaissance faciale initialisé
+2025-11-17 19:14:06 - FaceRecognitionSystem - INFO - Gestionnaire d'authentification initialisé
+2025-11-17 19:14:06 - FaceRecognitionSystem - INFO - Détecteur anti-spoofing initialisé
+2025-11-17 19:14:06 - FaceRecognitionSystem - INFO - Chargement des profils faciaux...
+2025-11-17 19:14:06 - FaceRecognitionSystem - WARNING - Aucun profil trouvé dans la base de données
+2025-11-17 19:14:06 - FaceRecognitionSystem - INFO - Application initialisée avec succès ✓
+2025-11-17 19:14:14 - FaceRecognitionSystem - INFO - Lancement du mode utilisateur...
+2025-11-17 19:14:14 - FaceRecognitionSystem - INFO - Fenêtre principale initialisée
+2025-11-17 19:14:14 - FaceRecognitionSystem - INFO - Lancement de l'interface graphique
+2025-11-17 19:14:17 - FaceRecognitionSystem - INFO - Widget caméra initialisé
+2025-11-17 19:14:25 - FaceRecognitionSystem - ERROR - Erreur mise à jour frame: 'StatusPanel' object has no attribute 'update_status'
+2025-11-17 19:14:25 - FaceRecognitionSystem - INFO - Caméra démarrée
+2025-11-17 19:14:25 - FaceRecognitionSystem - INFO - Page de reconnaissance affichée
+2025-11-17 19:14:28 - FaceRecognitionSystem - INFO - Caméra arrêtée
+2025-11-17 19:14:28 - FaceRecognitionSystem - INFO - Retour à la page d'accueil
+2025-11-17 19:44:07 - FaceRecognitionSystem - INFO - Connexion à la base de données fermée
+2025-11-17 19:44:10 - FaceRecognitionSystem - INFO - Caméra arrêtée
+2025-11-17 19:44:10 - FaceRecognitionSystem - INFO - Caméra arrêtée
+2025-11-17 19:44:10 - FaceRecognitionSystem - INFO - Nettoyage des ressources...
+2025-11-17 19:44:10 - FaceRecognitionSystem - INFO - Connexion à la base de données fermée
+2025-11-17 19:44:10 - FaceRecognitionSystem - INFO - ============================================================
+2025-11-17 19:44:10 - FaceRecognitionSystem - INFO - APPLICATION FERMÉE
+2025-11-17 19:44:10 - FaceRecognitionSystem - INFO - ============================================================
+2025-11-17 19:45:14 - FaceRecognitionSystem - INFO - Pool de connexions PostgreSQL créé avec succès
+2025-11-17 19:45:14 - FaceRecognitionSystem - INFO - Connecté à PostgreSQL: PostgreSQL 18.0 on x86_64-windows, compiled by msvc-19.44.35217, 64-bit
+2025-11-17 19:45:14 - FaceRecognitionSystem - INFO - Gestionnaire d'authentification initialisé
+2025-11-17 19:45:14 - FaceRecognitionSystem - INFO - Service utilisateur initialisé
+2025-11-17 19:45:14 - FaceRecognitionSystem - INFO - Service de profils initialisé
+2025-11-17 19:45:14 - FaceRecognitionSystem - INFO - Service d'accès initialisé
+2025-11-17 19:45:14 - FaceRecognitionSystem - INFO - Moteur de reconnaissance faciale initialisé
+2025-11-17 19:45:15 - FaceRecognitionSystem - INFO - Panel admin ouvert par admin
+2025-11-17 19:45:20 - FaceRecognitionSystem - INFO - Connexion à la base de données fermée
+2025-11-17 19:45:20 - FaceRecognitionSystem - INFO - Admin admin déconnecté
+2025-11-17 19:46:32 - FaceRecognitionSystem - INFO - Pool de connexions PostgreSQL créé avec succès
+2025-11-17 19:46:32 - FaceRecognitionSystem - INFO - Connecté à PostgreSQL: PostgreSQL 18.0 on x86_64-windows, compiled by msvc-19.44.35217, 64-bit
+2025-11-17 19:46:32 - FaceRecognitionSystem - INFO - Gestionnaire d'authentification initialisé
+2025-11-17 19:46:32 - FaceRecognitionSystem - INFO - Service utilisateur initialisé
+2025-11-17 19:46:32 - FaceRecognitionSystem - INFO - Service de profils initialisé
+2025-11-17 19:46:32 - FaceRecognitionSystem - INFO - Service d'accès initialisé
+2025-11-17 19:46:32 - FaceRecognitionSystem - INFO - Moteur de reconnaissance faciale initialisé
+2025-11-17 19:46:33 - FaceRecognitionSystem - INFO - Panel admin ouvert par admin
+2025-11-17 19:47:51 - FaceRecognitionSystem - INFO - ============================================================
+2025-11-17 19:47:51 - FaceRecognitionSystem - INFO - DÉMARRAGE DE L'APPLICATION
+2025-11-17 19:47:51 - FaceRecognitionSystem - INFO - ============================================================
+2025-11-17 19:47:51 - FaceRecognitionSystem - INFO - Dossiers créés/vérifiés
+2025-11-17 19:47:51 - FaceRecognitionSystem - INFO - Connexion à la base de données...
+2025-11-17 19:47:51 - FaceRecognitionSystem - INFO - Pool de connexions PostgreSQL créé avec succès
+2025-11-17 19:47:51 - FaceRecognitionSystem - INFO - Connecté à PostgreSQL: PostgreSQL 18.0 on x86_64-windows, compiled by msvc-19.44.35217, 64-bit
+2025-11-17 19:47:51 - FaceRecognitionSystem - INFO - Initialisation des services...
+2025-11-17 19:47:51 - FaceRecognitionSystem - INFO - Service d'accès initialisé
+2025-11-17 19:47:51 - FaceRecognitionSystem - INFO - Gestionnaire d'authentification initialisé
+2025-11-17 19:47:51 - FaceRecognitionSystem - INFO - Service utilisateur initialisé
+2025-11-17 19:47:51 - FaceRecognitionSystem - INFO - Service de profils initialisé
+2025-11-17 19:47:51 - FaceRecognitionSystem - INFO - Initialisation du moteur de reconnaissance faciale...
+2025-11-17 19:47:51 - FaceRecognitionSystem - INFO - Moteur de reconnaissance faciale initialisé
+2025-11-17 19:47:51 - FaceRecognitionSystem - INFO - Gestionnaire d'authentification initialisé
+2025-11-17 19:47:51 - FaceRecognitionSystem - INFO - Détecteur anti-spoofing initialisé
+2025-11-17 19:47:51 - FaceRecognitionSystem - INFO - Chargement des profils faciaux...
+2025-11-17 19:47:51 - FaceRecognitionSystem - WARNING - Aucun profil trouvé dans la base de données
+2025-11-17 19:47:51 - FaceRecognitionSystem - INFO - Application initialisée avec succès ✓
+2025-11-17 19:51:34 - FaceRecognitionSystem - INFO - Pool de connexions PostgreSQL créé avec succès
+2025-11-17 19:51:34 - FaceRecognitionSystem - INFO - Connecté à PostgreSQL: PostgreSQL 18.0 on x86_64-windows, compiled by msvc-19.44.35217, 64-bit
+2025-11-17 19:51:34 - FaceRecognitionSystem - INFO - Gestionnaire d'authentification initialisé
+2025-11-17 19:51:34 - FaceRecognitionSystem - INFO - Service utilisateur initialisé
+2025-11-17 19:51:34 - FaceRecognitionSystem - INFO - Service de profils initialisé
+2025-11-17 19:51:34 - FaceRecognitionSystem - INFO - Service d'accès initialisé
+2025-11-17 19:51:34 - FaceRecognitionSystem - INFO - Moteur de reconnaissance faciale initialisé
+2025-11-17 19:51:35 - FaceRecognitionSystem - INFO - Panel admin ouvert par admin
+2025-11-17 19:51:39 - FaceRecognitionSystem - INFO - Connexion à la base de données fermée
+2025-11-17 19:51:39 - FaceRecognitionSystem - INFO - Admin admin déconnecté
+2025-11-17 19:51:57 - FaceRecognitionSystem - INFO - Pool de connexions PostgreSQL créé avec succès
+2025-11-17 19:51:57 - FaceRecognitionSystem - INFO - Connecté à PostgreSQL: PostgreSQL 18.0 on x86_64-windows, compiled by msvc-19.44.35217, 64-bit
+2025-11-17 19:51:57 - FaceRecognitionSystem - INFO - Gestionnaire d'authentification initialisé
+2025-11-17 19:51:57 - FaceRecognitionSystem - INFO - Service utilisateur initialisé
+2025-11-17 19:51:57 - FaceRecognitionSystem - INFO - Service de profils initialisé
+2025-11-17 19:51:57 - FaceRecognitionSystem - INFO - Service d'accès initialisé
+2025-11-17 19:51:57 - FaceRecognitionSystem - INFO - Moteur de reconnaissance faciale initialisé
+2025-11-17 19:54:22 - FaceRecognitionSystem - INFO - Pool de connexions PostgreSQL créé avec succès
+2025-11-17 19:54:22 - FaceRecognitionSystem - INFO - Connecté à PostgreSQL: PostgreSQL 18.0 on x86_64-windows, compiled by msvc-19.44.35217, 64-bit
+2025-11-17 19:54:22 - FaceRecognitionSystem - INFO - Gestionnaire d'authentification initialisé
+2025-11-17 19:54:22 - FaceRecognitionSystem - INFO - Service utilisateur initialisé
+2025-11-17 19:54:22 - FaceRecognitionSystem - INFO - Service de profils initialisé
+2025-11-17 19:54:22 - FaceRecognitionSystem - INFO - Service d'accès initialisé
+2025-11-17 19:54:22 - FaceRecognitionSystem - INFO - Moteur de reconnaissance faciale initialisé
+2025-11-17 19:54:23 - FaceRecognitionSystem - INFO - Panel admin ouvert par admin
+2025-11-17 19:55:11 - FaceRecognitionSystem - INFO - Mot de passe hashé sans salt
+2025-11-17 19:55:11 - FaceRecognitionSystem - INFO - Utilisateur créé: goat (ID: 4)
+2025-11-17 19:55:53 - FaceRecognitionSystem - INFO - Pool de connexions PostgreSQL créé avec succès
+2025-11-17 19:55:53 - FaceRecognitionSystem - INFO - Connecté à PostgreSQL: PostgreSQL 18.0 on x86_64-windows, compiled by msvc-19.44.35217, 64-bit
+2025-11-17 19:55:53 - FaceRecognitionSystem - INFO - Gestionnaire d'authentification initialisé
+2025-11-17 19:55:53 - FaceRecognitionSystem - INFO - Service utilisateur initialisé
+2025-11-17 19:55:53 - FaceRecognitionSystem - INFO - Service de profils initialisé
+2025-11-17 19:55:53 - FaceRecognitionSystem - INFO - Service d'accès initialisé
+2025-11-17 19:55:53 - FaceRecognitionSystem - INFO - Moteur de reconnaissance faciale initialisé
+2025-11-17 19:56:01 - FaceRecognitionSystem - INFO - Panel admin ouvert par goat
+2025-11-17 19:56:06 - FaceRecognitionSystem - INFO - Admin déconnecté
+2025-11-17 19:56:12 - FaceRecognitionSystem - INFO - Panel admin ouvert par goat
+2025-11-17 19:59:57 - FaceRecognitionSystem - INFO - Utilisateur 1 supprimé
+2025-11-17 20:00:59 - FaceRecognitionSystem - INFO - Mot de passe hashé sans salt
+2025-11-17 20:00:59 - FaceRecognitionSystem - INFO - Utilisateur créé: jordan (ID: 5)
+2025-11-17 20:01:14 - FaceRecognitionSystem - ERROR - Erreur création profil: 'str' object has no attribute 'tolist'
+2025-11-17 20:05:13 - FaceRecognitionSystem - INFO - Connexion à la base de données fermée
+2025-11-17 20:08:51 - FaceRecognitionSystem - INFO - Pool de connexions PostgreSQL créé avec succès
+2025-11-17 20:08:51 - FaceRecognitionSystem - INFO - Connecté à PostgreSQL: PostgreSQL 18.0 on x86_64-windows, compiled by msvc-19.44.35217, 64-bit
+2025-11-17 20:08:51 - FaceRecognitionSystem - INFO - Gestionnaire d'authentification initialisé
+2025-11-17 20:08:51 - FaceRecognitionSystem - INFO - Service utilisateur initialisé
+2025-11-17 20:08:51 - FaceRecognitionSystem - INFO - Service de profils initialisé
+2025-11-17 20:08:51 - FaceRecognitionSystem - INFO - Service d'accès initialisé
+2025-11-17 20:12:33 - FaceRecognitionSystem - INFO - Connexion à la base de données fermée
+2025-11-17 20:12:53 - FaceRecognitionSystem - INFO - Pool de connexions PostgreSQL créé avec succès
+2025-11-17 20:12:53 - FaceRecognitionSystem - INFO - Connecté à PostgreSQL: PostgreSQL 18.0 on x86_64-windows, compiled by msvc-19.44.35217, 64-bit
+2025-11-17 20:12:53 - FaceRecognitionSystem - INFO - Gestionnaire d'authentification initialisé
+2025-11-17 20:12:53 - FaceRecognitionSystem - INFO - Service utilisateur initialisé
+2025-11-17 20:12:53 - FaceRecognitionSystem - INFO - Service de profils initialisé
+2025-11-17 20:12:53 - FaceRecognitionSystem - INFO - Service d'accès initialisé
+2025-11-17 20:13:16 - FaceRecognitionSystem - INFO - Connexion à la base de données fermée
+2025-11-17 20:13:23 - FaceRecognitionSystem - INFO - Pool de connexions PostgreSQL créé avec succès
+2025-11-17 20:13:23 - FaceRecognitionSystem - INFO - Connecté à PostgreSQL: PostgreSQL 18.0 on x86_64-windows, compiled by msvc-19.44.35217, 64-bit
+2025-11-17 20:13:23 - FaceRecognitionSystem - INFO - Gestionnaire d'authentification initialisé
+2025-11-17 20:13:23 - FaceRecognitionSystem - INFO - Service utilisateur initialisé
+2025-11-17 20:13:23 - FaceRecognitionSystem - INFO - Service de profils initialisé
+2025-11-17 20:13:23 - FaceRecognitionSystem - INFO - Service d'accès initialisé
+2025-11-17 20:13:23 - FaceRecognitionSystem - INFO - Moteur de reconnaissance faciale initialisé
+2025-11-17 20:13:31 - FaceRecognitionSystem - INFO - Panel admin ouvert par jordan
+2025-11-17 20:17:41 - FaceRecognitionSystem - INFO - Pool de connexions PostgreSQL créé avec succès
+2025-11-17 20:17:41 - FaceRecognitionSystem - INFO - Connecté à PostgreSQL: PostgreSQL 18.0 on x86_64-windows, compiled by msvc-19.44.35217, 64-bit
+2025-11-17 20:17:41 - FaceRecognitionSystem - INFO - Gestionnaire d'authentification initialisé
+2025-11-17 20:17:41 - FaceRecognitionSystem - INFO - Service utilisateur initialisé
+2025-11-17 20:17:41 - FaceRecognitionSystem - INFO - Service de profils initialisé
+2025-11-17 20:17:41 - FaceRecognitionSystem - INFO - Service d'accès initialisé
+2025-11-17 20:17:41 - FaceRecognitionSystem - INFO - Connexion à la base de données fermée
+2025-11-17 20:17:49 - FaceRecognitionSystem - INFO - Pool de connexions PostgreSQL créé avec succès
+2025-11-17 20:17:49 - FaceRecognitionSystem - INFO - Connecté à PostgreSQL: PostgreSQL 18.0 on x86_64-windows, compiled by msvc-19.44.35217, 64-bit
+2025-11-17 20:17:49 - FaceRecognitionSystem - INFO - Gestionnaire d'authentification initialisé
+2025-11-17 20:17:49 - FaceRecognitionSystem - INFO - Service utilisateur initialisé
+2025-11-17 20:17:49 - FaceRecognitionSystem - INFO - Service de profils initialisé
+2025-11-17 20:17:49 - FaceRecognitionSystem - INFO - Service d'accès initialisé
+2025-11-17 20:17:49 - FaceRecognitionSystem - INFO - Connexion à la base de données fermée
+2025-11-17 20:17:58 - FaceRecognitionSystem - INFO - Pool de connexions PostgreSQL créé avec succès
+2025-11-17 20:17:58 - FaceRecognitionSystem - INFO - Connecté à PostgreSQL: PostgreSQL 18.0 on x86_64-windows, compiled by msvc-19.44.35217, 64-bit
+2025-11-17 20:17:58 - FaceRecognitionSystem - INFO - Gestionnaire d'authentification initialisé
+2025-11-17 20:17:58 - FaceRecognitionSystem - INFO - Service utilisateur initialisé
+2025-11-17 20:17:58 - FaceRecognitionSystem - INFO - Service de profils initialisé
+2025-11-17 20:17:58 - FaceRecognitionSystem - INFO - Service d'accès initialisé
+2025-11-17 20:17:58 - FaceRecognitionSystem - INFO - Moteur de reconnaissance faciale initialisé
+2025-11-17 20:18:01 - FaceRecognitionSystem - INFO - Connexion à la base de données fermée
+2025-11-17 20:20:10 - FaceRecognitionSystem - INFO - Pool de connexions PostgreSQL créé avec succès
+2025-11-17 20:20:10 - FaceRecognitionSystem - INFO - Connecté à PostgreSQL: PostgreSQL 18.0 on x86_64-windows, compiled by msvc-19.44.35217, 64-bit
+2025-11-17 20:20:10 - FaceRecognitionSystem - INFO - Gestionnaire d'authentification initialisé
+2025-11-17 20:20:10 - FaceRecognitionSystem - INFO - Service utilisateur initialisé
+2025-11-17 20:20:10 - FaceRecognitionSystem - INFO - Service de profils initialisé
+2025-11-17 20:20:10 - FaceRecognitionSystem - INFO - Service d'accès initialisé
+2025-11-17 20:20:10 - FaceRecognitionSystem - INFO - Connexion à la base de données fermée
+2025-11-17 20:25:26 - FaceRecognitionSystem - INFO - Pool de connexions PostgreSQL créé avec succès
+2025-11-17 20:25:26 - FaceRecognitionSystem - INFO - Connecté à PostgreSQL: PostgreSQL 18.0 on x86_64-windows, compiled by msvc-19.44.35217, 64-bit
+2025-11-17 20:25:26 - FaceRecognitionSystem - INFO - Gestionnaire d'authentification initialisé
+2025-11-17 20:25:26 - FaceRecognitionSystem - INFO - Service utilisateur initialisé
+2025-11-17 20:25:26 - FaceRecognitionSystem - INFO - Service de profils initialisé
+2025-11-17 20:25:26 - FaceRecognitionSystem - INFO - Service d'accès initialisé
+2025-11-17 20:25:26 - FaceRecognitionSystem - INFO - Moteur de reconnaissance faciale initialisé
+2025-11-17 20:25:35 - FaceRecognitionSystem - INFO - Panel admin ouvert par jordan
+2025-11-17 20:26:13 - FaceRecognitionSystem - INFO - Utilisateur 5 mis à jour
+2025-11-17 20:26:50 - FaceRecognitionSystem - INFO - Mot de passe hashé sans salt
+2025-11-17 20:26:50 - FaceRecognitionSystem - INFO - Utilisateur créé: boriska (ID: 6)
+2025-11-17 20:27:06 - FaceRecognitionSystem - ERROR - Erreur création profil: 'str' object has no attribute 'tolist'
+2025-11-17 20:28:01 - FaceRecognitionSystem - INFO - Utilisateur 3 supprimé
+2025-11-17 20:32:06 - FaceRecognitionSystem - INFO - Pool de connexions PostgreSQL créé avec succès
+2025-11-17 20:32:06 - FaceRecognitionSystem - INFO - Connecté à PostgreSQL: PostgreSQL 18.0 on x86_64-windows, compiled by msvc-19.44.35217, 64-bit
+2025-11-17 20:32:06 - FaceRecognitionSystem - INFO - Gestionnaire d'authentification initialisé
+2025-11-17 20:32:06 - FaceRecognitionSystem - INFO - Service utilisateur initialisé
+2025-11-17 20:32:06 - FaceRecognitionSystem - INFO - Service de profils initialisé
+2025-11-17 20:32:06 - FaceRecognitionSystem - INFO - Service d'accès initialisé
+2025-11-17 20:32:06 - FaceRecognitionSystem - INFO - Moteur de reconnaissance faciale initialisé
+2025-11-17 20:32:47 - FaceRecognitionSystem - INFO - Pool de connexions PostgreSQL créé avec succès
+2025-11-17 20:32:47 - FaceRecognitionSystem - INFO - Connecté à PostgreSQL: PostgreSQL 18.0 on x86_64-windows, compiled by msvc-19.44.35217, 64-bit
+2025-11-17 20:32:47 - FaceRecognitionSystem - INFO - Gestionnaire d'authentification initialisé
+2025-11-17 20:32:47 - FaceRecognitionSystem - INFO - Service utilisateur initialisé
+2025-11-17 20:32:47 - FaceRecognitionSystem - INFO - Service de profils initialisé
+2025-11-17 20:32:47 - FaceRecognitionSystem - INFO - Service d'accès initialisé
+2025-11-17 20:32:47 - FaceRecognitionSystem - INFO - Moteur de reconnaissance faciale initialisé
+2025-11-17 20:32:53 - FaceRecognitionSystem - INFO - Panel admin ouvert par jordan
+2025-11-17 20:42:48 - FaceRecognitionSystem - INFO - Pool de connexions PostgreSQL créé avec succès
+2025-11-17 20:42:48 - FaceRecognitionSystem - INFO - Connecté à PostgreSQL: PostgreSQL 18.0 on x86_64-windows, compiled by msvc-19.44.35217, 64-bit
+2025-11-17 20:42:48 - FaceRecognitionSystem - INFO - Gestionnaire d'authentification initialisé
+2025-11-17 20:42:48 - FaceRecognitionSystem - INFO - Service utilisateur initialisé
+2025-11-17 20:42:48 - FaceRecognitionSystem - INFO - Service de profils initialisé
+2025-11-17 20:42:48 - FaceRecognitionSystem - INFO - Service d'accès initialisé
+2025-11-17 20:42:48 - FaceRecognitionSystem - INFO - Moteur de reconnaissance faciale initialisé
+2025-11-17 20:42:56 - FaceRecognitionSystem - INFO - Panel admin ouvert par jordan
+2025-11-17 20:48:59 - FaceRecognitionSystem - INFO - Pool de connexions PostgreSQL créé avec succès
+2025-11-17 20:48:59 - FaceRecognitionSystem - INFO - Connecté à PostgreSQL: PostgreSQL 18.0 on x86_64-windows, compiled by msvc-19.44.35217, 64-bit
+2025-11-17 20:48:59 - FaceRecognitionSystem - INFO - Gestionnaire d'authentification initialisé
+2025-11-17 20:48:59 - FaceRecognitionSystem - INFO - Service utilisateur initialisé
+2025-11-17 20:48:59 - FaceRecognitionSystem - INFO - Service de profils initialisé
+2025-11-17 20:48:59 - FaceRecognitionSystem - INFO - Service d'accès initialisé
+2025-11-17 20:48:59 - FaceRecognitionSystem - INFO - Moteur de reconnaissance faciale initialisé
+2025-11-17 20:49:06 - FaceRecognitionSystem - INFO - Panel admin ouvert par jordan
+2025-11-17 20:49:54 - FaceRecognitionSystem - INFO - Pool de connexions PostgreSQL créé avec succès
+2025-11-17 20:49:54 - FaceRecognitionSystem - INFO - Connecté à PostgreSQL: PostgreSQL 18.0 on x86_64-windows, compiled by msvc-19.44.35217, 64-bit
+2025-11-17 20:49:54 - FaceRecognitionSystem - INFO - Gestionnaire d'authentification initialisé
+2025-11-17 20:49:54 - FaceRecognitionSystem - INFO - Service utilisateur initialisé
+2025-11-17 20:49:54 - FaceRecognitionSystem - INFO - Service de profils initialisé
+2025-11-17 20:49:54 - FaceRecognitionSystem - INFO - Service d'accès initialisé
+2025-11-17 20:49:54 - FaceRecognitionSystem - INFO - Moteur de reconnaissance faciale initialisé
+2025-11-17 20:50:01 - FaceRecognitionSystem - INFO - Panel admin ouvert par jordan
+2025-11-17 20:50:19 - FaceRecognitionSystem - INFO - Pool de connexions PostgreSQL créé avec succès
+2025-11-17 20:50:19 - FaceRecognitionSystem - INFO - Connecté à PostgreSQL: PostgreSQL 18.0 on x86_64-windows, compiled by msvc-19.44.35217, 64-bit
+2025-11-17 20:50:19 - FaceRecognitionSystem - INFO - Gestionnaire d'authentification initialisé
+2025-11-17 20:50:19 - FaceRecognitionSystem - INFO - Service utilisateur initialisé
+2025-11-17 20:50:19 - FaceRecognitionSystem - INFO - Service de profils initialisé
+2025-11-17 20:50:19 - FaceRecognitionSystem - INFO - Service d'accès initialisé
+2025-11-17 20:50:19 - FaceRecognitionSystem - INFO - Moteur de reconnaissance faciale initialisé
+2025-11-17 20:50:26 - FaceRecognitionSystem - INFO - Panel admin ouvert par jordan
+2025-11-17 20:51:23 - FaceRecognitionSystem - INFO - Pool de connexions PostgreSQL créé avec succès
+2025-11-17 20:51:23 - FaceRecognitionSystem - INFO - Connecté à PostgreSQL: PostgreSQL 18.0 on x86_64-windows, compiled by msvc-19.44.35217, 64-bit
+2025-11-17 20:51:23 - FaceRecognitionSystem - INFO - Gestionnaire d'authentification initialisé
+2025-11-17 20:51:23 - FaceRecognitionSystem - INFO - Service utilisateur initialisé
+2025-11-17 20:51:23 - FaceRecognitionSystem - INFO - Service de profils initialisé
+2025-11-17 20:51:23 - FaceRecognitionSystem - INFO - Service d'accès initialisé
+2025-11-17 20:51:23 - FaceRecognitionSystem - INFO - Moteur de reconnaissance faciale initialisé
+2025-11-17 20:51:30 - FaceRecognitionSystem - INFO - Panel admin ouvert par jordan
+2025-11-18 06:45:05 - FaceRecognitionSystem - INFO - Pool de connexions PostgreSQL créé avec succès
+2025-11-18 06:45:05 - FaceRecognitionSystem - INFO - Connecté à PostgreSQL: PostgreSQL 18.0 on x86_64-windows, compiled by msvc-19.44.35217, 64-bit
+2025-11-18 06:45:05 - FaceRecognitionSystem - INFO - Gestionnaire d'authentification initialisé
+2025-11-18 06:45:05 - FaceRecognitionSystem - INFO - Service utilisateur initialisé
+2025-11-18 06:45:05 - FaceRecognitionSystem - INFO - Service de profils initialisé
+2025-11-18 06:45:05 - FaceRecognitionSystem - INFO - Service d'accès initialisé
+2025-11-18 06:45:05 - FaceRecognitionSystem - INFO - Moteur de reconnaissance faciale initialisé
+2025-11-18 06:45:15 - FaceRecognitionSystem - INFO - Panel admin ouvert par jordan
+2025-11-18 06:46:58 - FaceRecognitionSystem - INFO - Pool de connexions PostgreSQL créé avec succès
+2025-11-18 06:46:58 - FaceRecognitionSystem - INFO - Connecté à PostgreSQL: PostgreSQL 18.0 on x86_64-windows, compiled by msvc-19.44.35217, 64-bit
+2025-11-18 06:46:58 - FaceRecognitionSystem - INFO - Gestionnaire d'authentification initialisé
+2025-11-18 06:46:58 - FaceRecognitionSystem - INFO - Service utilisateur initialisé
+2025-11-18 06:46:58 - FaceRecognitionSystem - INFO - Service de profils initialisé
+2025-11-18 06:46:58 - FaceRecognitionSystem - INFO - Service d'accès initialisé
+2025-11-18 06:46:58 - FaceRecognitionSystem - INFO - Moteur de reconnaissance faciale initialisé
+2025-11-18 06:47:09 - FaceRecognitionSystem - INFO - Panel admin ouvert par jordan
+2025-11-18 06:47:44 - FaceRecognitionSystem - ERROR - Erreur création profil: 'str' object has no attribute 'tolist'
+2025-11-18 06:52:55 - FaceRecognitionSystem - INFO - Fenêtre d'enregistrement ouverte
+2025-11-18 16:03:51 - FaceRecognitionSystem - INFO - ============================================================
+2025-11-18 16:03:51 - FaceRecognitionSystem - INFO - DÉMARRAGE DE L'APPLICATION
+2025-11-18 16:03:51 - FaceRecognitionSystem - INFO - ============================================================
+2025-11-18 16:03:51 - FaceRecognitionSystem - INFO - Dossiers créés/vérifiés
+2025-11-18 16:03:51 - FaceRecognitionSystem - INFO - Connexion à la base de données...
+2025-11-18 16:03:51 - FaceRecognitionSystem - INFO - Pool de connexions PostgreSQL créé avec succès
+2025-11-18 16:03:51 - FaceRecognitionSystem - INFO - Connecté à PostgreSQL: PostgreSQL 18.0 on x86_64-windows, compiled by msvc-19.44.35217, 64-bit
+2025-11-18 16:03:51 - FaceRecognitionSystem - INFO - Initialisation des services...
+2025-11-18 16:03:51 - FaceRecognitionSystem - INFO - Service d'accès initialisé
+2025-11-18 16:03:51 - FaceRecognitionSystem - INFO - Gestionnaire d'authentification initialisé
+2025-11-18 16:03:51 - FaceRecognitionSystem - INFO - Service utilisateur initialisé
+2025-11-18 16:03:51 - FaceRecognitionSystem - INFO - Service de profils initialisé
+2025-11-18 16:03:51 - FaceRecognitionSystem - INFO - Initialisation du moteur de reconnaissance faciale...
+2025-11-18 16:03:51 - FaceRecognitionSystem - INFO - Moteur de reconnaissance faciale initialisé
+2025-11-18 16:03:51 - FaceRecognitionSystem - INFO - Gestionnaire d'authentification initialisé
+2025-11-18 16:03:51 - FaceRecognitionSystem - INFO - Détecteur anti-spoofing initialisé
+2025-11-18 16:03:51 - FaceRecognitionSystem - INFO - Chargement des profils faciaux...
+2025-11-18 16:03:51 - FaceRecognitionSystem - WARNING - Aucun profil trouvé dans la base de données
+2025-11-18 16:03:51 - FaceRecognitionSystem - INFO - Application initialisée avec succès ✓
+2025-11-18 16:07:16 - FaceRecognitionSystem - INFO - Lancement du mode utilisateur...
+2025-11-18 16:07:16 - FaceRecognitionSystem - INFO - Fenêtre principale initialisée
+2025-11-18 16:07:16 - FaceRecognitionSystem - INFO - Lancement de l'interface graphique
+2025-11-18 16:18:24 - FaceRecognitionSystem - INFO - Nettoyage des ressources...
+2025-11-18 16:18:24 - FaceRecognitionSystem - INFO - Connexion à la base de données fermée
+2025-11-18 16:18:24 - FaceRecognitionSystem - INFO - ============================================================
+2025-11-18 16:18:24 - FaceRecognitionSystem - INFO - APPLICATION FERMÉE
+2025-11-18 16:18:24 - FaceRecognitionSystem - INFO - ============================================================
+2025-11-18 16:18:29 - FaceRecognitionSystem - INFO - Pool de connexions PostgreSQL créé avec succès
+2025-11-18 16:18:29 - FaceRecognitionSystem - INFO - Connecté à PostgreSQL: PostgreSQL 18.0 on x86_64-windows, compiled by msvc-19.44.35217, 64-bit
+2025-11-18 16:18:29 - FaceRecognitionSystem - INFO - Service d'accès initialisé
+2025-11-18 16:18:29 - FaceRecognitionSystem - INFO - Gestionnaire d'authentification initialisé
+2025-11-18 16:18:29 - FaceRecognitionSystem - INFO - Service utilisateur initialisé
+2025-11-18 16:18:29 - FaceRecognitionSystem - INFO - Service de profils initialisé
+2025-11-18 16:18:29 - FaceRecognitionSystem - INFO - Moteur de reconnaissance faciale initialisé
+2025-11-18 16:18:29 - FaceRecognitionSystem - INFO - Gestionnaire d'authentification initialisé
+2025-11-18 16:18:29 - FaceRecognitionSystem - INFO - Détecteur anti-spoofing initialisé
+2025-11-18 16:19:09 - FaceRecognitionSystem - INFO - Pool de connexions PostgreSQL créé avec succès
+2025-11-18 16:19:09 - FaceRecognitionSystem - INFO - Connecté à PostgreSQL: PostgreSQL 18.0 on x86_64-windows, compiled by msvc-19.44.35217, 64-bit
+2025-11-18 16:19:09 - FaceRecognitionSystem - INFO - Service d'accès initialisé
+2025-11-18 16:19:09 - FaceRecognitionSystem - INFO - Gestionnaire d'authentification initialisé
+2025-11-18 16:19:09 - FaceRecognitionSystem - INFO - Service utilisateur initialisé
+2025-11-18 16:19:09 - FaceRecognitionSystem - INFO - Service de profils initialisé
+2025-11-18 16:19:09 - FaceRecognitionSystem - INFO - Moteur de reconnaissance faciale initialisé
+2025-11-18 16:19:09 - FaceRecognitionSystem - INFO - Gestionnaire d'authentification initialisé
+2025-11-18 16:19:09 - FaceRecognitionSystem - INFO - Détecteur anti-spoofing initialisé
+2025-11-18 16:19:15 - FaceRecognitionSystem - INFO - Fenêtre principale initialisée
+2025-11-18 16:19:15 - FaceRecognitionSystem - INFO - Widget caméra initialisé
+2025-11-18 16:19:23 - FaceRecognitionSystem - ERROR - Erreur mise à jour frame: 'StatusPanel' object has no attribute 'update_status'
+2025-11-18 16:19:23 - FaceRecognitionSystem - INFO - Caméra démarrée
+2025-11-18 16:19:23 - FaceRecognitionSystem - INFO - Page de reconnaissance affichée
+2025-11-18 16:19:40 - FaceRecognitionSystem - INFO - Caméra arrêtée
+2025-11-18 16:21:01 - FaceRecognitionSystem - INFO - Pool de connexions PostgreSQL créé avec succès
+2025-11-18 16:21:01 - FaceRecognitionSystem - INFO - Connecté à PostgreSQL: PostgreSQL 18.0 on x86_64-windows, compiled by msvc-19.44.35217, 64-bit
+2025-11-18 16:21:01 - FaceRecognitionSystem - INFO - Gestionnaire d'authentification initialisé
+2025-11-18 16:21:01 - FaceRecognitionSystem - INFO - Service utilisateur initialisé
+2025-11-18 16:21:01 - FaceRecognitionSystem - INFO - Service de profils initialisé
+2025-11-18 16:21:01 - FaceRecognitionSystem - INFO - Service d'accès initialisé
+2025-11-18 16:21:01 - FaceRecognitionSystem - INFO - Moteur de reconnaissance faciale initialisé
+2025-11-18 16:21:18 - FaceRecognitionSystem - INFO - Panel admin ouvert par jordan
+2025-11-18 16:21:23 - FaceRecognitionSystem - INFO - Admin déconnecté
+2025-11-18 16:24:26 - FaceRecognitionSystem - INFO - Pool de connexions PostgreSQL créé avec succès
+2025-11-18 16:24:26 - FaceRecognitionSystem - INFO - Connecté à PostgreSQL: PostgreSQL 18.0 on x86_64-windows, compiled by msvc-19.44.35217, 64-bit
+2025-11-18 16:24:26 - FaceRecognitionSystem - INFO - Service d'accès initialisé
+2025-11-18 16:24:26 - FaceRecognitionSystem - INFO - Gestionnaire d'authentification initialisé
+2025-11-18 16:24:26 - FaceRecognitionSystem - INFO - Service utilisateur initialisé
+2025-11-18 16:24:26 - FaceRecognitionSystem - INFO - Service de profils initialisé
+2025-11-18 16:24:26 - FaceRecognitionSystem - INFO - Moteur de reconnaissance faciale initialisé
+2025-11-18 16:24:26 - FaceRecognitionSystem - INFO - Gestionnaire d'authentification initialisé
+2025-11-18 16:24:26 - FaceRecognitionSystem - INFO - Détecteur anti-spoofing initialisé
+2025-11-18 16:24:59 - FaceRecognitionSystem - INFO - Pool de connexions PostgreSQL créé avec succès
+2025-11-18 16:24:59 - FaceRecognitionSystem - INFO - Connecté à PostgreSQL: PostgreSQL 18.0 on x86_64-windows, compiled by msvc-19.44.35217, 64-bit
+2025-11-18 16:24:59 - FaceRecognitionSystem - INFO - Service d'accès initialisé
+2025-11-18 16:24:59 - FaceRecognitionSystem - INFO - Gestionnaire d'authentification initialisé
+2025-11-18 16:24:59 - FaceRecognitionSystem - INFO - Service utilisateur initialisé
+2025-11-18 16:24:59 - FaceRecognitionSystem - INFO - Service de profils initialisé
+2025-11-18 16:24:59 - FaceRecognitionSystem - INFO - Moteur de reconnaissance faciale initialisé
+2025-11-18 16:24:59 - FaceRecognitionSystem - INFO - Gestionnaire d'authentification initialisé
+2025-11-18 16:24:59 - FaceRecognitionSystem - INFO - Détecteur anti-spoofing initialisé
+2025-11-18 16:27:41 - FaceRecognitionSystem - INFO - Pool de connexions PostgreSQL créé avec succès
+2025-11-18 16:27:41 - FaceRecognitionSystem - INFO - Connecté à PostgreSQL: PostgreSQL 18.0 on x86_64-windows, compiled by msvc-19.44.35217, 64-bit
+2025-11-18 16:27:41 - FaceRecognitionSystem - INFO - Service d'accès initialisé
+2025-11-18 16:27:41 - FaceRecognitionSystem - INFO - Gestionnaire d'authentification initialisé
+2025-11-18 16:27:41 - FaceRecognitionSystem - INFO - Service utilisateur initialisé
+2025-11-18 16:27:41 - FaceRecognitionSystem - INFO - Service de profils initialisé
+2025-11-18 16:27:41 - FaceRecognitionSystem - INFO - Moteur de reconnaissance faciale initialisé
+2025-11-18 16:27:41 - FaceRecognitionSystem - INFO - Gestionnaire d'authentification initialisé
+2025-11-18 16:27:41 - FaceRecognitionSystem - INFO - Détecteur anti-spoofing initialisé
+2025-11-18 16:28:30 - FaceRecognitionSystem - INFO - Pool de connexions PostgreSQL créé avec succès
+2025-11-18 16:28:30 - FaceRecognitionSystem - INFO - Connecté à PostgreSQL: PostgreSQL 18.0 on x86_64-windows, compiled by msvc-19.44.35217, 64-bit
+2025-11-18 16:28:30 - FaceRecognitionSystem - INFO - Service d'accès initialisé
+2025-11-18 16:28:30 - FaceRecognitionSystem - INFO - Gestionnaire d'authentification initialisé
+2025-11-18 16:28:30 - FaceRecognitionSystem - INFO - Service utilisateur initialisé
+2025-11-18 16:28:30 - FaceRecognitionSystem - INFO - Service de profils initialisé
+2025-11-18 16:28:30 - FaceRecognitionSystem - INFO - Moteur de reconnaissance faciale initialisé
+2025-11-18 16:28:30 - FaceRecognitionSystem - INFO - Gestionnaire d'authentification initialisé
+2025-11-18 16:28:30 - FaceRecognitionSystem - INFO - Détecteur anti-spoofing initialisé
+2025-11-18 16:29:54 - FaceRecognitionSystem - INFO - Pool de connexions PostgreSQL créé avec succès
+2025-11-18 16:29:54 - FaceRecognitionSystem - INFO - Connecté à PostgreSQL: PostgreSQL 18.0 on x86_64-windows, compiled by msvc-19.44.35217, 64-bit
+2025-11-18 16:29:54 - FaceRecognitionSystem - INFO - Service d'accès initialisé
+2025-11-18 16:29:54 - FaceRecognitionSystem - INFO - Gestionnaire d'authentification initialisé
+2025-11-18 16:29:54 - FaceRecognitionSystem - INFO - Service utilisateur initialisé
+2025-11-18 16:29:54 - FaceRecognitionSystem - INFO - Service de profils initialisé
+2025-11-18 16:29:54 - FaceRecognitionSystem - INFO - Moteur de reconnaissance faciale initialisé
+2025-11-18 16:29:54 - FaceRecognitionSystem - INFO - Gestionnaire d'authentification initialisé
+2025-11-18 16:29:54 - FaceRecognitionSystem - INFO - Détecteur anti-spoofing initialisé
+2025-11-18 22:12:53 - FaceRecognitionSystem - INFO - ============================================================
+2025-11-18 22:12:53 - FaceRecognitionSystem - INFO - DÉMARRAGE DE L'APPLICATION
+2025-11-18 22:12:53 - FaceRecognitionSystem - INFO - ============================================================
+2025-11-18 22:12:53 - FaceRecognitionSystem - INFO - Dossiers créés/vérifiés
+2025-11-18 22:12:53 - FaceRecognitionSystem - INFO - Connexion à la base de données...
+2025-11-18 22:12:53 - FaceRecognitionSystem - INFO - Pool de connexions PostgreSQL créé avec succès
+2025-11-18 22:12:53 - FaceRecognitionSystem - INFO - Connecté à PostgreSQL: PostgreSQL 18.0 on x86_64-windows, compiled by msvc-19.44.35217, 64-bit
+2025-11-18 22:12:53 - FaceRecognitionSystem - INFO - Initialisation des services...
+2025-11-18 22:12:53 - FaceRecognitionSystem - INFO - Service d'accès initialisé
+2025-11-18 22:12:53 - FaceRecognitionSystem - INFO - Gestionnaire d'authentification initialisé
+2025-11-18 22:12:53 - FaceRecognitionSystem - INFO - Service utilisateur initialisé
+2025-11-18 22:12:53 - FaceRecognitionSystem - INFO - Service de profils initialisé
+2025-11-18 22:12:53 - FaceRecognitionSystem - INFO - Initialisation du moteur de reconnaissance faciale...
+2025-11-18 22:12:53 - FaceRecognitionSystem - INFO - Moteur de reconnaissance faciale initialisé
+2025-11-18 22:12:53 - FaceRecognitionSystem - INFO - Gestionnaire d'authentification initialisé
+2025-11-18 22:12:53 - FaceRecognitionSystem - INFO - Détecteur anti-spoofing initialisé
+2025-11-18 22:12:53 - FaceRecognitionSystem - INFO - Chargement des profils faciaux...
+2025-11-18 22:12:53 - FaceRecognitionSystem - WARNING - Aucun profil trouvé dans la base de données
+2025-11-18 22:12:53 - FaceRecognitionSystem - INFO - Application initialisée avec succès ✓
+2025-11-18 22:12:55 - FaceRecognitionSystem - INFO - Lancement du mode administrateur...
+2025-11-18 22:13:05 - FaceRecognitionSystem - INFO - Panel admin ouvert par jordan
+2025-11-18 22:13:12 - FaceRecognitionSystem - INFO - Admin déconnecté
+2025-11-18 22:13:21 - FaceRecognitionSystem - INFO - Lancement du mode utilisateur...
+2025-11-18 22:13:21 - FaceRecognitionSystem - INFO - Fenêtre utilisateur initialisée
+2025-11-18 22:13:21 - FaceRecognitionSystem - INFO - Lancement de l'interface utilisateur
+2025-11-18 22:13:40 - FaceRecognitionSystem - INFO - Lancement du mode administrateur...
+2025-11-18 22:13:49 - FaceRecognitionSystem - INFO - Panel admin ouvert par jordan
+2025-11-18 22:16:30 - FaceRecognitionSystem - INFO - Admin déconnecté
+2025-11-18 22:16:33 - FaceRecognitionSystem - INFO - Lancement du mode utilisateur...
+2025-11-18 22:16:33 - FaceRecognitionSystem - INFO - Fenêtre utilisateur initialisée
+2025-11-18 22:16:33 - FaceRecognitionSystem - INFO - Lancement de l'interface utilisateur
+2025-11-18 22:16:34 - FaceRecognitionSystem - INFO - Widget caméra initialisé
+2025-11-18 22:16:43 - FaceRecognitionSystem - ERROR - Erreur mise à jour frame: 'StatusPanel' object has no attribute 'update_status'
+2025-11-18 22:16:43 - FaceRecognitionSystem - INFO - Caméra démarrée
+2025-11-18 22:16:43 - FaceRecognitionSystem - INFO - Page de reconnaissance affichée
+2025-11-18 22:16:55 - FaceRecognitionSystem - INFO - Caméra arrêtée
+2025-11-18 22:16:56 - FaceRecognitionSystem - INFO - Retour à la page d'accueil utilisateur
+2025-11-18 22:17:00 - FaceRecognitionSystem - INFO - Caméra arrêtée
+2025-11-18 22:17:07 - FaceRecognitionSystem - INFO - Lancement du mode administrateur...
+2025-11-18 22:17:16 - FaceRecognitionSystem - INFO - Panel admin ouvert par jordan
+2025-11-18 22:20:58 - FaceRecognitionSystem - INFO - ============================================================
+2025-11-18 22:20:58 - FaceRecognitionSystem - INFO - DÉMARRAGE DE L'APPLICATION
+2025-11-18 22:20:58 - FaceRecognitionSystem - INFO - ============================================================
+2025-11-18 22:20:58 - FaceRecognitionSystem - INFO - Dossiers créés/vérifiés
+2025-11-18 22:20:58 - FaceRecognitionSystem - INFO - Connexion à la base de données...
+2025-11-18 22:20:58 - FaceRecognitionSystem - INFO - Pool de connexions PostgreSQL créé avec succès
+2025-11-18 22:20:58 - FaceRecognitionSystem - INFO - Connecté à PostgreSQL: PostgreSQL 18.0 on x86_64-windows, compiled by msvc-19.44.35217, 64-bit
+2025-11-18 22:20:58 - FaceRecognitionSystem - INFO - Initialisation des services...
+2025-11-18 22:20:58 - FaceRecognitionSystem - INFO - Service d'accès initialisé
+2025-11-18 22:20:58 - FaceRecognitionSystem - INFO - Gestionnaire d'authentification initialisé
+2025-11-18 22:20:58 - FaceRecognitionSystem - INFO - Service utilisateur initialisé
+2025-11-18 22:20:58 - FaceRecognitionSystem - INFO - Service de profils initialisé
+2025-11-18 22:20:58 - FaceRecognitionSystem - INFO - Initialisation du moteur de reconnaissance faciale...
+2025-11-18 22:20:58 - FaceRecognitionSystem - INFO - Moteur de reconnaissance faciale initialisé
+2025-11-18 22:20:58 - FaceRecognitionSystem - INFO - Gestionnaire d'authentification initialisé
+2025-11-18 22:20:58 - FaceRecognitionSystem - INFO - Détecteur anti-spoofing initialisé
+2025-11-18 22:20:58 - FaceRecognitionSystem - INFO - Chargement des profils faciaux...
+2025-11-18 22:20:58 - FaceRecognitionSystem - WARNING - Aucun profil trouvé dans la base de données
+2025-11-18 22:20:58 - FaceRecognitionSystem - INFO - Application initialisée avec succès ✓
+2025-11-18 22:21:00 - FaceRecognitionSystem - INFO - Lancement du mode administrateur...
+2025-11-18 22:21:07 - FaceRecognitionSystem - INFO - Panel admin ouvert par jordan
+2025-11-18 22:22:13 - FaceRecognitionSystem - ERROR - Erreur création profil: 'str' object has no attribute 'tolist'
+2025-11-18 22:23:03 - FaceRecognitionSystem - INFO - Admin déconnecté
+2025-11-18 22:23:06 - FaceRecognitionSystem - INFO - Lancement du mode utilisateur...
+2025-11-18 22:23:06 - FaceRecognitionSystem - INFO - Fenêtre utilisateur initialisée
+2025-11-18 22:23:06 - FaceRecognitionSystem - INFO - Lancement de l'interface utilisateur
+2025-11-18 22:23:08 - FaceRecognitionSystem - INFO - Widget caméra initialisé
+2025-11-18 22:23:16 - FaceRecognitionSystem - ERROR - Erreur lors de la détection de visages: compute_face_descriptor(): incompatible function arguments. The following argument types are supported:
+    1. (self: _dlib_pybind11.face_recognition_model_v1, img: numpy.ndarray[(rows,cols,3),numpy.uint8], face: _dlib_pybind11.full_object_detection, num_jitters: int = 0, padding: float = 0.25) -> _dlib_pybind11.vector
+    2. (self: _dlib_pybind11.face_recognition_model_v1, img: numpy.ndarray[(rows,cols,3),numpy.uint8], num_jitters: int = 0) -> _dlib_pybind11.vector
+    3. (self: _dlib_pybind11.face_recognition_model_v1, img: numpy.ndarray[(rows,cols,3),numpy.uint8], faces: _dlib_pybind11.full_object_detections, num_jitters: int = 0, padding: float = 0.25) -> _dlib_pybind11.vectors
+    4. (self: _dlib_pybind11.face_recognition_model_v1, batch_img: list[numpy.ndarray[(rows,cols,3),numpy.uint8]], batch_faces: list[_dlib_pybind11.full_object_detections], num_jitters: int = 0, padding: float = 0.25) -> _dlib_pybind11.vectorss
+    5. (self: _dlib_pybind11.face_recognition_model_v1, batch_img: list[numpy.ndarray[(rows,cols,3),numpy.uint8]], num_jitters: int = 0) -> _dlib_pybind11.vectors
+
+Invoked with: <_dlib_pybind11.face_recognition_model_v1 object at 0x000001F9B240F770>, array([[[163, 161, 130],
+        [144, 143, 111],
+        [143, 142, 111],
+        ...,
+        [171, 180, 178],
+        [171, 180, 179],
+        [171, 180, 180]],
+
+       [[163, 168, 149],
+        [143, 147, 127],
+        [140, 142, 117],
+        ...,
+        [172, 179, 177],
+        [172, 180, 179],
+        [172, 181, 181]],
+
+       [[155, 166, 153],
+        [149, 159, 145],
+        [138, 142, 123],
+        ...,
+        [172, 179, 177],
+        [172, 180, 178],
+        [172, 181, 179]],
+
+       ...,
+
+       [[ 37,  68,  58],
+        [ 36,  67,  57],
+        [ 41,  67,  61],
+        ...,
+        [179, 106,  50],
+        [178, 107,  58],
+        [180, 111,  67]],
+
+       [[ 34,  67,  57],
+        [ 34,  67,  57],
+        [ 38,  68,  58],
+        ...,
+        [180, 107,  53],
+        [179, 109,  59],
+        [180, 111,  65]],
+
+       [[ 34,  64,  55],
+        [ 35,  65,  56],
+        [ 37,  66,  57],
+        ...,
+        [180, 111,  67],
+        [178, 111,  68],
+        [179, 113,  66]]], shape=(480, 640, 3), dtype=uint8), <_dlib_pybind11.full_object_detection object at 0x000001F9B23F0070>, 1
+2025-11-18 22:23:16 - FaceRecognitionSystem - ERROR - Erreur mise à jour frame: 'StatusPanel' object has no attribute 'update_status'
+2025-11-18 22:23:16 - FaceRecognitionSystem - INFO - Caméra démarrée
+2025-11-18 22:23:16 - FaceRecognitionSystem - INFO - Page de reconnaissance affichée
+2025-11-18 22:23:20 - FaceRecognitionSystem - INFO - Caméra arrêtée
+2025-11-18 22:23:20 - FaceRecognitionSystem - INFO - Retour à la page d'accueil utilisateur
+2025-11-18 22:23:23 - FaceRecognitionSystem - INFO - Caméra arrêtée
+2025-11-18 22:23:26 - FaceRecognitionSystem - INFO - Nettoyage des ressources...
+2025-11-18 22:23:26 - FaceRecognitionSystem - INFO - Connexion à la base de données fermée
+2025-11-18 22:23:26 - FaceRecognitionSystem - INFO - ============================================================
+2025-11-18 22:23:26 - FaceRecognitionSystem - INFO - APPLICATION FERMÉE
+2025-11-18 22:23:26 - FaceRecognitionSystem - INFO - ============================================================
+2025-11-18 22:23:26 - FaceRecognitionSystem - INFO - Caméra arrêtée
+2025-11-18 22:24:27 - FaceRecognitionSystem - INFO - ============================================================
+2025-11-18 22:24:27 - FaceRecognitionSystem - INFO - DÉMARRAGE DE L'APPLICATION
+2025-11-18 22:24:27 - FaceRecognitionSystem - INFO - ============================================================
+2025-11-18 22:24:27 - FaceRecognitionSystem - INFO - Dossiers créés/vérifiés
+2025-11-18 22:24:27 - FaceRecognitionSystem - INFO - Connexion à la base de données...
+2025-11-18 22:24:27 - FaceRecognitionSystem - INFO - Pool de connexions PostgreSQL créé avec succès
+2025-11-18 22:24:27 - FaceRecognitionSystem - INFO - Connecté à PostgreSQL: PostgreSQL 18.0 on x86_64-windows, compiled by msvc-19.44.35217, 64-bit
+2025-11-18 22:24:27 - FaceRecognitionSystem - INFO - Initialisation des services...
+2025-11-18 22:24:27 - FaceRecognitionSystem - INFO - Service d'accès initialisé
+2025-11-18 22:24:27 - FaceRecognitionSystem - INFO - Gestionnaire d'authentification initialisé
+2025-11-18 22:24:27 - FaceRecognitionSystem - INFO - Service utilisateur initialisé
+2025-11-18 22:24:27 - FaceRecognitionSystem - INFO - Service de profils initialisé
+2025-11-18 22:24:27 - FaceRecognitionSystem - INFO - Initialisation du moteur de reconnaissance faciale...
+2025-11-18 22:24:27 - FaceRecognitionSystem - INFO - Moteur de reconnaissance faciale initialisé
+2025-11-18 22:24:27 - FaceRecognitionSystem - INFO - Gestionnaire d'authentification initialisé
+2025-11-18 22:24:27 - FaceRecognitionSystem - INFO - Détecteur anti-spoofing initialisé
+2025-11-18 22:24:27 - FaceRecognitionSystem - INFO - Chargement des profils faciaux...
+2025-11-18 22:24:27 - FaceRecognitionSystem - WARNING - Aucun profil trouvé dans la base de données
+2025-11-18 22:24:27 - FaceRecognitionSystem - INFO - Application initialisée avec succès ✓
+2025-11-18 22:24:29 - FaceRecognitionSystem - INFO - Lancement du mode administrateur...
+2025-11-18 22:24:36 - FaceRecognitionSystem - INFO - Panel admin ouvert par jordan
+2025-11-18 22:30:02 - FaceRecognitionSystem - INFO - Nettoyage des ressources...
+2025-11-18 22:30:02 - FaceRecognitionSystem - INFO - Connexion à la base de données fermée
+2025-11-18 22:30:02 - FaceRecognitionSystem - INFO - ============================================================
+2025-11-18 22:30:02 - FaceRecognitionSystem - INFO - APPLICATION FERMÉE
+2025-11-18 22:30:02 - FaceRecognitionSystem - INFO - ============================================================
+2025-11-18 23:05:57 - FaceRecognitionSystem - INFO - ============================================================
+2025-11-18 23:05:57 - FaceRecognitionSystem - INFO - DÉMARRAGE DE L'APPLICATION
+2025-11-18 23:05:57 - FaceRecognitionSystem - INFO - ============================================================
+2025-11-18 23:05:57 - FaceRecognitionSystem - INFO - Dossiers créés/vérifiés
+2025-11-18 23:05:57 - FaceRecognitionSystem - INFO - Connexion à la base de données...
+2025-11-18 23:05:57 - FaceRecognitionSystem - INFO - Pool de connexions PostgreSQL créé avec succès
+2025-11-18 23:05:57 - FaceRecognitionSystem - INFO - Connecté à PostgreSQL: PostgreSQL 18.0 on x86_64-windows, compiled by msvc-19.44.35217, 64-bit
+2025-11-18 23:05:57 - FaceRecognitionSystem - INFO - Initialisation des services...
+2025-11-18 23:05:57 - FaceRecognitionSystem - INFO - Service d'accès initialisé
+2025-11-18 23:05:57 - FaceRecognitionSystem - INFO - Gestionnaire d'authentification initialisé
+2025-11-18 23:05:57 - FaceRecognitionSystem - INFO - Service utilisateur initialisé
+2025-11-18 23:05:57 - FaceRecognitionSystem - INFO - Service de profils initialisé
+2025-11-18 23:05:57 - FaceRecognitionSystem - INFO - Initialisation du moteur de reconnaissance faciale...
+2025-11-18 23:05:57 - FaceRecognitionSystem - INFO - Moteur de reconnaissance faciale initialisé
+2025-11-18 23:05:57 - FaceRecognitionSystem - INFO - Gestionnaire d'authentification initialisé
+2025-11-18 23:05:57 - FaceRecognitionSystem - INFO - Détecteur anti-spoofing initialisé
+2025-11-18 23:05:57 - FaceRecognitionSystem - INFO - Chargement des profils faciaux...
+2025-11-18 23:05:57 - FaceRecognitionSystem - WARNING - Aucun profil trouvé dans la base de données
+2025-11-18 23:05:57 - FaceRecognitionSystem - INFO - Application initialisée avec succès ✓
+2025-11-18 23:05:59 - FaceRecognitionSystem - INFO - Lancement du mode administrateur...
+2025-11-18 23:06:10 - FaceRecognitionSystem - INFO - Panel admin ouvert par jordan
+2025-11-18 23:07:04 - FaceRecognitionSystem - ERROR - Erreur extraction embeddings : 2 visages détectés. Veuillez utiliser une image avec un seul visage
+2025-11-18 23:13:51 - FaceRecognitionSystem - INFO - Embeddings extraits avec succès : 128 caractéristiques
+2025-11-18 23:14:02 - FaceRecognitionSystem - INFO - Création de l'utilisateur 'jojo' dans la table 'personne'...
+2025-11-18 23:14:02 - FaceRecognitionSystem - INFO - Mot de passe hashé sans salt
+2025-11-18 23:14:02 - FaceRecognitionSystem - INFO - Utilisateur créé: jojo (ID: 7)
+2025-11-18 23:14:02 - FaceRecognitionSystem - INFO - ✅ Utilisateur créé avec ID: 7
+2025-11-18 23:14:02 - FaceRecognitionSystem - INFO - Enregistrement des embeddings dans la table 'face_profiles'...
+2025-11-18 23:14:02 - FaceRecognitionSystem - ERROR - Erreur création profil: 'str' object has no attribute 'tolist'
+2025-11-18 23:14:02 - FaceRecognitionSystem - WARNING - Échec création profil pour user_id=7
+2025-11-18 23:14:47 - FaceRecognitionSystem - INFO - Nouvel utilisateur créé via admin : jojo (ID: 7, Profil: None)
+2025-11-18 23:15:03 - FaceRecognitionSystem - INFO - Utilisateur 7 supprimé
+2025-11-18 23:15:19 - FaceRecognitionSystem - INFO - Embeddings extraits avec succès : 128 caractéristiques
+2025-11-18 23:15:35 - FaceRecognitionSystem - INFO - Création de l'utilisateur 'jojo' dans la table 'personne'...
+2025-11-18 23:15:35 - FaceRecognitionSystem - INFO - Mot de passe hashé sans salt
+2025-11-18 23:15:35 - FaceRecognitionSystem - INFO - Utilisateur créé: jojo (ID: 8)
+2025-11-18 23:15:35 - FaceRecognitionSystem - INFO - ✅ Utilisateur créé avec ID: 8
+2025-11-18 23:15:35 - FaceRecognitionSystem - INFO - Enregistrement des embeddings dans la table 'face_profiles'...
+2025-11-18 23:15:35 - FaceRecognitionSystem - ERROR - Erreur création profil: 'str' object has no attribute 'tolist'
+2025-11-18 23:15:35 - FaceRecognitionSystem - WARNING - Échec création profil pour user_id=8
+2025-11-18 23:17:05 - FaceRecognitionSystem - INFO - Création de l'utilisateur 'jojo' dans la table 'personne'...
+2025-11-18 23:17:05 - FaceRecognitionSystem - WARNING - L'utilisateur jojo existe déjà
+2025-11-18 23:17:05 - FaceRecognitionSystem - ERROR - Erreur lors de la création de l'utilisateur : Impossible de créer l'utilisateur dans la table 'personne'
+2025-11-18 23:17:17 - FaceRecognitionSystem - INFO - Nouvel utilisateur créé via admin : jojo (ID: 8, Profil: None)
+2025-11-18 23:17:22 - FaceRecognitionSystem - INFO - Utilisateur 8 supprimé
+2025-11-18 23:17:45 - FaceRecognitionSystem - INFO - Embeddings extraits avec succès : 128 caractéristiques
+2025-11-18 23:17:50 - FaceRecognitionSystem - INFO - Création de l'utilisateur 'jojo' dans la table 'personne'...
+2025-11-18 23:17:50 - FaceRecognitionSystem - INFO - Mot de passe hashé sans salt
+2025-11-18 23:17:50 - FaceRecognitionSystem - INFO - Utilisateur créé: jojo (ID: 9)
+2025-11-18 23:17:50 - FaceRecognitionSystem - INFO - ✅ Utilisateur créé avec ID: 9
+2025-11-18 23:17:50 - FaceRecognitionSystem - INFO - Enregistrement des embeddings dans la table 'face_profiles'...
+2025-11-18 23:17:50 - FaceRecognitionSystem - ERROR - Erreur création profil: 'str' object has no attribute 'tolist'
+2025-11-18 23:17:50 - FaceRecognitionSystem - WARNING - Échec création profil pour user_id=9
+2025-11-18 23:21:39 - FaceRecognitionSystem - ERROR - Erreur lors de la création de l'utilisateur : can't invoke "destroy" command: application has been destroyed
+2025-11-18 23:21:43 - FaceRecognitionSystem - INFO - Nettoyage des ressources...
+2025-11-18 23:21:43 - FaceRecognitionSystem - INFO - Connexion à la base de données fermée
+2025-11-18 23:21:43 - FaceRecognitionSystem - INFO - ============================================================
+2025-11-18 23:21:43 - FaceRecognitionSystem - INFO - APPLICATION FERMÉE
+2025-11-18 23:21:43 - FaceRecognitionSystem - INFO - ============================================================
+2025-11-18 23:21:49 - FaceRecognitionSystem - INFO - ============================================================
+2025-11-18 23:21:49 - FaceRecognitionSystem - INFO - DÉMARRAGE DE L'APPLICATION
+2025-11-18 23:21:49 - FaceRecognitionSystem - INFO - ============================================================
+2025-11-18 23:21:49 - FaceRecognitionSystem - INFO - Dossiers créés/vérifiés
+2025-11-18 23:21:49 - FaceRecognitionSystem - INFO - Connexion à la base de données...
+2025-11-18 23:21:49 - FaceRecognitionSystem - INFO - Pool de connexions PostgreSQL créé avec succès
+2025-11-18 23:21:49 - FaceRecognitionSystem - INFO - Connecté à PostgreSQL: PostgreSQL 18.0 on x86_64-windows, compiled by msvc-19.44.35217, 64-bit
+2025-11-18 23:21:49 - FaceRecognitionSystem - INFO - Initialisation des services...
+2025-11-18 23:21:49 - FaceRecognitionSystem - INFO - Service d'accès initialisé
+2025-11-18 23:21:49 - FaceRecognitionSystem - INFO - Gestionnaire d'authentification initialisé
+2025-11-18 23:21:49 - FaceRecognitionSystem - INFO - Service utilisateur initialisé
+2025-11-18 23:21:49 - FaceRecognitionSystem - INFO - Service de profils initialisé
+2025-11-18 23:21:49 - FaceRecognitionSystem - INFO - Initialisation du moteur de reconnaissance faciale...
+2025-11-18 23:21:49 - FaceRecognitionSystem - INFO - Moteur de reconnaissance faciale initialisé
+2025-11-18 23:21:49 - FaceRecognitionSystem - INFO - Gestionnaire d'authentification initialisé
+2025-11-18 23:21:49 - FaceRecognitionSystem - INFO - Détecteur anti-spoofing initialisé
+2025-11-18 23:21:49 - FaceRecognitionSystem - INFO - Chargement des profils faciaux...
+2025-11-18 23:21:49 - FaceRecognitionSystem - WARNING - Aucun profil trouvé dans la base de données
+2025-11-18 23:21:49 - FaceRecognitionSystem - INFO - Application initialisée avec succès ✓
+2025-11-18 23:21:51 - FaceRecognitionSystem - INFO - Lancement du mode administrateur...
+2025-11-18 23:22:13 - FaceRecognitionSystem - INFO - Panel admin ouvert par jordan
+2025-11-18 23:22:20 - FaceRecognitionSystem - INFO - Utilisateur 9 supprimé
+2025-11-18 23:22:47 - FaceRecognitionSystem - INFO - Embeddings extraits avec succès : 128 caractéristiques
+2025-11-18 23:22:50 - FaceRecognitionSystem - INFO - Création de l'utilisateur 'jojo' dans la table 'personne'...
+2025-11-18 23:22:50 - FaceRecognitionSystem - INFO - Mot de passe hashé sans salt
+2025-11-18 23:22:50 - FaceRecognitionSystem - INFO - Utilisateur créé: jojo (ID: 10)
+2025-11-18 23:22:50 - FaceRecognitionSystem - INFO - ✅ Utilisateur créé avec ID: 10
+2025-11-18 23:22:50 - FaceRecognitionSystem - INFO - Enregistrement des embeddings dans la table 'face_profiles'...
+2025-11-18 23:22:50 - FaceRecognitionSystem - INFO - Profil créé pour personne 10 (Profile ID: 1)
+2025-11-18 23:22:50 - FaceRecognitionSystem - INFO - ✅ Profil facial créé avec succès pour user_id=10
+2025-11-18 23:22:57 - FaceRecognitionSystem - INFO - Nouvel utilisateur créé via admin : jojo (ID: 10, Profil: 1)
+2025-11-18 23:24:05 - FaceRecognitionSystem - INFO - Admin déconnecté
+2025-11-18 23:24:12 - FaceRecognitionSystem - INFO - Panel admin ouvert par jordan
+2025-11-18 23:34:45 - FaceRecognitionSystem - INFO - Utilisateur 2 mis à jour
+2025-11-18 23:35:10 - FaceRecognitionSystem - INFO - Admin déconnecté
+2025-11-18 23:41:38 - FaceRecognitionSystem - INFO - Panel admin ouvert par jordan
+2025-11-18 23:41:45 - FaceRecognitionSystem - INFO - Admin déconnecté
+2025-11-18 23:41:48 - FaceRecognitionSystem - INFO - Lancement du mode utilisateur...
+2025-11-18 23:41:48 - FaceRecognitionSystem - INFO - Fenêtre utilisateur initialisée
+2025-11-18 23:41:48 - FaceRecognitionSystem - INFO - Lancement de l'interface utilisateur
+2025-11-18 23:42:09 - FaceRecognitionSystem - INFO - Widget caméra initialisé
+2025-11-18 23:42:17 - FaceRecognitionSystem - ERROR - Erreur mise à jour frame: 'StatusPanel' object has no attribute 'update_status'
+2025-11-18 23:42:17 - FaceRecognitionSystem - INFO - Caméra démarrée
+2025-11-18 23:42:17 - FaceRecognitionSystem - INFO - Page de reconnaissance affichée
+2025-11-18 23:46:40 - FaceRecognitionSystem - INFO - Caméra arrêtée
+2025-11-18 23:46:42 - FaceRecognitionSystem - INFO - Nettoyage des ressources...
+2025-11-18 23:46:42 - FaceRecognitionSystem - INFO - Connexion à la base de données fermée
+2025-11-18 23:46:42 - FaceRecognitionSystem - INFO - ============================================================
+2025-11-18 23:46:42 - FaceRecognitionSystem - INFO - APPLICATION FERMÉE
+2025-11-18 23:46:42 - FaceRecognitionSystem - INFO - ============================================================
+2025-11-18 23:46:42 - FaceRecognitionSystem - INFO - Caméra arrêtée
+2025-11-18 23:51:54 - FaceRecognitionSystem - INFO - ============================================================
+2025-11-18 23:51:54 - FaceRecognitionSystem - INFO - DÉMARRAGE DE L'APPLICATION
+2025-11-18 23:51:54 - FaceRecognitionSystem - INFO - ============================================================
+2025-11-18 23:51:54 - FaceRecognitionSystem - INFO - Dossiers créés/vérifiés
+2025-11-18 23:51:54 - FaceRecognitionSystem - INFO - Connexion à la base de données...
+2025-11-18 23:51:54 - FaceRecognitionSystem - INFO - Pool de connexions PostgreSQL créé avec succès
+2025-11-18 23:51:54 - FaceRecognitionSystem - INFO - Connecté à PostgreSQL: PostgreSQL 18.0 on x86_64-windows, compiled by msvc-19.44.35217, 64-bit
+2025-11-18 23:51:54 - FaceRecognitionSystem - INFO - Initialisation des services...
+2025-11-18 23:51:54 - FaceRecognitionSystem - INFO - Service d'accès initialisé
+2025-11-18 23:51:54 - FaceRecognitionSystem - INFO - Gestionnaire d'authentification initialisé
+2025-11-18 23:51:54 - FaceRecognitionSystem - INFO - Service utilisateur initialisé
+2025-11-18 23:51:54 - FaceRecognitionSystem - INFO - Service de profils initialisé
+2025-11-18 23:51:54 - FaceRecognitionSystem - INFO - Initialisation du moteur de reconnaissance faciale...
+2025-11-18 23:51:54 - FaceRecognitionSystem - INFO - Moteur de reconnaissance faciale initialisé
+2025-11-18 23:51:54 - FaceRecognitionSystem - INFO - Gestionnaire d'authentification initialisé
+2025-11-18 23:51:54 - FaceRecognitionSystem - INFO - Détecteur anti-spoofing initialisé
+2025-11-18 23:51:54 - FaceRecognitionSystem - INFO - Chargement des profils faciaux...
+2025-11-18 23:51:54 - FaceRecognitionSystem - INFO - Profil chargé: jojo (ID: 10)
+2025-11-18 23:51:54 - FaceRecognitionSystem - INFO - ✓ 1 profil(s) chargé(s) avec succès
+2025-11-18 23:51:54 - FaceRecognitionSystem - INFO - Application initialisée avec succès ✓
+2025-11-18 23:51:56 - FaceRecognitionSystem - INFO - Lancement du mode administrateur...
+2025-11-18 23:52:05 - FaceRecognitionSystem - INFO - Panel admin ouvert par jordan
+2025-11-18 23:52:10 - FaceRecognitionSystem - INFO - Admin déconnecté
+2025-11-18 23:52:16 - FaceRecognitionSystem - INFO - Lancement du mode utilisateur...
+2025-11-18 23:52:16 - FaceRecognitionSystem - INFO - Fenêtre utilisateur initialisée
+2025-11-18 23:52:16 - FaceRecognitionSystem - INFO - Lancement de l'interface utilisateur
+2025-11-18 23:54:52 - FaceRecognitionSystem - INFO - Nettoyage des ressources...
+2025-11-18 23:54:52 - FaceRecognitionSystem - INFO - Connexion à la base de données fermée
+2025-11-18 23:54:52 - FaceRecognitionSystem - INFO - ============================================================
+2025-11-18 23:54:52 - FaceRecognitionSystem - INFO - APPLICATION FERMÉE
+2025-11-18 23:54:52 - FaceRecognitionSystem - INFO - ============================================================
+2025-11-18 23:55:29 - FaceRecognitionSystem - INFO - ============================================================
+2025-11-18 23:55:29 - FaceRecognitionSystem - INFO - DÉMARRAGE DE L'APPLICATION
+2025-11-18 23:55:29 - FaceRecognitionSystem - INFO - ============================================================
+2025-11-18 23:55:29 - FaceRecognitionSystem - INFO - Dossiers créés/vérifiés
+2025-11-18 23:55:29 - FaceRecognitionSystem - INFO - Connexion à la base de données...
+2025-11-18 23:55:29 - FaceRecognitionSystem - INFO - Pool de connexions PostgreSQL créé avec succès
+2025-11-18 23:55:29 - FaceRecognitionSystem - INFO - Connecté à PostgreSQL: PostgreSQL 18.0 on x86_64-windows, compiled by msvc-19.44.35217, 64-bit
+2025-11-18 23:55:29 - FaceRecognitionSystem - INFO - Initialisation des services...
+2025-11-18 23:55:29 - FaceRecognitionSystem - INFO - Service d'accès initialisé
+2025-11-18 23:55:29 - FaceRecognitionSystem - INFO - Gestionnaire d'authentification initialisé
+2025-11-18 23:55:29 - FaceRecognitionSystem - INFO - Service utilisateur initialisé
+2025-11-18 23:55:29 - FaceRecognitionSystem - INFO - Service de profils initialisé
+2025-11-18 23:55:29 - FaceRecognitionSystem - INFO - Initialisation du moteur de reconnaissance faciale...
+2025-11-18 23:55:29 - FaceRecognitionSystem - INFO - Moteur de reconnaissance faciale initialisé
+2025-11-18 23:55:29 - FaceRecognitionSystem - INFO - Gestionnaire d'authentification initialisé
+2025-11-18 23:55:29 - FaceRecognitionSystem - INFO - Détecteur anti-spoofing initialisé
+2025-11-18 23:55:29 - FaceRecognitionSystem - INFO - Chargement des profils faciaux...
+2025-11-18 23:55:29 - FaceRecognitionSystem - INFO - Profil chargé: jojo (ID: 10)
+2025-11-18 23:55:29 - FaceRecognitionSystem - INFO - ✓ 1 profil(s) chargé(s) avec succès
+2025-11-18 23:55:29 - FaceRecognitionSystem - INFO - Application initialisée avec succès ✓
+2025-11-18 23:55:31 - FaceRecognitionSystem - INFO - Lancement du mode administrateur...
+2025-11-18 23:55:50 - FaceRecognitionSystem - INFO - Lancement du mode administrateur...
+2025-11-18 23:56:00 - FaceRecognitionSystem - INFO - Panel admin ouvert par jordan
+2025-11-18 23:56:19 - FaceRecognitionSystem - INFO - Admin déconnecté
+2025-11-18 23:56:25 - FaceRecognitionSystem - INFO - Nettoyage des ressources...
+2025-11-18 23:56:25 - FaceRecognitionSystem - INFO - Connexion à la base de données fermée
+2025-11-18 23:56:25 - FaceRecognitionSystem - INFO - ============================================================
+2025-11-18 23:56:25 - FaceRecognitionSystem - INFO - APPLICATION FERMÉE
+2025-11-18 23:56:25 - FaceRecognitionSystem - INFO - ============================================================
+2025-11-18 23:58:25 - FaceRecognitionSystem - INFO - ============================================================
+2025-11-18 23:58:25 - FaceRecognitionSystem - INFO - DÉMARRAGE DE L'APPLICATION
+2025-11-18 23:58:25 - FaceRecognitionSystem - INFO - ============================================================
+2025-11-18 23:58:25 - FaceRecognitionSystem - INFO - Dossiers créés/vérifiés
+2025-11-18 23:58:25 - FaceRecognitionSystem - INFO - Connexion à la base de données...
+2025-11-18 23:58:25 - FaceRecognitionSystem - INFO - Pool de connexions PostgreSQL créé avec succès
+2025-11-18 23:58:25 - FaceRecognitionSystem - INFO - Connecté à PostgreSQL: PostgreSQL 18.0 on x86_64-windows, compiled by msvc-19.44.35217, 64-bit
+2025-11-18 23:58:25 - FaceRecognitionSystem - INFO - Initialisation des services...
+2025-11-18 23:58:25 - FaceRecognitionSystem - INFO - Service d'accès initialisé
+2025-11-18 23:58:25 - FaceRecognitionSystem - INFO - Gestionnaire d'authentification initialisé
+2025-11-18 23:58:25 - FaceRecognitionSystem - INFO - Service utilisateur initialisé
+2025-11-18 23:58:25 - FaceRecognitionSystem - INFO - Service de profils initialisé
+2025-11-18 23:58:25 - FaceRecognitionSystem - INFO - Initialisation du moteur de reconnaissance faciale...
+2025-11-18 23:58:25 - FaceRecognitionSystem - INFO - Moteur de reconnaissance faciale initialisé
+2025-11-18 23:58:25 - FaceRecognitionSystem - INFO - Gestionnaire d'authentification initialisé
+2025-11-18 23:58:25 - FaceRecognitionSystem - INFO - Détecteur anti-spoofing initialisé
+2025-11-18 23:58:25 - FaceRecognitionSystem - INFO - Chargement des profils faciaux...
+2025-11-18 23:58:25 - FaceRecognitionSystem - INFO - Profil chargé: jojo (ID: 10)
+2025-11-18 23:58:25 - FaceRecognitionSystem - INFO - ✓ 1 profil(s) chargé(s) avec succès
+2025-11-18 23:58:25 - FaceRecognitionSystem - INFO - Application initialisée avec succès ✓
+2025-11-18 23:58:29 - FaceRecognitionSystem - INFO - Nettoyage des ressources...
+2025-11-18 23:58:29 - FaceRecognitionSystem - INFO - Connexion à la base de données fermée
+2025-11-18 23:58:29 - FaceRecognitionSystem - INFO - ============================================================
+2025-11-18 23:58:29 - FaceRecognitionSystem - INFO - APPLICATION FERMÉE
+2025-11-18 23:58:29 - FaceRecognitionSystem - INFO - ============================================================
+2025-11-19 00:00:05 - FaceRecognitionSystem - INFO - ============================================================
+2025-11-19 00:00:05 - FaceRecognitionSystem - INFO - DÉMARRAGE DE L'APPLICATION
+2025-11-19 00:00:05 - FaceRecognitionSystem - INFO - ============================================================
+2025-11-19 00:00:05 - FaceRecognitionSystem - INFO - Dossiers créés/vérifiés
+2025-11-19 00:00:05 - FaceRecognitionSystem - INFO - Connexion à la base de données...
+2025-11-19 00:00:05 - FaceRecognitionSystem - INFO - Pool de connexions PostgreSQL créé avec succès
+2025-11-19 00:00:05 - FaceRecognitionSystem - INFO - Connecté à PostgreSQL: PostgreSQL 18.0 on x86_64-windows, compiled by msvc-19.44.35217, 64-bit
+2025-11-19 00:00:05 - FaceRecognitionSystem - INFO - Initialisation des services...
+2025-11-19 00:00:05 - FaceRecognitionSystem - INFO - Service d'accès initialisé
+2025-11-19 00:00:05 - FaceRecognitionSystem - INFO - Gestionnaire d'authentification initialisé
+2025-11-19 00:00:05 - FaceRecognitionSystem - INFO - Service utilisateur initialisé
+2025-11-19 00:00:05 - FaceRecognitionSystem - INFO - Service de profils initialisé
+2025-11-19 00:00:05 - FaceRecognitionSystem - INFO - Initialisation du moteur de reconnaissance faciale...
+2025-11-19 00:00:05 - FaceRecognitionSystem - INFO - Moteur de reconnaissance faciale initialisé
+2025-11-19 00:00:05 - FaceRecognitionSystem - INFO - Gestionnaire d'authentification initialisé
+2025-11-19 00:00:05 - FaceRecognitionSystem - INFO - Détecteur anti-spoofing initialisé
+2025-11-19 00:00:05 - FaceRecognitionSystem - INFO - Chargement des profils faciaux...
+2025-11-19 00:00:05 - FaceRecognitionSystem - INFO - Profil chargé: jojo (ID: 10)
+2025-11-19 00:00:05 - FaceRecognitionSystem - INFO - ✓ 1 profil(s) chargé(s) avec succès
+2025-11-19 00:00:05 - FaceRecognitionSystem - INFO - Application initialisée avec succès ✓
+2025-11-19 00:00:22 - FaceRecognitionSystem - INFO - Nettoyage des ressources...
+2025-11-19 00:00:22 - FaceRecognitionSystem - INFO - Connexion à la base de données fermée
+2025-11-19 00:00:22 - FaceRecognitionSystem - INFO - ============================================================
+2025-11-19 00:00:22 - FaceRecognitionSystem - INFO - APPLICATION FERMÉE
+2025-11-19 00:00:22 - FaceRecognitionSystem - INFO - ============================================================
