@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reconnaissance Faciale - Face Recognition</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .user-container {
+            min-height: 100vh;
+            background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 40px 20px;
+        }
+        
+        .user-header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        
+        .user-header h1 {
+            color: white;
+            font-size: 32px;
+            margin-bottom: 10px;
+        }
+        
+        .user-header p {
+            color: #94a3b8;
+        }
+        
+        .video-container {
+            background: #000;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+            position: relative;
+            width: 100%;
+            max-width: 700px;
+        }
+        
+        .video-container video,
+        .video-container img {
+            width: 100%;
+            display: block;
+        }
+        
+        .video-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(0,0,0,0.7);
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+        
+        .video-overlay.show {
+            opacity: 1;
+        }
+        
+        .result-box {
+            text-align: center;
+            padding: 40px;
+            border-radius: 16px;
+            color: white;
+        }
+        
+        .result-box.success {
+            background: rgba(16, 185, 129, 0.9);
+        }
+        
+        .result-box.denied {
+            background: rgba(239, 68, 68, 0.9);
+        }
+        
+        .result-box i {
+            font-size: 64px;
+            margin-bottom: 20px;
+        }
+        
+        .result-box h2 {
+            font-size: 28px;
+            margin-bottom: 10px;
+        }
+        
+        .controls {
+            margin-top: 30px;
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        
+        .btn-large {
+            padding: 16px 32px;
+            font-size: 18px;
+            border-radius: 12px;
+        }
+        
+        .status-bar {
+            margin-top: 20px;
+            padding: 15px 25px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 12px;
+            color: white;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            max-width: 700px;
+            width: 100%;
+        }
+        
+        .status-indicator {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: #64748b;
+        }
+        
+        .status-indicator.active {
+            background: #10b981;
+            animation: pulse 1.5s infinite;
+        }
+        
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
+        }
+        
+        .attempts-counter {
+            margin-left: auto;
+            font-size: 14px;
+            color: #94a3b8;
+        }
+        
+        .back-btn {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            color: white;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 10px 20px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 8px;
+            transition: all 0.3s;
+        }
+        
+        .back-btn:hover {
+            background: rgba(255,255,255,0.2);
+        }
+        
+        /* PIN Modal */
+        .pin-modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.8);
+            display: none;
+            align-items: center;
+            justify-content: center;
+            z-index: 1000;
+        }
+        
+        .pin-modal.show {
+            display: flex;
+        }
+        
+        .pin-box {
+            background: var(--bg-secondary);
+            border-radius: 20px;
+            padding: 40px;
+            text-align: center;
+            max-width: 400px;
+            width: 90%;
+        }
+        
+        .pin-box h3 {
+            margin-bottom: 10px;
+            font-size: 24px;
+        }
+        
+        .pin-box p {
+            color: var(--text-secondary);
+            margin-bottom: 30px;
+        }
+        
+        .pin-input {
+            width: 100%;
+            padding: 16px;
+            font-size: 24px;
+            text-align: center;
+            border: 2px solid var(--border-color);
+            border-radius: 12px;
+            margin-bottom: 20px;
+            letter-spacing: 8px;
+        }
+        
+        .pin-input:focus {
+            outline: none;
+            border-color: var(--primary);
+        }
+        
+        .pin-buttons {
+            display: flex;
+            gap: 15px;
+        }
+        
+        .pin-buttons .btn {
+            flex: 1;
+            padding: 14px;
+        }
+    </style>
+</head>
+<body>
+    <a href="/" class="back-btn">
+        <i class="fas fa-arrow-left"></i> Retour
+    </a>
+    
+    <div class="user-container">
+        <div class="user-header">
+            <h1><i class="fas fa-user-circle" style="color: #3b82f6;"></i> Reconnaissance Faciale</h1>
+            <p>Placez votre visage devant la caméra</p>
+        </div>
+        
+        <div class="video-container">
+            <img id="video-feed" src="/video_feed" alt="Camera Feed">
+            
+            <div class="video-overlay" id="result-overlay">
+                <div class="result-box" id="result-box">
+                    <i class="fas fa-check-circle"></i>
+                    <h2 id="result-title">Accès Autorisé</h2>
+                    <p id="result-message">Bienvenue!</p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="status-bar">
+            <div class="status-indicator" id="status-indicator"></div>
+            <span id="status-text">En attente...</span>
+            <span class="attempts-counter" id="attempts-counter"></span>
+        </div>
+        
+        <div class="controls">
+            <button class="btn btn-primary btn-large" id="btn-start" onclick="startRecognition()">
+                <i class="fas fa-play"></i> Démarrer
+            </button>
+            <button class="btn btn-danger btn-large" id="btn-stop" onclick="stopRecognition()" style="display: none;">
+                <i class="fas fa-stop"></i> Arrêter
+            </button>
+        </div>
+    </div>
+    
+    <!-- PIN Modal -->
+    <div class="pin-modal" id="pin-modal">
+        <div class="pin-box">
+            <h3><i class="fas fa-lock" style="color: var(--warning);"></i> Code PIN requis</h3>
+            <p>Visage non reconnu après 3 tentatives.<br>Entrez votre mot de passe pour accéder.</p>
+            <input type="password" class="pin-input" id="pin-input" placeholder="••••••" maxlength="20">
+            <div class="pin-buttons">
+                <button class="btn btn-secondary" onclick="closePinModal()">Annuler</button>
+                <button class="btn btn-primary" onclick="verifyPin()">Vérifier</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let isRecognizing = false;
+        let statusInterval = null;
+        let resultShown = false;
+        
+        function startRecognition() {
+            // Reset l'état et cacher l'overlay précédent
+            resultShown = false;
+            document.getElementById('result-overlay').classList.remove('show');
+            
+            fetch('/api/recognition/start', { method: 'POST' })
+                .then(() => {
+                    isRecognizing = true;
+                    document.getElementById('btn-start').style.display = 'none';
+                    document.getElementById('btn-stop').style.display = 'inline-flex';
+                    document.getElementById('status-indicator').classList.add('active');
+                    document.getElementById('status-text').textContent = 'Reconnaissance en cours...';
+                    document.getElementById('attempts-counter').textContent = '';
+                    
+                    // Poll status toutes les 300ms
+                    statusInterval = setInterval(checkStatus, 300);
+                });
+        }
+        
+        function resetToStart() {
+            // Remettre le bouton Démarrer visible
+            isRecognizing = false;
+            document.getElementById('btn-start').style.display = 'inline-flex';
+            document.getElementById('btn-stop').style.display = 'none';
+            document.getElementById('status-indicator').classList.remove('active');
+            document.getElementById('attempts-counter').textContent = '';
+            
+            if (statusInterval) {
+                clearInterval(statusInterval);
+                statusInterval = null;
+            }
+        }
+        
+        function stopRecognition() {
+            fetch('/api/recognition/stop', { method: 'POST' })
+                .then(() => {
+                    resetToStart();
+                    document.getElementById('status-text').textContent = 'En attente...';
+                    document.getElementById('result-overlay').classList.remove('show');
+                });
+        }
+        
+        function checkStatus() {
+            if (resultShown) return; // Ne pas vérifier si résultat déjà affiché
+            
+            fetch('/api/recognition/status')
+                .then(res => res.json())
+                .then(data => {
+                    // Update attempts
+                    if (data.attempts > 0 && data.last_result !== 'granted') {
+                        document.getElementById('attempts-counter').textContent = `Tentatives: ${data.attempts}/3`;
+                    }
+                    
+                    // ACCÈS ACCORDÉ
+                    if (data.last_result === 'granted' && data.last_user && !resultShown) {
+                        resultShown = true;
+                        clearInterval(statusInterval);
+                        statusInterval = null;
+                        
+                        showSuccessResult(data.last_user.username);
+                    }
+                    // ACCÈS REFUSÉ - Afficher modal PIN
+                    else if (data.last_result === 'failed' && !resultShown) {
+                        resultShown = true;
+                        clearInterval(statusInterval);
+                        statusInterval = null;
+                        
+                        resetToStart();
+                        showPinModal();
+                    }
+                });
+        }
+        
+        function showSuccessResult(username) {
+            const overlay = document.getElementById('result-overlay');
+            const box = document.getElementById('result-box');
+            const title = document.getElementById('result-title');
+            const message = document.getElementById('result-message');
+            
+            box.className = 'result-box success';
+            box.querySelector('i').className = 'fas fa-check-circle';
+            title.textContent = 'ACCÈS AUTORISÉ';
+            message.textContent = `Bienvenue ${username} !`;
+            
+            overlay.classList.add('show');
+            document.getElementById('status-text').textContent = `✅ Bienvenue ${username} !`;
+            
+            // Remettre le bouton Démarrer immédiatement - le message RESTE affiché
+            resetToStart();
+            document.getElementById('status-text').textContent = `✅ Accès accordé à ${username}`;
+        }
+        
+        function showDeniedResult() {
+            const overlay = document.getElementById('result-overlay');
+            const box = document.getElementById('result-box');
+            const title = document.getElementById('result-title');
+            const message = document.getElementById('result-message');
+            
+            box.className = 'result-box denied';
+            box.querySelector('i').className = 'fas fa-times-circle';
+            title.textContent = 'ACCÈS REFUSÉ';
+            message.textContent = 'Vous n\'êtes pas autorisé.';
+            
+            overlay.classList.add('show');
+            document.getElementById('status-text').textContent = '❌ Accès refusé';
+            
+            // Remettre le bouton Démarrer après 4 secondes
+            setTimeout(() => {
+                overlay.classList.remove('show');
+                resetToStart();
+                document.getElementById('status-text').textContent = 'En attente...';
+            }, 4000);
+        }
+        
+        function showPinModal() {
+            document.getElementById('pin-modal').classList.add('show');
+            document.getElementById('pin-input').value = '';
+            document.getElementById('pin-input').focus();
+        }
+        
+        function closePinModal() {
+            document.getElementById('pin-modal').classList.remove('show');
+        }
+        
+        async function verifyPin() {
+            const pin = document.getElementById('pin-input').value;
+            if (!pin) return;
+            
+            try {
+                const response = await fetch('/api/recognition/verify_pin', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ password: pin })
+                });
+                
+                const result = await response.json();
+                closePinModal();
+                
+                if (result.status === 'granted') {
+                    showSuccessResult(result.username);
+                } else {
+                    showDeniedResult();
+                }
+            } catch (error) {
+                console.error('Error:', error);
+            }
+        }
+        
+        // Enter key for PIN
+        document.getElementById('pin-input').addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') verifyPin();
+        });
+    </script>
+</body>
+</html>

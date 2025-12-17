@@ -1,0 +1,66 @@
+@startuml Architecture_Systeme_Web
+skinparam backgroundColor #FEFEFE
+
+title Architecture du Systeme de Reconnaissance Faciale (Web)
+
+package "COUCHE PRESENTATION" #E3F2FD {
+    [index.html] as index
+    [user.html] as user
+    [admin_login.html] as login
+    [admin_dashboard.html] as dashboard
+    [style.css] as css
+}
+
+package "COUCHE API - Flask" #FFF3E0 {
+    [web/app.py] as app
+}
+
+package "COUCHE SERVICES" #E8F5E9 {
+    [user_service.py] as userSvc
+    [access_service.py] as accessSvc
+    [profile_service.py] as profileSvc
+    [arduino_service.py] as arduinoSvc
+    [email_service.py] as emailSvc
+}
+
+package "COUCHE CORE" #FCE4EC {
+    [face_recognition.py] as faceEngine
+    [authentication.py] as authMgr
+}
+
+package "COUCHE DONNEES" #F3E5F5 {
+    database "PostgreSQL" as db
+    [database/connection.py] as dbConn
+}
+
+package "COUCHE MATERIELLE" #EFEBE9 {
+    [Webcam OpenCV] as webcam
+    [Arduino LED Buzzer] as arduino
+}
+
+cloud "SMTP Gmail" as smtp
+
+index --> app
+user --> app
+login --> app
+dashboard --> app
+
+app --> userSvc
+app --> accessSvc
+app --> profileSvc
+app --> arduinoSvc
+app --> emailSvc
+
+app --> faceEngine
+app --> authMgr
+
+userSvc --> dbConn
+accessSvc --> dbConn
+profileSvc --> dbConn
+dbConn --> db
+
+faceEngine --> webcam
+arduinoSvc --> arduino
+emailSvc --> smtp
+
+@enduml

@@ -1,0 +1,84 @@
+@startuml Sequence_Authentification_PIN
+!theme plain
+skinparam backgroundColor #FEFEFE
+skinparam sequenceMessageAlign center
+
+title Diagramme de Séquence - Authentification par PIN (Fallback)
+
+actor "Utilisateur" as user #LightBlue
+participant "Navigateur\n(user.html)" as browser #LightYellow
+participant "Flask API\n(app.py)" as api #LightGreen
+participant "Authentication\nManager" as auth #LightPink
+database "PostgreSQL" as db #LightGray
+participant "Arduino\nService" as arduino #Orange
+participant "Email\nService" as email #Pink
+
+== Après 3 échecs de reconnaissance faciale ==
+
+browser -> user : Affiche modal "Code PIN requis"
+user -> browser : Saisit mot de passe
+user -> browser : Clique "Vérifier"
+
+activate browser
+browser -> api : POST /api/recognition/verify_pin\n{password: "****"}
+activate api
+
+api -> db : get_all_active_users()
+activate db
+db --> api : Liste des utilisateurs
+deactivate db
+
+loop Pour chaque utilisateur
+    api -> auth : verify_password(input, user.password)
+    activate auth
+    auth -> auth : bcrypt.checkpw()
+    auth --> api : true/false
+    deactivate auth
+    
+    alt Mot de passe correct
+        api -> arduino : signal_access_granted()
+        activate arduino
+        arduino -> arduino : Envoie 'G' (LED verte + buzzer)
+        arduino --> api : OK
+        deactivate arduino
+        
+        api -> db : log_access_attempt(GRANTED, PIN_ONLY)
+        activate db
+        db --> api : OK
+        deactivate db
+        
+        api --> browser : {status: "granted", username: "..."}
+        browser -> browser : closePinModal()
+        browser -> browser : showSuccessResult(username)
+        browser -> user : Affiche "ACCÈS AUTORISÉ\nBienvenue [nom]!"
+    end
+end
+
+alt Aucun mot de passe ne correspond
+    api -> arduino : signal_access_denied()
+    activate arduino
+    arduino -> arduino : Envoie 'R' (LED rouge + buzzer)
+    arduino --> api : OK
+    deactivate arduino
+    
+    api -> db : log_access_attempt(DENIED, PIN_ONLY)
+    activate db
+    db --> api : OK
+    deactivate db
+    
+    api -> email : send_security_alert("PIN incorrect")
+    activate email
+    email -> email : Envoie email SMTP
+    email --> api : OK
+    deactivate email
+    
+    api --> browser : {status: "denied"}
+    browser -> browser : closePinModal()
+    browser -> browser : showDeniedResult()
+    browser -> user : Affiche "ACCÈS REFUSÉ"
+end
+
+deactivate api
+deactivate browser
+
+@enduml

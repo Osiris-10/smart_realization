@@ -396,31 +396,55 @@ class AdminWindow:
         )
         add_user_btn.pack(side=tk.RIGHT)
 
-        # Recherche et filtre
-        search_frame = tk.Frame(container, bg='white')
-        search_frame.pack(fill=tk.X, pady=10)
+        # === ZONE DE FILTRAGE ===
+        filter_frame = tk.Frame(container, bg='#f0f0f0', relief=tk.GROOVE, bd=1)
+        filter_frame.pack(fill=tk.X, pady=10, padx=5)
+        
+        # Ligne de filtres
+        filter_row = tk.Frame(filter_frame, bg='#f0f0f0')
+        filter_row.pack(fill=tk.X, padx=10, pady=10)
 
-        tk.Label(search_frame, text="Rechercher:", font=('Arial', 11), bg='white').pack(side=tk.LEFT, padx=5)
-        self.search_var = tk.StringVar()
-        self.search_var.trace('w', self.filter_users)
-        search_entry = tk.Entry(search_frame, textvariable=self.search_var, font=('Arial', 11), width=30)
-        search_entry.pack(side=tk.LEFT, padx=5)
+        # Champ recherche
+        tk.Label(filter_row, text="🔍 Rechercher:", font=('Arial', 11, 'bold'), bg='#f0f0f0').pack(side=tk.LEFT, padx=(0,5))
+        self.entry_recherche = tk.Entry(filter_row, font=('Arial', 11), width=25)
+        self.entry_recherche.pack(side=tk.LEFT, padx=(0,20))
 
-        tk.Label(search_frame, text="Date:", font=('Arial', 11), bg='white').pack(side=tk.LEFT, padx=10)
-        self.filter_type_var = tk.StringVar(value="jour")
-        ttk.Combobox(
-            search_frame,
-            textvariable=self.filter_type_var,
-            values=["jour", "mois", "annee"],
-            state="readonly",
-            width=10
-        ).pack(side=tk.LEFT, padx=5)
+        # Champ date
+        tk.Label(filter_row, text="📅 Date (YYYY-MM-DD):", font=('Arial', 11, 'bold'), bg='#f0f0f0').pack(side=tk.LEFT, padx=(0,5))
+        self.entry_date = tk.Entry(filter_row, font=('Arial', 11), width=15)
+        self.entry_date.pack(side=tk.LEFT, padx=(0,20))
 
-        self.filter_date_var = tk.StringVar()
-        tk.Entry(search_frame, textvariable=self.filter_date_var, font=('Arial', 11), width=15).pack(side=tk.LEFT,
-                                                                                                     padx=5)
-        tk.Button(search_frame, text="Filtrer", command=self.filter_users, font=('Arial', 11), bg='#3498DB', fg='white',
-                  padx=15, pady=5).pack(side=tk.LEFT, padx=5)
+        # Bouton Filtrer
+        btn_filtrer = tk.Button(
+            filter_row, 
+            text="🔍 FILTRER", 
+            font=('Arial', 11, 'bold'),
+            bg='#2980B9', 
+            fg='white',
+            padx=20, 
+            pady=5,
+            cursor='hand2',
+            command=self.appliquer_filtre
+        )
+        btn_filtrer.pack(side=tk.LEFT, padx=5)
+
+        # Bouton Reset
+        btn_reset = tk.Button(
+            filter_row, 
+            text="↺ RESET", 
+            font=('Arial', 11),
+            bg='#7F8C8D', 
+            fg='white',
+            padx=15, 
+            pady=5,
+            cursor='hand2',
+            command=self.reset_filtre
+        )
+        btn_reset.pack(side=tk.LEFT, padx=5)
+        
+        # Bind Enter pour filtrer
+        self.entry_recherche.bind('<Return>', lambda e: self.appliquer_filtre())
+        self.entry_date.bind('<Return>', lambda e: self.appliquer_filtre())
 
         # Liste des utilisateurs
         list_frame = tk.Frame(container, bg='white')
@@ -473,125 +497,91 @@ class AdminWindow:
         self.refresh_users()
 
     def refresh_users(self):
-        """Rafraîchir la liste des utilisateurs sans filtre"""
-        # Réinitialiser les filtres visuellement (optionnel)
-        if hasattr(self, 'user_search_var'):
-            self.user_search_var.set("")
-            self.user_email_var.set("")
-            self.user_role_filter_var.set("TOUS")
-            self.user_status_var.set("TOUS")
-            self.user_profile_var.set("TOUS")
-            self.user_filter_date_var.set("")
+        """Rafraîchir la liste - afficher tous les utilisateurs"""
+        self.entry_recherche.delete(0, tk.END)
+        self.entry_date.delete(0, tk.END)
+        self.charger_tous_utilisateurs()
 
-        # Charger tous les utilisateurs
-        self._load_users()
-
-    def reset_user_filters(self):
-        """Réinitialiser tous les filtres utilisateurs"""
-        self.user_search_var.set("")
-        self.user_email_var.set("")
-        self.user_role_filter_var.set("TOUS")
-        self.user_status_var.set("TOUS")
-        self.user_profile_var.set("TOUS")
-        self.user_filter_date_var.set("")
-        self.user_filter_type_var.set("jour")
-        self._load_users()
-
-    def filter_users(self, *args):
-        """Filtrer les utilisateurs selon les critères"""
-        self._load_users(apply_filters=True)
-
-    def _load_users(self, apply_filters=False):
-        """Charger les utilisateurs avec ou sans filtres"""
-        # Effacer l'arbre
+    def charger_tous_utilisateurs(self):
+        """Charger et afficher tous les utilisateurs"""
+        # Vider le tableau
         for item in self.users_tree.get_children():
             self.users_tree.delete(item)
+        
+        # Charger tous les utilisateurs
+        users = self.user_service.get_all_users()
+        
+        # Afficher
+        for user in users:
+            self.ajouter_ligne_utilisateur(user)
+        
+        logger.log_info(f"{len(users)} utilisateurs affichés")
 
-        # Récupérer tous les utilisateurs
-        all_users = self.user_service.get_all_users()
+    def ajouter_ligne_utilisateur(self, user):
+        """Ajouter une ligne utilisateur au tableau"""
+        has_profile = "✅ Oui" if self.profile_service.profile_exists(user.personne_id) else "❌ Non"
+        status = "✅ Actif" if user.is_active else "❌ Inactif"
+        date_str = user.created_at.strftime('%Y-%m-%d') if user.created_at else "-"
+        
+        self.users_tree.insert('', tk.END, values=(
+            user.personne_id,
+            user.username,
+            user.email or "-",
+            user.role,
+            status,
+            date_str,
+            has_profile
+        ))
 
-        # Appliquer les filtres si nécessaire
-        if apply_filters and hasattr(self, 'user_search_var'):
-            filtered_users = []
-            search_text = self.user_search_var.get().lower().strip()
-            email_text = self.user_email_var.get().lower().strip()
-            role_filter = self.user_role_filter_var.get()
-            status_filter = self.user_status_var.get()
-            profile_filter = self.user_profile_var.get()
-            date_filter = self.user_filter_date_var.get().strip()
-            date_type = self.user_filter_type_var.get()
-
-            for user in all_users:
-                # Filtre par username
-                if search_text and search_text not in (user.username or "").lower():
+    def appliquer_filtre(self):
+        """Appliquer le filtre de recherche"""
+        # Lire les valeurs des champs
+        texte_recherche = self.entry_recherche.get().strip().lower()
+        date_recherche = self.entry_date.get().strip()
+        
+        logger.log_info(f"FILTRE: texte='{texte_recherche}', date='{date_recherche}'")
+        
+        # Vider le tableau
+        for item in self.users_tree.get_children():
+            self.users_tree.delete(item)
+        
+        # Charger tous les utilisateurs
+        tous_users = self.user_service.get_all_users()
+        
+        # Si aucun filtre, afficher tout
+        if not texte_recherche and not date_recherche:
+            for user in tous_users:
+                self.ajouter_ligne_utilisateur(user)
+            logger.log_info(f"Aucun filtre - {len(tous_users)} utilisateurs")
+            return
+        
+        # Filtrer
+        count = 0
+        for user in tous_users:
+            # Vérifier texte (username ou email)
+            if texte_recherche:
+                username = (user.username or "").lower()
+                email = (user.email or "").lower()
+                if texte_recherche not in username and texte_recherche not in email:
                     continue
-
-                # Filtre par email
-                if email_text and email_text not in (user.email or "").lower():
+            
+            # Vérifier date
+            if date_recherche and user.created_at:
+                date_user = user.created_at.strftime('%Y-%m-%d')
+                if date_recherche not in date_user:
                     continue
+            
+            # Utilisateur correspond aux critères
+            self.ajouter_ligne_utilisateur(user)
+            count += 1
+        
+        logger.log_info(f"RÉSULTAT: {count} utilisateur(s) sur {len(tous_users)}")
 
-                # Filtre par rôle
-                if role_filter != "TOUS" and user.role != role_filter:
-                    continue
-
-                # Filtre par statut
-                if status_filter == "ACTIF" and not user.is_active:
-                    continue
-                if status_filter == "INACTIF" and user.is_active:
-                    continue
-
-                # Filtre par profil facial
-                has_profile = self.profile_service.profile_exists(user.personne_id)
-                if profile_filter == "OUI" and not has_profile:
-                    continue
-                if profile_filter == "NON" and has_profile:
-                    continue
-
-                # Filtre par date
-                if date_filter and user.created_at:
-                    try:
-                        if date_type == "jour":
-                            if user.created_at.strftime('%Y-%m-%d') != date_filter:
-                                continue
-                        elif date_type == "mois":
-                            if user.created_at.strftime('%Y-%m') != date_filter:
-                                continue
-                        elif date_type == "annee":
-                            if user.created_at.strftime('%Y') != date_filter:
-                                continue
-                    except:
-                        continue
-
-                filtered_users.append(user)
-
-            users_to_display = filtered_users
-        else:
-            users_to_display = all_users
-
-        # Afficher les utilisateurs
-        for user in users_to_display:
-            has_profile = "✅ Oui" if self.profile_service.profile_exists(user.personne_id) else "❌ Non"
-            status = "✅ Actif" if user.is_active else "❌ Inactif"
-            self.users_tree.insert('', tk.END, values=(
-                user.personne_id,
-                user.username,
-                user.email or "-",
-                user.role,
-                status,
-                user.created_at.strftime('%Y-%m-%d') if user.created_at else "-",
-                has_profile
-            ))
-
-        # Mettre à jour le compteur
-        if hasattr(self, 'user_count_label'):
-            if apply_filters:
-                self.user_count_label.config(
-                    text=f"📊 {len(users_to_display)} résultat(s) sur {len(all_users)} total"
-                )
-            else:
-                self.user_count_label.config(
-                    text=f"📊 {len(users_to_display)} utilisateur(s)"
-                )
+    def reset_filtre(self):
+        """Réinitialiser les filtres"""
+        self.entry_recherche.delete(0, tk.END)
+        self.entry_date.delete(0, tk.END)
+        self.charger_tous_utilisateurs()
 
     def open_add_user_dialog(self):
         """Ouvrir le dialogue d'ajout avec gestion complète"""
@@ -673,286 +663,167 @@ class AdminWindow:
                 messagebox.showerror("Erreur", "Impossible de supprimer")
 
     def setup_logs_tab(self):
-        """Configurer l'onglet des logs avec filtres"""
+        """Configurer l'onglet des logs d'accès"""
         container = tk.Frame(self.logs_frame, bg='white')
         container.pack(fill=tk.BOTH, expand=True, padx=20, pady=20)
 
         # Header
-        header = tk.Frame(container, bg='white')
-        header.pack(fill=tk.X, pady=(0, 15))
-
         tk.Label(
-            header,
-            text="Historique complet des accès",
+            container,
+            text="📋 Historique des accès",
             font=('Arial', 18, 'bold'),
             bg='white'
-        ).pack(side=tk.LEFT)
+        ).pack(anchor='w', pady=(0, 15))
 
-        # Filtres
-        filter_frame = tk.Frame(container, bg='#F8F9FA', relief=tk.RAISED, bd=1)
-        filter_frame.pack(fill=tk.X, pady=(0, 15), padx=5)
+        # === ZONE DE FILTRAGE ===
+        filter_frame = tk.Frame(container, bg='#f0f0f0', relief=tk.GROOVE, bd=1)
+        filter_frame.pack(fill=tk.X, pady=(0, 10))
 
-        filter_title = tk.Label(
-            filter_frame,
-            text="🔍 Filtres de recherche",
-            font=('Arial', 12, 'bold'),
-            bg='#F8F9FA'
-        )
-        filter_title.pack(pady=(10, 5))
+        filter_row = tk.Frame(filter_frame, bg='#f0f0f0')
+        filter_row.pack(fill=tk.X, padx=10, pady=10)
 
-        # Ligne 1: Username et Résultat
-        filter_row1 = tk.Frame(filter_frame, bg='#F8F9FA')
-        filter_row1.pack(fill=tk.X, padx=10, pady=5)
+        # Username
+        tk.Label(filter_row, text="👤 Username:", font=('Arial', 10, 'bold'), bg='#f0f0f0').pack(side=tk.LEFT, padx=(0,5))
+        self.log_entry_username = tk.Entry(filter_row, font=('Arial', 10), width=15)
+        self.log_entry_username.pack(side=tk.LEFT, padx=(0,15))
 
-        tk.Label(filter_row1, text="Username:", font=('Arial', 10), bg='#F8F9FA').pack(side=tk.LEFT, padx=5)
-        self.log_search_var = tk.StringVar()
-        tk.Entry(filter_row1, textvariable=self.log_search_var, font=('Arial', 10), width=20).pack(side=tk.LEFT, padx=5)
+        # Résultat
+        tk.Label(filter_row, text="✓ Résultat:", font=('Arial', 10, 'bold'), bg='#f0f0f0').pack(side=tk.LEFT, padx=(0,5))
+        self.log_combo_resultat = ttk.Combobox(filter_row, values=["TOUS", "GRANTED", "DENIED"], state="readonly", width=10)
+        self.log_combo_resultat.set("TOUS")
+        self.log_combo_resultat.pack(side=tk.LEFT, padx=(0,15))
 
-        tk.Label(filter_row1, text="Résultat:", font=('Arial', 10), bg='#F8F9FA').pack(side=tk.LEFT, padx=(15, 5))
-        self.log_result_var = tk.StringVar(value="TOUS")
-        ttk.Combobox(
-            filter_row1,
-            textvariable=self.log_result_var,
-            values=["TOUS", "GRANTED", "DENIED"],
-            state="readonly",
-            width=12
-        ).pack(side=tk.LEFT, padx=5)
+        # Date
+        tk.Label(filter_row, text="📅 Date:", font=('Arial', 10, 'bold'), bg='#f0f0f0').pack(side=tk.LEFT, padx=(0,5))
+        self.log_entry_date = tk.Entry(filter_row, font=('Arial', 10), width=12)
+        self.log_entry_date.pack(side=tk.LEFT, padx=(0,15))
 
-        tk.Label(filter_row1, text="Méthode:", font=('Arial', 10), bg='#F8F9FA').pack(side=tk.LEFT, padx=(15, 5))
-        self.log_method_var = tk.StringVar(value="TOUS")
-        ttk.Combobox(
-            filter_row1,
-            textvariable=self.log_method_var,
-            values=["TOUS", "FACE_ONLY", "PIN_ONLY", "FACE_AND_PIN"],
-            state="readonly",
-            width=15
-        ).pack(side=tk.LEFT, padx=5)
+        # Boutons
+        tk.Button(filter_row, text="🔍 FILTRER", font=('Arial', 10, 'bold'), bg='#2980B9', fg='white',
+                  padx=15, pady=3, command=self.appliquer_filtre_logs).pack(side=tk.LEFT, padx=5)
+        tk.Button(filter_row, text="↺ RESET", font=('Arial', 10), bg='#7F8C8D', fg='white',
+                  padx=10, pady=3, command=self.reset_filtre_logs).pack(side=tk.LEFT, padx=5)
 
-        # Ligne 2: Filtres de date
-        filter_row2 = tk.Frame(filter_frame, bg='#F8F9FA')
-        filter_row2.pack(fill=tk.X, padx=10, pady=5)
+        # Bind Enter
+        self.log_entry_username.bind('<Return>', lambda e: self.appliquer_filtre_logs())
+        self.log_entry_date.bind('<Return>', lambda e: self.appliquer_filtre_logs())
 
-        tk.Label(filter_row2, text="Type de date:", font=('Arial', 10), bg='#F8F9FA').pack(side=tk.LEFT, padx=5)
-        self.log_filter_type_var = tk.StringVar(value="jour")
-        ttk.Combobox(
-            filter_row2,
-            textvariable=self.log_filter_type_var,
-            values=["jour", "mois", "annee"],
-            state="readonly",
-            width=10
-        ).pack(side=tk.LEFT, padx=5)
-
-        tk.Label(filter_row2, text="Date:", font=('Arial', 10), bg='#F8F9FA').pack(side=tk.LEFT, padx=(15, 5))
-        self.log_filter_date_var = tk.StringVar()
-        date_entry = tk.Entry(filter_row2, textvariable=self.log_filter_date_var, font=('Arial', 10), width=15)
-        date_entry.pack(side=tk.LEFT, padx=5)
-
-        tk.Label(
-            filter_row2,
-            text="Format: YYYY-MM-DD (jour), YYYY-MM (mois), YYYY (année)",
-            font=('Arial', 8, 'italic'),
-            bg='#F8F9FA',
-            fg='#7F8C8D'
-        ).pack(side=tk.LEFT, padx=10)
-
-        # Boutons de filtre
-        filter_buttons = tk.Frame(filter_frame, bg='#F8F9FA')
-        filter_buttons.pack(pady=(5, 10))
-
-        tk.Button(
-            filter_buttons,
-            text="🔍 Appliquer les filtres",
-            command=self.filter_logs,
-            font=('Arial', 10, 'bold'),
-            bg='#3498DB',
-            fg='white',
-            padx=20,
-            pady=8,
-            relief=tk.FLAT,
-            cursor='hand2'
-        ).pack(side=tk.LEFT, padx=5)
-
-        tk.Button(
-            filter_buttons,
-            text="🔄 Réinitialiser",
-            command=self.reset_log_filters,
-            font=('Arial', 10),
-            bg='#95A5A6',
-            fg='white',
-            padx=20,
-            pady=8,
-            relief=tk.FLAT,
-            cursor='hand2'
-        ).pack(side=tk.LEFT, padx=5)
-
-        # Liste des logs
+        # === TABLEAU DES LOGS ===
         list_frame = tk.Frame(container, bg='white')
         list_frame.pack(fill=tk.BOTH, expand=True)
 
-        vsb = tk.Scrollbar(list_frame, orient="vertical")
-        hsb = tk.Scrollbar(list_frame, orient="horizontal")
+        scrollbar = tk.Scrollbar(list_frame)
+        scrollbar.pack(side=tk.RIGHT, fill=tk.Y)
 
-        columns = ('ID', 'Utilisateur', 'Résultat', 'Méthode', 'Score', 'Date/Heure', 'Image')
-        self.logs_tree = ttk.Treeview(
-            list_frame,
-            columns=columns,
-            show='headings',
-            yscrollcommand=vsb.set,
-            xscrollcommand=hsb.set
-        )
+        columns = ('ID', 'Utilisateur', 'Résultat', 'Méthode', 'Score', 'Date/Heure')
+        self.logs_tree = ttk.Treeview(list_frame, columns=columns, show='headings', yscrollcommand=scrollbar.set)
 
-        widths = [50, 150, 100, 120, 120, 180, 200]
+        widths = [50, 150, 100, 120, 100, 180]
         for col, width in zip(columns, widths):
             self.logs_tree.heading(col, text=col)
             self.logs_tree.column(col, width=width)
 
-        vsb.pack(side=tk.RIGHT, fill=tk.Y)
-        hsb.pack(side=tk.BOTTOM, fill=tk.X)
         self.logs_tree.pack(side=tk.LEFT, fill=tk.BOTH, expand=True)
-        vsb.config(command=self.logs_tree.yview)
-        hsb.config(command=self.logs_tree.xview)
+        scrollbar.config(command=self.logs_tree.yview)
 
-        # Boutons d'action
-        action_frame = tk.Frame(container, bg='white')
-        action_frame.pack(pady=(15, 0))
-
-        tk.Button(
-            action_frame,
-            text="🔄 Rafraîchir tout",
-            font=('Arial', 11, 'bold'),
-            bg='#3498DB',
-            fg='white',
-            padx=20,
-            pady=10,
-            command=self.refresh_logs,
-            relief=tk.FLAT,
-            cursor='hand2'
-        ).pack(side=tk.LEFT, padx=5)
-
-        # Compteur de résultats
-        self.log_count_label = tk.Label(
-            action_frame,
-            text="",
-            font=('Arial', 10),
-            bg='white',
-            fg='#7F8C8D'
-        )
-        self.log_count_label.pack(side=tk.LEFT, padx=20)
-
-        self.refresh_logs()
-
-    def refresh_logs(self):
-        """Rafraîchir tous les logs sans filtre"""
-        # Réinitialiser les filtres
-        if hasattr(self, 'log_search_var'):
-            self.log_search_var.set("")
-            self.log_result_var.set("TOUS")
-            self.log_method_var.set("TOUS")
-            self.log_filter_date_var.set("")
-
-        # Charger tous les logs
-        self._load_logs()
-
-    def filter_logs(self):
-        """Appliquer les filtres aux logs"""
-        self._load_logs(apply_filters=True)
-
-    def reset_log_filters(self):
-        """Réinitialiser tous les filtres des logs"""
-        self.log_search_var.set("")
-        self.log_result_var.set("TOUS")
-        self.log_method_var.set("TOUS")
-        self.log_filter_date_var.set("")
-        self.log_filter_type_var.set("jour")
-        self._load_logs()
-
-    def _load_logs(self, apply_filters=False):
-        """Charger les logs avec ou sans filtres"""
-        # Effacer l'arbre
-        for item in self.logs_tree.get_children():
-            self.logs_tree.delete(item)
-
-        # Récupérer tous les logs
-        all_logs = self.access_service.get_all_access_logs(500)  # Plus de logs pour filtrage
-
-        # Appliquer les filtres si nécessaire
-        if apply_filters and hasattr(self, 'log_search_var'):
-            filtered_logs = []
-            search_text = self.log_search_var.get().lower().strip()
-            result_filter = self.log_result_var.get()
-            method_filter = self.log_method_var.get()
-            date_filter = self.log_filter_date_var.get().strip()
-            date_type = self.log_filter_type_var.get()
-
-            for log in all_logs:
-                # Récupérer l'utilisateur
-                user = self.user_service.get_user_by_id(log.personne_id) if log.personne_id else None
-                username = user.username.lower() if user else "inconnu"
-
-                # Filtre par username
-                if search_text and search_text not in username:
-                    continue
-
-                # Filtre par résultat
-                if result_filter != "TOUS" and log.access_result != result_filter:
-                    continue
-
-                # Filtre par méthode
-                if method_filter != "TOUS" and log.access_method != method_filter:
-                    continue
-
-                # Filtre par date
-                if date_filter and log.horaire:
-                    try:
-                        if date_type == "jour":
-                            if log.horaire.strftime('%Y-%m-%d') != date_filter:
-                                continue
-                        elif date_type == "mois":
-                            if log.horaire.strftime('%Y-%m') != date_filter:
-                                continue
-                        elif date_type == "annee":
-                            if log.horaire.strftime('%Y') != date_filter:
-                                continue
-                    except:
-                        continue
-
-                filtered_logs.append(log)
-
-            logs_to_display = filtered_logs
-        else:
-            logs_to_display = all_logs
-
-        # Afficher les logs
-        for log in logs_to_display:
-            user = self.user_service.get_user_by_id(log.personne_id) if log.personne_id else None
-            username = user.username if user else "Inconnu"
-            score = f"{log.similarity_score:.2%}" if log.similarity_score else "-"
-            image_url = log.image_url or "-"
-            tag = 'granted' if log.access_result == 'GRANTED' else 'denied'
-
-            self.logs_tree.insert('', tk.END, values=(
-                log.access_id,
-                username,
-                log.access_result,
-                log.access_method,
-                score,
-                log.horaire.strftime('%Y-%m-%d %H:%M:%S'),
-                image_url
-            ), tags=(tag,))
-
+        # Tags pour coloration
         self.logs_tree.tag_configure('granted', background='#D5F4E6')
         self.logs_tree.tag_configure('denied', background='#FADBD8')
 
-        # Mettre à jour le compteur
-        if hasattr(self, 'log_count_label'):
-            if apply_filters:
-                self.log_count_label.config(
-                    text=f"📊 {len(logs_to_display)} résultat(s) trouvé(s) sur {len(all_logs)} total"
-                )
-            else:
-                self.log_count_label.config(
-                    text=f"📊 {len(logs_to_display)} log(s) affiché(s)"
-                )
+        # Charger les logs
+        self.charger_tous_logs()
+
+    def charger_tous_logs(self):
+        """Charger et afficher tous les logs"""
+        # Vider le tableau
+        for item in self.logs_tree.get_children():
+            self.logs_tree.delete(item)
+        
+        # Charger les logs
+        logs = self.access_service.get_all_access_logs(500)
+        
+        # Afficher
+        for log in logs:
+            self.ajouter_ligne_log(log)
+        
+        logger.log_info(f"{len(logs)} logs affichés")
+
+    def ajouter_ligne_log(self, log):
+        """Ajouter une ligne de log au tableau"""
+        user = self.user_service.get_user_by_id(log.personne_id) if log.personne_id else None
+        username = user.username if user else "Inconnu"
+        score = f"{log.similarity_score:.2%}" if log.similarity_score else "-"
+        date_str = log.horaire.strftime('%Y-%m-%d %H:%M:%S') if log.horaire else "-"
+        tag = 'granted' if log.access_result == 'GRANTED' else 'denied'
+        
+        self.logs_tree.insert('', tk.END, values=(
+            log.access_id,
+            username,
+            log.access_result,
+            log.access_method,
+            score,
+            date_str
+        ), tags=(tag,))
+
+    def appliquer_filtre_logs(self):
+        """Appliquer les filtres aux logs"""
+        # Lire les valeurs
+        username_filtre = self.log_entry_username.get().strip().lower()
+        resultat_filtre = self.log_combo_resultat.get()
+        date_filtre = self.log_entry_date.get().strip()
+        
+        logger.log_info(f"FILTRE LOGS: username='{username_filtre}', resultat='{resultat_filtre}', date='{date_filtre}'")
+        
+        # Vider le tableau
+        for item in self.logs_tree.get_children():
+            self.logs_tree.delete(item)
+        
+        # Charger tous les logs
+        tous_logs = self.access_service.get_all_access_logs(500)
+        
+        # Si aucun filtre, afficher tout
+        if not username_filtre and resultat_filtre == "TOUS" and not date_filtre:
+            for log in tous_logs:
+                self.ajouter_ligne_log(log)
+            logger.log_info(f"Aucun filtre - {len(tous_logs)} logs")
+            return
+        
+        # Filtrer
+        count = 0
+        for log in tous_logs:
+            # Vérifier username
+            if username_filtre:
+                user = self.user_service.get_user_by_id(log.personne_id) if log.personne_id else None
+                username = (user.username if user else "").lower()
+                if username_filtre not in username:
+                    continue
+            
+            # Vérifier résultat
+            if resultat_filtre != "TOUS" and log.access_result != resultat_filtre:
+                continue
+            
+            # Vérifier date
+            if date_filtre and log.horaire:
+                date_log = log.horaire.strftime('%Y-%m-%d')
+                if date_filtre not in date_log:
+                    continue
+            
+            # Log correspond aux critères
+            self.ajouter_ligne_log(log)
+            count += 1
+        
+        logger.log_info(f"RÉSULTAT: {count} log(s) sur {len(tous_logs)}")
+
+    def reset_filtre_logs(self):
+        """Réinitialiser les filtres des logs"""
+        self.log_entry_username.delete(0, tk.END)
+        self.log_combo_resultat.set("TOUS")
+        self.log_entry_date.delete(0, tk.END)
+        self.charger_tous_logs()
+
+    def refresh_logs(self):
+        """Rafraîchir les logs (compatibilité)"""
+        self.reset_filtre_logs()
 
     def logout(self):
         """Déconnexion - retour au formulaire de connexion"""
@@ -1387,61 +1258,194 @@ class EditUserDialog:
         self.user = user_service.get_user_by_id(user_id)
         self.updated = False
 
+        if not self.user:
+            messagebox.showerror("Erreur", "Utilisateur introuvable")
+            return
+
         self.dialog = tk.Toplevel(parent)
-        self.dialog.title("Modifier utilisateur")
-        self.dialog.geometry("450x350")
+        self.dialog.title(f"✏️ Modifier - {self.user.username}")
+        self.dialog.geometry("500x450")
         self.dialog.transient(parent)
         self.dialog.grab_set()
+        self.dialog.configure(bg='#ECF0F1')
 
         self.setup_ui()
         self.dialog.wait_window()
 
     def setup_ui(self):
-        main = tk.Frame(self.dialog, padx=20, pady=20)
-        main.pack(fill=tk.BOTH, expand=True)
+        # Debug: afficher les vraies valeurs
+        print(f"\n>>> OUVERTURE FORMULAIRE EDIT")
+        print(f"    User ID: {self.user.personne_id}")
+        print(f"    Username: {self.user.username}")
+        print(f"    Role BDD: '{self.user.role}'")
+        print(f"    is_active BDD: {self.user.is_active} (type: {type(self.user.is_active).__name__})")
+        
+        # Header
+        header = tk.Frame(self.dialog, bg='#3498DB', height=60)
+        header.pack(fill=tk.X)
+        header.pack_propagate(False)
+        
+        tk.Label(
+            header,
+            text=f"✏️ Modifier l'utilisateur",
+            font=('Arial', 16, 'bold'),
+            bg='#3498DB',
+            fg='white'
+        ).pack(pady=15)
 
-        tk.Label(main, text="Username:", font=('Arial', 11, 'bold')).grid(row=0, column=0, sticky=tk.W, pady=10)
-        tk.Label(main, text=self.user.username if self.user else "", font=('Arial', 11)).grid(row=0, column=1,
-                                                                                              sticky=tk.W, pady=10)
+        # Formulaire
+        form = tk.Frame(self.dialog, bg='#ECF0F1', padx=30, pady=20)
+        form.pack(fill=tk.BOTH, expand=True)
 
-        tk.Label(main, text="Email:", font=('Arial', 11)).grid(row=1, column=0, sticky=tk.W, pady=10)
-        self.email_entry = tk.Entry(main, font=('Arial', 11), width=30)
-        self.email_entry.grid(row=1, column=1, pady=10)
+        # Username (modifiable)
+        tk.Label(form, text="👤 Username:", font=('Arial', 11, 'bold'), bg='#ECF0F1').grid(row=0, column=0, sticky=tk.W, pady=10)
+        self.username_entry = tk.Entry(form, font=('Arial', 12), width=30)
+        self.username_entry.grid(row=0, column=1, pady=10, padx=10)
+        self.username_entry.insert(0, self.user.username or "")
+
+        # Email
+        tk.Label(form, text="📧 Email:", font=('Arial', 11, 'bold'), bg='#ECF0F1').grid(row=1, column=0, sticky=tk.W, pady=10)
+        self.email_entry = tk.Entry(form, font=('Arial', 12), width=30)
+        self.email_entry.grid(row=1, column=1, pady=10, padx=10)
         self.email_entry.insert(0, self.user.email or "")
 
-        tk.Label(main, text="Rôle:", font=('Arial', 11)).grid(row=2, column=0, sticky=tk.W, pady=10)
-        self.role_var = tk.StringVar(value=self.user.role if self.user else "USER")
-        ttk.Combobox(main, textvariable=self.role_var, values=["USER", "ADMIN", "GUEST"], state="readonly",
-                     width=27).grid(row=2, column=1, pady=10)
+        # Rôle - utiliser la vraie valeur
+        tk.Label(form, text="🎭 Rôle:", font=('Arial', 11, 'bold'), bg='#ECF0F1').grid(row=2, column=0, sticky=tk.W, pady=10)
+        current_role = self.user.role if self.user.role else "USER"
+        self.role_combo = ttk.Combobox(form, values=["USER", "ADMIN", "GUEST"], state="readonly", width=28, font=('Arial', 11))
+        self.role_combo.grid(row=2, column=1, pady=10, padx=10)
+        self.role_combo.set(current_role)
 
-        tk.Label(main, text="Actif (1/0):", font=('Arial', 11)).grid(row=3, column=0, sticky=tk.W, pady=10)
-        self.active_var = tk.StringVar(value="1" if (self.user.is_active if self.user else False) else "0")
-        tk.Entry(main, textvariable=self.active_var, font=('Arial', 11), width=30).grid(row=3, column=1, pady=10)
+        # Statut actif - utiliser Combobox comme pour le rôle
+        tk.Label(form, text="✓ Statut:", font=('Arial', 11, 'bold'), bg='#ECF0F1').grid(row=3, column=0, sticky=tk.W, pady=10)
+        current_active = bool(self.user.is_active) if self.user.is_active is not None else True
+        current_status = "Actif" if current_active else "Inactif"
+        self.status_combo = ttk.Combobox(form, values=["Actif", "Inactif"], state="readonly", width=28, font=('Arial', 11))
+        self.status_combo.grid(row=3, column=1, pady=10, padx=10)
+        self.status_combo.set(current_status)
+        print(f"    status_combo initialisé à: {current_status}")
 
-        btn_frame = tk.Frame(main)
-        btn_frame.grid(row=4, column=0, columnspan=2, pady=30)
+        # Nouveau mot de passe (optionnel)
+        tk.Label(form, text="🔐 Nouveau mot de passe:", font=('Arial', 11, 'bold'), bg='#ECF0F1').grid(row=4, column=0, sticky=tk.W, pady=10)
+        self.password_entry = tk.Entry(form, font=('Arial', 12), width=30, show='*')
+        self.password_entry.grid(row=4, column=1, pady=10, padx=10)
+        
+        tk.Label(form, text="(laisser vide pour ne pas changer)", font=('Arial', 9, 'italic'), bg='#ECF0F1', fg='#7F8C8D').grid(row=5, column=1, sticky=tk.W, padx=10)
 
-        tk.Button(btn_frame, text="Annuler", bg="#95A5A6", fg="white", padx=20, pady=10,
-                  command=self.dialog.destroy).pack(side=tk.LEFT, padx=5)
-        tk.Button(btn_frame, text="Enregistrer", bg="#27AE60", fg="white", padx=20, pady=10, command=self.save).pack(
-            side=tk.LEFT, padx=5)
+        # Boutons
+        btn_frame = tk.Frame(self.dialog, bg='#ECF0F1', pady=20)
+        btn_frame.pack(fill=tk.X)
+
+        tk.Button(
+            btn_frame,
+            text="❌ Annuler",
+            font=('Arial', 11, 'bold'),
+            bg='#E74C3C',
+            fg='white',
+            padx=25,
+            pady=10,
+            cursor='hand2',
+            command=self.dialog.destroy
+        ).pack(side=tk.LEFT, padx=30)
+
+        tk.Button(
+            btn_frame,
+            text="✅ Enregistrer",
+            font=('Arial', 11, 'bold'),
+            bg='#27AE60',
+            fg='white',
+            padx=25,
+            pady=10,
+            cursor='hand2',
+            command=self.save
+        ).pack(side=tk.RIGHT, padx=30)
 
     def save(self):
+        """Sauvegarder les modifications"""
+        new_username = self.username_entry.get().strip()
         email = self.email_entry.get().strip()
-        role = self.role_var.get()
-        is_active = self.active_var.get() == "1"
+        role = self.role_combo.get()
+        status = self.status_combo.get()
+        is_active = (status == "Actif")  # Convertir en bool
+        print(f"    status_combo.get() = '{status}' -> is_active = {is_active}")
+        new_password = self.password_entry.get().strip()
+
+        print("\n" + "="*60)
+        print("       MODIFICATION UTILISATEUR - DEBUG")
+        print("="*60)
+        print(f"ID Utilisateur: {self.user.personne_id}")
+        print("-"*60)
+        print("VALEURS ACTUELLES (avant modification):")
+        print(f"  Username: {self.user.username}")
+        print(f"  Email: {self.user.email}")
+        print(f"  Role: {self.user.role}")
+        print(f"  Actif: {self.user.is_active}")
+        print("-"*60)
+        print("NOUVELLES VALEURS (formulaire):")
+        print(f"  Username: {new_username}")
+        print(f"  Email: {email}")
+        print(f"  Role: {role}")
+        print(f"  Actif: {is_active}")
+        print(f"  Nouveau MDP: {'OUI (****)' if new_password else 'NON (inchangé)'}")
+        print("-"*60)
+
+        # Validation
+        if not new_username:
+            messagebox.showerror("Erreur", "Le username ne peut pas être vide!")
+            return
+
+        # Vérifier si le nouveau username existe déjà (si changé)
+        if new_username != self.user.username:
+            existing = self.user_service.get_user_by_username(new_username)
+            if existing:
+                messagebox.showerror("Erreur", f"Le username '{new_username}' existe déjà!")
+                return
 
         try:
-            self.user_service.update_user(self.user.personne_id, email=email, role=role, is_active=is_active)
-            self.updated = True
+            # Préparer les données à mettre à jour
+            update_data = {
+                'username': new_username,
+                'email': email,
+                'role': role,
+                'is_active': bool(is_active)
+            }
+            
+            # Ajouter le mot de passe si fourni
+            if new_password:
+                update_data['password'] = new_password
+
+            print("DONNÉES ENVOYÉES À update_user():")
+            for k, v in update_data.items():
+                if k == 'password':
+                    print(f"  {k}: ****")
+                else:
+                    print(f"  {k}: {v}")
+
+            # Mettre à jour
+            success = self.user_service.update_user(self.user.personne_id, **update_data)
+            
+            print("-"*60)
+            print(f"RÉSULTAT: {'✅ SUCCÈS' if success else '❌ ÉCHEC'}")
+            print("="*60 + "\n")
+            
+            if success:
+                self.updated = True
+                messagebox.showinfo("✅ Succès", f"L'utilisateur '{new_username}' a été modifié avec succès!")
+            else:
+                messagebox.showerror("Erreur", "Impossible de mettre à jour l'utilisateur")
+                
         except Exception as e:
-            messagebox.showerror("Erreur", f"Impossible de mettre à jour: {e}")
+            print(f"❌ ERREUR: {e}")
+            print("="*60 + "\n")
+            import traceback
+            traceback.print_exc()
+            messagebox.showerror("Erreur", f"Erreur lors de la modification:\n{str(e)}")
         finally:
             self.dialog.destroy()
 
 
 class FaceCaptureDialog:
-    """Dialogue de capture de profil facial"""
+    """Dialogue pour ajouter/modifier un profil facial via photo"""
 
     def __init__(self, parent, user_id, username, profile_service, face_engine):
         self.success = False
@@ -1449,37 +1453,142 @@ class FaceCaptureDialog:
         self.username = username
         self.profile_service = profile_service
         self.face_engine = face_engine
+        self.parent = parent
 
-        if messagebox.askyesno("Profil facial", f"Capturer le profil facial pour {username}?"):
-            try:
-                img_path = filedialog.askopenfilename(
-                    title="Sélectionner une photo",
-                    filetypes=[("Images", "*.jpg *.png *.jpeg")]
+        # Vérifier si un profil existe déjà
+        existing_profile = self.profile_service.get_profile_by_user(user_id)
+        
+        if existing_profile:
+            action = messagebox.askyesnocancel(
+                "Profil existant",
+                f"L'utilisateur '{username}' a déjà un profil facial.\n\n"
+                "Voulez-vous le remplacer par une nouvelle photo ?\n\n"
+                "• Oui = Remplacer le profil\n"
+                "• Non = Supprimer le profil\n"
+                "• Annuler = Ne rien faire"
+            )
+            
+            if action is None:  # Annuler
+                return
+            elif action is False:  # Non = Supprimer
+                if self.profile_service.delete_profile(existing_profile.profile_id):
+                    messagebox.showinfo("Succès", "Profil facial supprimé!")
+                    self.success = True
+                return
+            # Si Oui, continuer pour remplacer
+        
+        # Sélectionner une photo
+        self.selectionner_photo(existing_profile)
+
+    def selectionner_photo(self, existing_profile=None):
+        """Ouvrir le dialogue de sélection de photo"""
+        img_path = filedialog.askopenfilename(
+            parent=self.parent,
+            title=f"Sélectionner une photo pour {self.username}",
+            filetypes=[
+                ("Images", "*.jpg *.jpeg *.png *.bmp"),
+                ("JPEG", "*.jpg *.jpeg"),
+                ("PNG", "*.png"),
+                ("Tous les fichiers", "*.*")
+            ]
+        )
+
+        if not img_path:
+            messagebox.showinfo("Info", "Aucune image sélectionnée")
+            return
+
+        # Extraire les embeddings
+        self.extraire_et_sauvegarder(img_path, existing_profile)
+
+    def extraire_et_sauvegarder(self, img_path, existing_profile=None):
+        """Extraire les embeddings de la photo et les sauvegarder"""
+        try:
+            import face_recognition
+            import numpy as np
+            
+            logger.log_info(f"Chargement de l'image: {img_path}")
+            
+            # Charger l'image
+            image = face_recognition.load_image_file(img_path)
+            
+            # Détecter les visages
+            face_locations = face_recognition.face_locations(image)
+            
+            if not face_locations:
+                messagebox.showwarning(
+                    "Aucun visage détecté",
+                    "Aucun visage n'a été détecté dans cette image.\n\n"
+                    "Conseils :\n"
+                    "• Utilisez une photo de face\n"
+                    "• Assurez-vous que le visage est bien éclairé\n"
+                    "• Évitez les photos floues"
                 )
-
-                if img_path:
-                    try:
-                        import face_recognition
-                        image = face_recognition.load_image_file(img_path)
-                        encodings = face_recognition.face_encodings(image)
-
-                        if encodings:
-                            embedding = json.dumps(encodings[0].tolist())
-                            self.profile_service.create_profile(
-                                self.user_id,
-                                embedding=embedding,
-                                image_url=img_path
-                            )
-                            messagebox.showinfo("Succès", "Profil facial enregistré!")
-                            self.success = True
-                        else:
-                            messagebox.showwarning("Avertissement", "Aucun visage détecté dans l'image")
-                    except Exception as e:
-                        messagebox.showerror("Erreur", f"Erreur extraction: {e}")
+                return
+            
+            if len(face_locations) > 1:
+                messagebox.showwarning(
+                    "Plusieurs visages",
+                    f"{len(face_locations)} visages détectés.\n"
+                    "Seul le premier visage sera utilisé.\n\n"
+                    "Pour de meilleurs résultats, utilisez une photo avec un seul visage."
+                )
+            
+            # Extraire les encodings (embeddings)
+            encodings = face_recognition.face_encodings(image, face_locations)
+            
+            if not encodings:
+                messagebox.showerror("Erreur", "Impossible d'extraire les caractéristiques du visage")
+                return
+            
+            # Prendre le premier encoding (numpy array de 128 dimensions)
+            embedding = encodings[0]
+            
+            logger.log_info(f"Embedding extrait: {embedding.shape} dimensions")
+            
+            # Sauvegarder dans la base de données
+            if existing_profile:
+                # Mettre à jour le profil existant
+                success = self.profile_service.update_profile(
+                    profile_id=existing_profile.profile_id,
+                    embedding=embedding,
+                    image_url=img_path
+                )
+                if success:
+                    messagebox.showinfo(
+                        "✅ Profil mis à jour",
+                        f"Le profil facial de '{self.username}' a été mis à jour avec succès!"
+                    )
+                    self.success = True
+                    logger.log_info(f"Profil mis à jour pour {self.username} (ID: {self.user_id})")
                 else:
-                    messagebox.showinfo("Info", "Aucune image sélectionnée")
-            except Exception as e:
-                messagebox.showerror("Erreur", f"Erreur: {e}")
+                    messagebox.showerror("Erreur", "Impossible de mettre à jour le profil")
+            else:
+                # Créer un nouveau profil
+                profile_id = self.profile_service.create_profile(
+                    personne_id=self.user_id,
+                    embedding=embedding,
+                    image_url=img_path
+                )
+                if profile_id:
+                    messagebox.showinfo(
+                        "✅ Profil créé",
+                        f"Le profil facial de '{self.username}' a été créé avec succès!\n\n"
+                        f"ID du profil: {profile_id}"
+                    )
+                    self.success = True
+                    logger.log_info(f"Nouveau profil créé pour {self.username} (ID: {self.user_id}, Profile: {profile_id})")
+                else:
+                    messagebox.showerror("Erreur", "Impossible de créer le profil facial")
+                    
+        except ImportError:
+            messagebox.showerror(
+                "Module manquant",
+                "Le module 'face_recognition' n'est pas installé.\n\n"
+                "Installez-le avec: pip install face_recognition"
+            )
+        except Exception as e:
+            logger.log_error(f"Erreur extraction embedding: {e}")
+            messagebox.showerror("Erreur", f"Erreur lors de l'extraction:\n{str(e)}")
 
 
 def launch_admin_panel():

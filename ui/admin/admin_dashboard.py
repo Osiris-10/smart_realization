@@ -219,48 +219,63 @@ class AdminDashboard:
         search_frame.pack(side=tk.LEFT, padx=20)
         tk.Label(
             search_frame,
-            text="🔍 Recherche username:",
+            text="🔍 Rechercher:",
             font=('Arial', 11, 'bold'),
             bg='#34495E',
             fg='white'
         ).pack(side=tk.LEFT, padx=5)
         self.search_var = tk.StringVar()
-        self.search_var.trace('w', self.filter_users)
         search_entry = tk.Entry(
             search_frame,
             textvariable=self.search_var,
             font=('Arial', 11),
-            width=25
+            width=20
         )
-        search_entry.pack(side=tk.LEFT)
+        search_entry.pack(side=tk.LEFT, padx=5)
+        # Bind Enter key pour recherche
+        search_entry.bind('<Return>', lambda e: self.filter_users())
 
         # Filtre par date
-        filter_frame = tk.Frame(toolbar, bg='#34495E')
-        filter_frame.pack(side=tk.LEFT, padx=20)
         tk.Label(
-            filter_frame,
-            text="📅 Filtre date (YYYY-MM-DD):",
+            search_frame,
+            text="📅 Date:",
             font=('Arial', 11, 'bold'),
             bg='#34495E',
             fg='white'
         ).pack(side=tk.LEFT, padx=5)
         self.filter_date_var = tk.StringVar()
         filter_entry = tk.Entry(
-            filter_frame,
+            search_frame,
             textvariable=self.filter_date_var,
             font=('Arial', 11),
-            width=15
+            width=12
         )
-        filter_entry.pack(side=tk.LEFT)
+        filter_entry.pack(side=tk.LEFT, padx=5)
+        # Bind Enter key pour filtre date
+        filter_entry.bind('<Return>', lambda e: self.filter_users())
+
+        # Bouton Filtrer
         tk.Button(
-            filter_frame,
-            text="Appliquer",
-            font=('Arial', 11),
+            search_frame,
+            text="🔍 Filtrer",
+            font=('Arial', 11, 'bold'),
             bg='#16A085',
+            fg='white',
+            padx=15,
+            pady=5,
+            command=self.filter_users
+        ).pack(side=tk.LEFT, padx=10)
+
+        # Bouton Reset
+        tk.Button(
+            search_frame,
+            text="↺ Reset",
+            font=('Arial', 11),
+            bg='#95A5A6',
             fg='white',
             padx=10,
             pady=5,
-            command=self.filter_users
+            command=self.reset_filters
         ).pack(side=tk.LEFT, padx=5)
 
         # Frame pour la table
@@ -486,21 +501,21 @@ class AdminDashboard:
             active_users = len(self.user_service.get_all_active_users())
             self.kpi_active_users.config(text=str(active_users))
 
-            # Accès aujourd'hui
+            # Accès aujourd'hui (PostgreSQL)
             query = """
                 SELECT COUNT(*) FROM acces_log
-                WHERE DATE(horaire) = CURDATE()
+                WHERE horaire::date = CURRENT_DATE
             """
             result = self.db.execute_query(query)
             access_today = result[0][0] if result else 0
             self.kpi_access_today.config(text=str(access_today))
 
-            # Taux de succès
+            # Taux de succès (PostgreSQL)
             query = """
                 SELECT COUNT(CASE WHEN access_result = 'GRANTED' THEN 1 END) as granted,
                        COUNT(*) as total
                 FROM acces_log
-                WHERE horaire >= DATE_SUB(NOW(), INTERVAL 24 HOUR)
+                WHERE horaire >= NOW() - INTERVAL '24 hours'
             """
             result = self.db.execute_query(query)
             if result and result[0][1] > 0:
@@ -512,7 +527,7 @@ class AdminDashboard:
         except Exception as e:
             logger.log_error(f"Erreur chargement KPIs: {e}")
 
-    def load_users(self, where_clause=""):
+    def load_users(self, where_clause="", params=()):
         """Charger la liste des utilisateurs avec clause optionnelle"""
         try:
             # Effacer le tableau
@@ -520,7 +535,7 @@ class AdminDashboard:
                 self.users_tree.delete(item)
 
             # Récupérer tous les utilisateurs
-            users = self.user_service.get_all_users(where_clause)
+            users = self.user_service.get_all_users(where_clause, params)
             for user in users:
                 # Vérifier si profil facial existe
                 has_profile = self.profile_service.profile_exists(user.personne_id)
@@ -702,23 +717,55 @@ class AdminDashboard:
         """Actualiser les logs"""
         self.load_logs()
 
+    def reset_filters(self):
+        """Réinitialiser les filtres et afficher tous les utilisateurs"""
+        self.search_var.set("")
+        self.filter_date_var.set("")
+        self.load_users()
+        logger.log_info("Filtres réinitialisés")
+
     def filter_users(self, *args):
         """Filtrer les utilisateurs par recherche et date"""
-        search_text = self.search_var.get().lower()
-        filter_date = self.filter_date_var.get()
+        try:
+            search_text = self.search_var.get().strip()
+            filter_date = self.filter_date_var.get().strip()
 
-        where_clause = "WHERE 1=1"
-        if search_text:
-            where_clause += f" AND (username LIKE '%{search_text}%' OR email LIKE '%{search_text}%')"
-        if filter_date:
-            try:
-                datetime.strptime(filter_date, '%Y-%m-%d')  # Validate
-                where_clause += f" AND DATE(created_at) = '{filter_date}'"
-            except ValueError:
-                messagebox.showerror("Erreur", "Format de date invalide: YYYY-MM-DD")
+            logger.log_info(f"Filtrage: recherche='{search_text}', date='{filter_date}'")
+
+            # Si aucun filtre, charger tous les utilisateurs
+            if not search_text and not filter_date:
+                self.load_users()
                 return
 
-        self.load_users(where_clause)
+            # Construire la clause WHERE avec des paramètres sécurisés (PostgreSQL)
+            conditions = []
+            params = []
+
+            if search_text:
+                # PostgreSQL: ILIKE pour recherche insensible à la casse
+                conditions.append("(username ILIKE %s OR email ILIKE %s)")
+                params.append(f"%{search_text}%")
+                params.append(f"%{search_text}%")
+
+            if filter_date:
+                try:
+                    datetime.strptime(filter_date, '%Y-%m-%d')  # Validate format
+                    # PostgreSQL: cast avec ::date
+                    conditions.append("created_at::date = %s")
+                    params.append(filter_date)
+                except ValueError:
+                    messagebox.showerror("Erreur", "Format de date invalide: YYYY-MM-DD")
+                    return
+
+            where_clause = ""
+            if conditions:
+                where_clause = "WHERE " + " AND ".join(conditions)
+
+            logger.log_info(f"WHERE clause: {where_clause}, params: {params}")
+            self.load_users(where_clause, tuple(params))
+        except Exception as e:
+            logger.log_error(f"Erreur filter_users: {e}")
+            messagebox.showerror("Erreur", f"Erreur lors du filtrage: {e}")
 
     def open_registration(self):
         """Ouvrir la fenêtre d'enregistrement"""
