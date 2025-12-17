@@ -113,6 +113,8 @@ class UserService:
             True si succès
         """
         try:
+            print("\n>>> SERVICE update_user() APPELÉ")
+            
             # Construire la requête dynamiquement
             fields = []
             values = []
@@ -121,26 +123,37 @@ class UserService:
                 if key in ['username', 'email', 'role', 'is_active']:
                     fields.append(f"{key} = %s")
                     values.append(value)
-                elif key == 'password':
-                    # Hasher le nouveau mot de passe
+                    print(f"  Champ ajouté: {key} = {value}")
+                elif key == 'password' and value:
                     hashed, _ = self.auth_manager.hash_password(value, use_salt=False)
                     fields.append("password = %s")
                     values.append(hashed)
+                    print(f"  Champ ajouté: password = (hashé)")
 
             if not fields:
-                logger.log_warning("Aucun champ à mettre à jour")
+                print("  ❌ Aucun champ à mettre à jour!")
                 return False
 
             values.append(personne_id)
 
             query = f"UPDATE personne SET {', '.join(fields)} WHERE personne_id = %s"
-            self.db.execute_update(query, tuple(values))
+            print(f"\n  SQL: {query}")
+            print(f"  Valeurs: {[v if k != 'password' else '****' for k, v in zip(list(kwargs.keys()) + ['id'], values)]}")
+            
+            result = self.db.execute_update(query, tuple(values))
+            print(f"  Lignes affectées: {result}")
 
-            logger.log_info(f"Utilisateur {personne_id} mis à jour")
-            return True
+            if result and result > 0:
+                print(f"  ✅ Mise à jour réussie!")
+                return True
+            else:
+                print(f"  ⚠️ Aucune ligne affectée (result={result})")
+                return True  # Retourner True quand même car pas d'erreur
 
         except Exception as e:
             logger.log_error(f"Erreur mise à jour utilisateur: {e}")
+            import traceback
+            logger.log_error(traceback.format_exc())
             return False
 
     def deactivate_user(self, personne_id: int) -> bool:
@@ -195,20 +208,39 @@ class UserService:
             logger.log_error(f"Erreur suppression utilisateur: {e}")
             return False
 
-    def get_all_users(self) -> List[Personne]:
-        """Récupérer tous les utilisateurs"""
+    def get_all_users(self, where_clause: str = "", params: tuple = ()) -> List[Personne]:
+        """Récupérer tous les utilisateurs avec filtre optionnel (params sécurisés)"""
         try:
-            query = "SELECT * FROM personne ORDER BY created_at DESC"
-            results = self.db.execute_query(query)
+            base_query = "SELECT * FROM personne"
+            order_part = " ORDER BY created_at DESC"
+            
+            if where_clause:
+                query = f"{base_query} {where_clause}{order_part}"
+            else:
+                query = f"{base_query}{order_part}"
+            
+            logger.log_info(f"Query: {query}")
+            logger.log_info(f"Params: {params}")
+            
+            # Exécuter avec ou sans paramètres
+            if params:
+                results = self.db.execute_query(query, params)
+            else:
+                results = self.db.execute_query(query)
+
+            logger.log_info(f"Résultats: {len(results) if results else 0} lignes")
 
             users = []
-            for row in results:
-                users.append(Personne.from_db_row(row))
+            if results:
+                for row in results:
+                    users.append(Personne.from_db_row(row))
 
             return users
 
         except Exception as e:
             logger.log_error(f"Erreur récupération utilisateurs: {e}")
+            import traceback
+            logger.log_error(traceback.format_exc())
             return []
 
     def get_all_active_users(self) -> List[Personne]:

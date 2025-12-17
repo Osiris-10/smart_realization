@@ -1,0 +1,536 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Connexion Admin - FaceAccess</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            min-height: 100vh;
+            display: flex;
+            background: #0f172a;
+        }
+        
+        /* Split Layout */
+        .login-container {
+            display: flex;
+            width: 100%;
+            min-height: 100vh;
+        }
+        
+        /* Left Side - Form */
+        .login-form-side {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 40px;
+            background: linear-gradient(180deg, #0f172a 0%, #1e293b 100%);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .login-form-side::before {
+            content: '';
+            position: absolute;
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, rgba(99, 102, 241, 0.15) 0%, transparent 70%);
+            top: -100px;
+            left: -100px;
+        }
+        
+        .login-form-side::after {
+            content: '';
+            position: absolute;
+            width: 300px;
+            height: 300px;
+            background: radial-gradient(circle, rgba(139, 92, 246, 0.1) 0%, transparent 70%);
+            bottom: -50px;
+            right: -50px;
+        }
+        
+        .form-wrapper {
+            width: 100%;
+            max-width: 420px;
+            position: relative;
+            z-index: 1;
+        }
+        
+        /* Logo */
+        .login-logo {
+            margin-bottom: 40px;
+        }
+        .logo-row {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            margin-bottom: 12px;
+        }
+        .logo-icon {
+            width: 56px;
+            height: 56px;
+            background: linear-gradient(135deg, #6366f1, #8b5cf6);
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 8px 24px rgba(99, 102, 241, 0.4);
+        }
+        .logo-icon i {
+            font-size: 26px;
+            color: white;
+        }
+        .logo-text h1 {
+            font-size: 28px;
+            font-weight: 800;
+            color: white;
+        }
+        .logo-text span {
+            font-size: 13px;
+            color: #64748b;
+        }
+        
+        .login-title {
+            margin-bottom: 8px;
+        }
+        .login-title h2 {
+            font-size: 32px;
+            font-weight: 700;
+            color: white;
+            margin-bottom: 8px;
+        }
+        .login-title p {
+            color: #94a3b8;
+            font-size: 15px;
+        }
+        
+        /* Form */
+        .login-form {
+            margin-top: 32px;
+        }
+        
+        .input-group {
+            margin-bottom: 24px;
+        }
+        .input-group label {
+            display: block;
+            font-size: 14px;
+            font-weight: 600;
+            color: #e2e8f0;
+            margin-bottom: 10px;
+        }
+        .input-wrapper {
+            position: relative;
+        }
+        .input-wrapper i.input-icon {
+            position: absolute;
+            left: 18px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #64748b;
+            font-size: 18px;
+            transition: color 0.3s;
+        }
+        .input-wrapper input {
+            width: 100%;
+            padding: 18px 18px 18px 54px;
+            border: 2px solid #334155;
+            border-radius: 14px;
+            font-size: 16px;
+            font-family: inherit;
+            color: white;
+            background: rgba(30, 41, 59, 0.8);
+            transition: all 0.3s;
+        }
+        .input-wrapper input:focus {
+            outline: none;
+            border-color: #6366f1;
+            background: rgba(30, 41, 59, 1);
+            box-shadow: 0 0 0 4px rgba(99, 102, 241, 0.15);
+        }
+        .input-wrapper input:focus ~ i.input-icon {
+            color: #6366f1;
+        }
+        .input-wrapper input::placeholder {
+            color: #64748b;
+        }
+        
+        /* Password toggle */
+        .password-toggle {
+            position: absolute;
+            right: 18px;
+            top: 50%;
+            transform: translateY(-50%);
+            background: none;
+            border: none;
+            color: #64748b;
+            cursor: pointer;
+            padding: 4px;
+            transition: color 0.3s;
+        }
+        .password-toggle:hover {
+            color: #6366f1;
+        }
+        
+        /* Error message */
+        .error-message {
+            background: rgba(239, 68, 68, 0.15);
+            border: 1px solid rgba(239, 68, 68, 0.3);
+            color: #f87171;
+            padding: 14px 18px;
+            border-radius: 12px;
+            font-size: 14px;
+            display: none;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 24px;
+            animation: shake 0.5s ease;
+        }
+        .error-message.show { display: flex; }
+        .error-message i { font-size: 20px; }
+        
+        @keyframes shake {
+            0%, 100% { transform: translateX(0); }
+            25% { transform: translateX(-5px); }
+            75% { transform: translateX(5px); }
+        }
+        
+        /* Submit button */
+        .btn-login {
+            width: 100%;
+            padding: 18px 24px;
+            background: linear-gradient(135deg, #6366f1, #8b5cf6);
+            color: white;
+            border: none;
+            border-radius: 14px;
+            font-size: 16px;
+            font-weight: 600;
+            font-family: inherit;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            transition: all 0.3s;
+            box-shadow: 0 4px 20px rgba(99, 102, 241, 0.4);
+            margin-top: 8px;
+        }
+        .btn-login:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 30px rgba(99, 102, 241, 0.5);
+        }
+        .btn-login:active {
+            transform: translateY(0);
+        }
+        .btn-login:disabled {
+            opacity: 0.7;
+            cursor: not-allowed;
+            transform: none;
+        }
+        .btn-login i {
+            font-size: 18px;
+            transition: transform 0.3s;
+        }
+        .btn-login:hover i {
+            transform: translateX(4px);
+        }
+        
+        /* Back link */
+        .back-link {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            margin-top: 32px;
+            color: #64748b;
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        .back-link:hover {
+            color: #6366f1;
+        }
+        .back-link i {
+            transition: transform 0.3s;
+        }
+        .back-link:hover i {
+            transform: translateX(-4px);
+        }
+        
+        /* Right Side - Image */
+        .login-image-side {
+            flex: 1.2;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+        
+        .image-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('https://images.unsplash.com/photo-1555421689-d68471e189f2?q=80&w=2070&auto=format&fit=crop') center/cover no-repeat;
+            filter: brightness(0.7);
+        }
+        
+        .image-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(99, 102, 241, 0.3) 0%, rgba(15, 23, 42, 0.8) 100%);
+        }
+        
+        .image-content {
+            position: relative;
+            z-index: 1;
+            text-align: center;
+            padding: 40px;
+            max-width: 500px;
+        }
+        
+        .image-content .feature-icon {
+            width: 100px;
+            height: 100px;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 32px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        .feature-icon i {
+            font-size: 48px;
+            color: white;
+        }
+        
+        .image-content h2 {
+            font-size: 36px;
+            font-weight: 800;
+            color: white;
+            margin-bottom: 16px;
+            line-height: 1.2;
+        }
+        .image-content p {
+            color: rgba(255, 255, 255, 0.8);
+            font-size: 16px;
+            line-height: 1.6;
+            margin-bottom: 32px;
+        }
+        
+        .features-list {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+            text-align: left;
+        }
+        .feature-item {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            color: white;
+            font-size: 15px;
+        }
+        .feature-item i {
+            width: 36px;
+            height: 36px;
+            background: rgba(16, 185, 129, 0.2);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #10b981;
+            font-size: 16px;
+        }
+        
+        /* Responsive */
+        @media (max-width: 1024px) {
+            .login-image-side {
+                display: none;
+            }
+            .login-form-side {
+                flex: 1;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .login-form-side {
+                padding: 24px;
+            }
+            .login-title h2 {
+                font-size: 26px;
+            }
+            .input-wrapper input {
+                padding: 16px 16px 16px 48px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="login-container">
+        <!-- Left Side - Form -->
+        <div class="login-form-side">
+            <div class="form-wrapper">
+                <div class="login-logo">
+                    <div class="logo-row">
+                        <div class="logo-icon">
+                            <i class="fas fa-fingerprint"></i>
+                        </div>
+                        <div class="logo-text">
+                            <h1>FaceAccess</h1>
+                            <span>Système de contrôle d'accès</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="login-title">
+                    <h2>Bienvenue </h2>
+                    <p>Connectez-vous pour accéder au panneau d'administration</p>
+                </div>
+                
+                <div class="error-message" id="error-message">
+                    <i class="fas fa-exclamation-circle"></i>
+                    <span id="error-text">Identifiants incorrects</span>
+                </div>
+                
+                <form class="login-form" onsubmit="login(event)">
+                    <div class="input-group">
+                        <label>Nom d'utilisateur</label>
+                        <div class="input-wrapper">
+                            <input type="text" id="username" placeholder="Entrez votre username" required>
+                            <i class="fas fa-user input-icon"></i>
+                        </div>
+                    </div>
+                    
+                    <div class="input-group">
+                        <label>Mot de passe</label>
+                        <div class="input-wrapper">
+                            <input type="password" id="password" placeholder="Entrez votre mot de passe" required>
+                            <i class="fas fa-lock input-icon"></i>
+                            <button type="button" class="password-toggle" onclick="togglePassword()">
+                                <i class="fas fa-eye" id="eye-icon"></i>
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <button type="submit" class="btn-login" id="login-btn">
+                        <span>Se connecter</span>
+                        <i class="fas fa-arrow-right"></i>
+                    </button>
+                </form>
+                
+                <a href="/" class="back-link">
+                    <i class="fas fa-arrow-left"></i>
+                    Retour à l'accueil
+                </a>
+            </div>
+        </div>
+        
+        <!-- Right Side - Image -->
+        <div class="login-image-side">
+            <div class="image-bg"></div>
+            <div class="image-overlay"></div>
+            <div class="image-content">
+                <div class="feature-icon">
+                    <i class="fas fa-face-smile"></i>
+                </div>
+                <h2>Reconnaissance Faciale Intelligente</h2>
+                <p>Sécurisez vos accès avec notre technologie de reconnaissance faciale de pointe, rapide et fiable.</p>
+                
+                <div class="features-list">
+                    <div class="feature-item">
+                        <i class="fas fa-bolt"></i>
+                        <span>Reconnaissance rapide</span>
+                    </div>
+                    <div class="feature-item">
+                        <i class="fas fa-shield-halved"></i>
+                        <span>Protection anti-spoofing </span>
+                    </div>
+                    <div class="feature-item">
+                        <i class="fas fa-users"></i>
+                        <span>Gestion multi-utilisateurs</span>
+                    </div>
+                    <div class="feature-item">
+                        <i class="fas fa-chart-line"></i>
+                        <span>Tableau de bord en temps réel</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function togglePassword() {
+            const input = document.getElementById('password');
+            const icon = document.getElementById('eye-icon');
+            if (input.type === 'password') {
+                input.type = 'text';
+                icon.className = 'fas fa-eye-slash';
+            } else {
+                input.type = 'password';
+                icon.className = 'fas fa-eye';
+            }
+        }
+        
+        async function login(event) {
+            event.preventDefault();
+            
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
+            const btn = document.getElementById('login-btn');
+            const errorDiv = document.getElementById('error-message');
+            
+            btn.disabled = true;
+            btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> <span>Connexion...</span>';
+            errorDiv.classList.remove('show');
+            
+            try {
+                const response = await fetch('/api/auth/admin_login', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ username, password })
+                });
+                
+                const result = await response.json();
+                
+                if (result.status === 'success') {
+                    btn.innerHTML = '<i class="fas fa-check"></i> <span>Succès !</span>';
+                    btn.style.background = 'linear-gradient(135deg, #10b981, #14b8a6)';
+                    setTimeout(() => {
+                        window.location.href = '/admin/dashboard';
+                    }, 500);
+                } else {
+                    errorDiv.classList.add('show');
+                    document.getElementById('error-text').textContent = result.message || 'Identifiants incorrects';
+                    btn.disabled = false;
+                    btn.innerHTML = '<span>Se connecter</span> <i class="fas fa-arrow-right"></i>';
+                }
+            } catch (error) {
+                errorDiv.classList.add('show');
+                document.getElementById('error-text').textContent = 'Erreur de connexion au serveur';
+                btn.disabled = false;
+                btn.innerHTML = '<span>Se connecter</span> <i class="fas fa-arrow-right"></i>';
+            }
+        }
+        
+        document.addEventListener('DOMContentLoaded', () => {
+            document.getElementById('username').focus();
+        });
+    </script>
+</body>
+</html>

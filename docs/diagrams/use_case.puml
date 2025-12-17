@@ -1,0 +1,77 @@
+@startuml Diagramme_Cas_Utilisation
+!theme plain
+skinparam backgroundColor #FEFEFE
+skinparam actorStyle awesome
+
+title Diagramme de Cas d'Utilisation - Système de Reconnaissance Faciale (Web)
+
+left to right direction
+
+actor "Utilisateur\n(Employé)" as user #LightBlue
+actor "Administrateur" as admin #LightGreen
+actor "Arduino" as arduino #Orange
+actor "Serveur Email" as email #Pink
+
+rectangle "Système de Reconnaissance Faciale Web" {
+    
+    ' === CAS UTILISATEUR ===
+    usecase "S'authentifier par\nreconnaissance faciale" as UC1 #LightBlue
+    usecase "S'authentifier par\nPIN (fallback)" as UC2 #LightBlue
+    usecase "Détecter visage" as UC3
+    usecase "Comparer embeddings" as UC4
+    usecase "Afficher résultat\n(Accès accordé/refusé)" as UC5
+    
+    ' === CAS ADMIN ===
+    usecase "Se connecter\n(login admin)" as UC6 #LightGreen
+    usecase "Gérer utilisateurs\n(CRUD)" as UC7 #LightGreen
+    usecase "Capturer photo\n(webcam/fichier)" as UC8
+    usecase "Extraire embeddings\nfaciaux" as UC9
+    usecase "Consulter logs\nd'accès" as UC10 #LightGreen
+    usecase "Voir statistiques\n(dashboard)" as UC11 #LightGreen
+    usecase "Filtrer et paginer\nles données" as UC12
+    
+    ' === CAS SYSTÈME ===
+    usecase "Envoyer signal\nLED verte + buzzer" as UC13 #Orange
+    usecase "Envoyer signal\nLED rouge + buzzer" as UC14 #Orange
+    usecase "Envoyer alerte\nemail sécurité" as UC15 #Pink
+    usecase "Enregistrer log\nd'accès" as UC16
+}
+
+' Relations Utilisateur
+user --> UC1
+user --> UC2
+
+' Relations Admin
+admin --> UC6
+admin --> UC7
+admin --> UC10
+admin --> UC11
+
+' Include relations
+UC1 ..> UC3 : <<include>>
+UC1 ..> UC4 : <<include>>
+UC1 ..> UC5 : <<include>>
+UC1 ..> UC16 : <<include>>
+
+UC7 ..> UC8 : <<include>>
+UC8 ..> UC9 : <<include>>
+
+UC10 ..> UC12 : <<include>>
+UC11 ..> UC12 : <<include>>
+
+' Extend relations
+UC1 <.. UC13 : <<extend>>\n[si accès accordé]
+UC1 <.. UC14 : <<extend>>\n[si accès refusé]
+UC1 <.. UC15 : <<extend>>\n[si accès refusé]
+UC1 <.. UC2 : <<extend>>\n[si 3 échecs]
+
+UC2 <.. UC13 : <<extend>>\n[si PIN correct]
+UC2 <.. UC14 : <<extend>>\n[si PIN incorrect]
+UC2 <.. UC15 : <<extend>>\n[si PIN incorrect]
+
+' Acteurs secondaires
+arduino --> UC13
+arduino --> UC14
+email --> UC15
+
+@enduml

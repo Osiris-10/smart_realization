@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Face Recognition System</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div class="home-container">
+        <h1 class="home-title">
+            <i class="fas fa-shield-alt" style="color: #3b82f6;"></i>
+            Face Recognition System
+        </h1>
+        <p class="home-subtitle">Système de contrôle d'accès par reconnaissance faciale</p>
+        
+        <div class="home-cards">
+            <a href="/user" class="home-card user">
+                <i class="fas fa-user-circle"></i>
+                <h3>Mode Utilisateur</h3>
+                <p>Accéder via reconnaissance faciale</p>
+            </a>
+            
+            <a href="/admin" class="home-card admin">
+                <i class="fas fa-user-shield"></i>
+                <h3>Mode Administrateur</h3>
+                <p>Gérer les utilisateurs et les accès</p>
+            </a>
+        </div>
+    </div>
+</body>
+</html>

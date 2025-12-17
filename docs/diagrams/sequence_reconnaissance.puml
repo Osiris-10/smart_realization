@@ -1,0 +1,106 @@
+@startuml Sequence_Reconnaissance_Faciale
+!theme plain
+skinparam backgroundColor #FEFEFE
+skinparam sequenceMessageAlign center
+
+title Diagramme de Séquence - Authentification par Reconnaissance Faciale
+
+actor "Utilisateur" as user #LightBlue
+participant "Navigateur\n(user.html)" as browser #LightYellow
+participant "Flask API\n(app.py)" as api #LightGreen
+participant "FaceRecognition\nEngine" as face #LightPink
+database "PostgreSQL" as db #LightGray
+participant "Arduino\nService" as arduino #Orange
+participant "Email\nService" as email #Pink
+
+== Démarrage de la reconnaissance ==
+
+user -> browser : Clique "Démarrer"
+activate browser
+
+browser -> api : POST /api/recognition/start
+activate api
+api --> browser : {status: "started"}
+deactivate api
+
+browser -> api : GET /video_feed
+activate api
+api -> api : generate_frames()
+
+loop Streaming vidéo (30 FPS)
+    api -> face : detect_faces(frame)
+    activate face
+    face --> api : face_locations, face_encodings
+    deactivate face
+    
+    alt Visage détecté
+        api -> face : recognize_face(encoding)
+        activate face
+        face --> api : personne_id, username, similarity
+        deactivate face
+        
+        alt Reconnaissance réussie (similarity > seuil)
+            api -> arduino : signal_access_granted()
+            activate arduino
+            arduino -> arduino : Envoie 'G' (LED verte + buzzer)
+            arduino --> api : OK
+            deactivate arduino
+            
+            api -> db : log_access_attempt(GRANTED, FACE_ONLY)
+            activate db
+            db --> api : OK
+            deactivate db
+            
+            api --> browser : Frame avec cadre VERT + "RECONNU"
+        else Reconnaissance échouée
+            api -> api : attempts += 1
+            api --> browser : Frame avec cadre ROUGE + "INCONNU (X/3)"
+            
+            alt 3 tentatives échouées
+                api -> arduino : signal_access_denied()
+                activate arduino
+                arduino -> arduino : Envoie 'R' (LED rouge + buzzer)
+                arduino --> api : OK
+                deactivate arduino
+                
+                api -> db : log_access_attempt(DENIED, FACE_ONLY)
+                activate db
+                db --> api : OK
+                deactivate db
+                
+                api -> email : send_security_alert()
+                activate email
+                email -> email : Envoie email SMTP
+                email --> api : OK
+                deactivate email
+                
+                api --> browser : last_result = "failed"
+            end
+        end
+    else Aucun visage
+        api --> browser : Frame avec "Positionnez votre visage"
+    end
+end
+
+deactivate api
+
+== Polling du statut ==
+
+loop Toutes les 300ms
+    browser -> api : GET /api/recognition/status
+    activate api
+    api --> browser : {last_result, last_user, attempts}
+    deactivate api
+    
+    alt last_result == "granted"
+        browser -> browser : showSuccessResult(username)
+        browser -> user : Affiche "ACCÈS AUTORISÉ\nBienvenue [nom]!"
+    else last_result == "failed"
+        browser -> browser : showPinModal()
+        browser -> user : Affiche modal PIN
+    end
+end
+
+deactivate browser
+
+@enduml

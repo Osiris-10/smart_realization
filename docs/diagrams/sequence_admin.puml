@@ -1,0 +1,109 @@
+@startuml Sequence_Creation_Utilisateur
+!theme plain
+skinparam backgroundColor #FEFEFE
+skinparam sequenceMessageAlign center
+
+title Diagramme de Séquence - Création d'un Utilisateur (Admin)
+
+actor "Administrateur" as admin #LightGreen
+participant "Navigateur\n(admin_dashboard)" as browser #LightYellow
+participant "Flask API\n(app.py)" as api #LightGreen
+participant "FaceRecognition\nEngine" as face #LightPink
+participant "User\nService" as userSvc #LightCyan
+participant "Profile\nService" as profileSvc #LightCyan
+database "PostgreSQL" as db #LightGray
+
+== Création d'un nouvel utilisateur ==
+
+admin -> browser : Clique "Nouvel Utilisateur"
+browser -> admin : Affiche formulaire
+
+alt Capture par webcam
+    admin -> browser : Clique "Activer Webcam"
+    browser -> browser : navigator.mediaDevices.getUserMedia()
+    browser -> admin : Affiche flux webcam
+    admin -> browser : Clique "Capturer"
+    browser -> browser : canvas.toDataURL('image/jpeg')
+else Upload fichier
+    admin -> browser : Clique "Parcourir"
+    admin -> browser : Sélectionne image
+    browser -> browser : FileReader.readAsDataURL()
+end
+
+browser -> admin : Affiche aperçu photo
+
+admin -> browser : Remplit formulaire\n(nom, email, password, rôle)
+admin -> browser : Clique "Créer"
+
+activate browser
+
+== Extraction des embeddings ==
+
+browser -> api : POST /api/users/extract_embeddings\n{image: "base64..."}
+activate api
+
+api -> api : Décode image base64
+api -> api : cv2.imdecode()
+api -> face : face_locations(rgb_image)
+activate face
+face --> api : [(top, right, bottom, left)]
+deactivate face
+
+alt Aucun visage détecté
+    api --> browser : {status: "error", message: "Aucun visage détecté"}
+    browser -> admin : Affiche erreur
+else Plus d'un visage
+    api --> browser : {status: "error", message: "Plusieurs visages détectés"}
+    browser -> admin : Affiche erreur
+else Un seul visage
+    api -> face : face_encodings(rgb_image, face_locations)
+    activate face
+    face --> api : [128 embeddings]
+    deactivate face
+    
+    api --> browser : {status: "success", embeddings: [...]}
+end
+
+deactivate api
+
+== Création utilisateur + profil ==
+
+browser -> api : POST /api/users\n{username, password, email, role, embeddings, image_data}
+activate api
+
+api -> userSvc : create_user(username, password, email, role)
+activate userSvc
+userSvc -> db : INSERT INTO personnes
+activate db
+db --> userSvc : user_id
+deactivate db
+userSvc --> api : user_id
+deactivate userSvc
+
+api -> api : Sauvegarde image dans /uploads
+
+api -> profileSvc : create_profile(user_id, embeddings, image_url)
+activate profileSvc
+profileSvc -> db : INSERT INTO profils_faciaux
+activate db
+db --> profileSvc : profile_id
+deactivate db
+profileSvc --> api : profile_id
+deactivate profileSvc
+
+api -> face : load_profile(user_id, username, embeddings, password)
+activate face
+face -> face : Ajoute aux known_encodings
+face --> api : OK
+deactivate face
+
+api --> browser : {status: "success", id: user_id}
+deactivate api
+
+browser -> browser : Ferme modal
+browser -> browser : Rafraîchit liste utilisateurs
+browser -> admin : Affiche "Utilisateur créé avec succès"
+
+deactivate browser
+
+@enduml

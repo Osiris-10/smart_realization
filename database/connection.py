@@ -118,6 +118,9 @@ class DatabaseConnection:
 
         except Error as e:
             logger.log_error(f"Erreur lors de l'exécution de la requête: {e}")
+            # Rollback pour débloquer la transaction en cas d'erreur
+            if self.connection:
+                self.connection.rollback()
             return None
 
     def execute_update(self, query: str, params: Tuple = None) -> Optional[int]:

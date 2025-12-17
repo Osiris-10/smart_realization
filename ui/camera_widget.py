@@ -1,122 +1,173 @@
-"""Widget pour afficher le flux de la caméra"""
+# ui/camera_widget.py - VERSION QUI MARCHE VRAIMENT
+"""Widget caméra - Version finale qui marche"""
 import tkinter as tk
-from tkinter import Canvas
-import cv2
 from PIL import Image, ImageTk
+import cv2
 from typing import Callable, Optional
 from utils.logger import Logger
-from config.settings import CAMERA_INDEX, FRAME_WIDTH, FRAME_HEIGHT, CAMERA_FLIP
+from config.settings import CAMERA_INDEX, CAMERA_FLIP
 
 logger = Logger()
 
 class CameraWidget:
-    """Widget pour gérer l'affichage de la caméra"""
+    """Widget caméra stable"""
 
     def __init__(self, parent, process_callback: Optional[Callable] = None):
-        """
-        Initialiser le widget caméra
-
-        Args:
-            parent: Widget parent Tkinter
-            process_callback: Fonction de traitement du frame
-        """
         self.parent = parent
         self.process_callback = process_callback
 
-        self.canvas = Canvas(parent, bg='black', width=640, height=480)
-        self.canvas.pack(fill=tk.BOTH, expand=True, padx=10, pady=10)
+        # Label
+        self.label = tk.Label(parent, bg='black', text='🎥 Initialisation...',
+                             fg='white', font=('Arial', 14))
+        self.label.pack(fill=tk.BOTH, expand=True)
+
+        # Compatibilité
+        self.canvas = self.label
+        self.video_label = self.label
 
         self.cap = None
         self.is_running = False
         self.current_frame = None
+        self._photo = None
 
-        logger.log_info("Widget caméra initialisé")
+        logger.log_info("CameraWidget initialisé")
 
     def start(self):
-        """Démarrer la capture vidéo"""
+        """Démarrer la caméra"""
         try:
-            self.cap = cv2.VideoCapture(CAMERA_INDEX)
+            logger.log_info(f"Ouverture caméra {CAMERA_INDEX}...")
+
+            self.cap = cv2.VideoCapture(CAMERA_INDEX, cv2.CAP_DSHOW)
+            if not self.cap.isOpened():
+                self.cap = cv2.VideoCapture(CAMERA_INDEX)
 
             if not self.cap.isOpened():
-                logger.log_error("Impossible d'ouvrir la caméra")
+                logger.log_error("❌ Caméra inaccessible")
+                self.label.config(text='❌ Caméra inaccessible', fg='red')
                 return False
 
-            # Configurer la caméra
-            self.cap.set(cv2.CAP_PROP_FRAME_WIDTH, FRAME_WIDTH)
-            self.cap.set(cv2.CAP_PROP_FRAME_HEIGHT, FRAME_HEIGHT)
+            ret, test = self.cap.read()
+            if not ret or test is None:
+                logger.log_error("❌ Lecture impossible")
+                self.cap.release()
+                self.label.config(text='❌ Lecture impossible', fg='red')
+                return False
+
+            logger.log_info(f"✅ Caméra OK: {test.shape}")
 
             self.is_running = True
-            self.update_frame()
 
-            logger.log_info("Caméra démarrée")
+            # 🔥 ATTENDRE QUE LE WIDGET SOIT RÉALISÉ
+            self.label.update_idletasks()  # Force Tkinter à créer le widget
+
+            # Démarrer après 300ms pour laisser le temps à Tkinter
+            self.label.after(300, self._loop)
+
+            logger.log_info("✅ Boucle programmée")
             return True
 
         except Exception as e:
-            logger.log_error(f"Erreur démarrage caméra: {e}")
+            logger.log_error(f"❌ Erreur start: {e}")
+            import traceback
+            logger.log_error(traceback.format_exc())
+            self.label.config(text=f'❌ Erreur: {str(e)[:50]}', fg='red')
             return False
 
     def stop(self):
-        """Arrêter la capture vidéo"""
+        """Arrêter"""
         self.is_running = False
-
         if self.cap:
             self.cap.release()
-            self.cap = None
-
+        self._photo = None
+        try:
+            self.label.config(text='📹 Caméra arrêtée', fg='white')
+        except:
+            pass
         logger.log_info("Caméra arrêtée")
 
-    def update_frame(self):
-        """Mettre à jour le frame affiché"""
-        if not self.is_running or not self.cap:
+    def _loop(self):
+        """Boucle d'affichage"""
+        if not self.is_running:
+            logger.log_debug("Boucle arrêtée")
+            return
+
+        # Vérifier existence
+        try:
+            if not self.label.winfo_exists():
+                logger.log_debug("Label détruit")
+                self.is_running = False
+                return
+        except:
+            self.is_running = False
             return
 
         try:
+            # Lire frame
             ret, frame = self.cap.read()
 
-            if ret:
-                # Inverser horizontalement si configuré
-                if CAMERA_FLIP:
-                    frame = cv2.flip(frame, 1)
+            if not ret or frame is None:
+                logger.log_warning("Frame non lue")
+                self.label.after(100, self._loop)
+                return
 
-                # Traiter le frame si callback fourni
-                if self.process_callback:
-                    try:
-                        frame = self.process_callback(frame)
-                    except Exception as e:
-                        logger.log_error(f"Erreur dans process_callback: {e}")
+            # Flip
+            if CAMERA_FLIP:
+                frame = cv2.flip(frame, 1)
 
-                # Convertir BGR à RGB
-                frame_rgb = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
+            # Sauvegarder
+            self.current_frame = frame.copy()
 
-                # Redimensionner pour s'adapter au canvas
-                canvas_width = self.canvas.winfo_width()
-                canvas_height = self.canvas.winfo_height()
+            # Callback
+            if self.process_callback:
+                try:
+                    frame = self.process_callback(frame)
+                except Exception as e:
+                    logger.log_error(f"Callback erreur: {e}")
+                    cv2.putText(frame, "Erreur callback", (10, 30),
+                               cv2.FONT_HERSHEY_SIMPLEX, 0.6, (0, 0, 255), 2)
 
-                if canvas_width > 1 and canvas_height > 1:
-                    frame_rgb = cv2.resize(frame_rgb, (canvas_width, canvas_height))
+            # Convertir
+            rgb = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
+            resized = cv2.resize(rgb, (640, 480))
 
-                # Convertir en image PIL
-                image = Image.fromarray(frame_rgb)
-                photo = ImageTk.PhotoImage(image)
+            # PIL
+            pil_img = Image.fromarray(resized)
 
-                # Afficher sur le canvas
-                self.canvas.create_image(0, 0, anchor=tk.NW, image=photo)
-                self.canvas.image = photo  # Garder une référence
+            # 🔥 CRÉER PhotoImage AVEC master=self.label
+            self._photo = ImageTk.PhotoImage(image=pil_img, master=self.label)
 
-                self.current_frame = frame
+            # Afficher
+            self.label.config(image=self._photo, text='')
 
-            # Planifier la prochaine mise à jour
-            self.parent.after(10, self.update_frame)
+            # Continuer
+            if self.is_running:
+                self.label.after(33, self._loop)
 
+            logger.log_debug("Frame affichée OK")
+
+        except tk.TclError as e:
+            logger.log_error(f"TclError: {e}")
+            # Ne pas arrêter, réessayer
+            if self.is_running:
+                self.label.after(200, self._loop)
         except Exception as e:
-            logger.log_error(f"Erreur mise à jour frame: {e}")
+            logger.log_error(f"Erreur loop: {e}")
+            import traceback
+            logger.log_error(traceback.format_exc())
+
+            try:
+                self.label.config(text=f'❌ {str(e)[:50]}', fg='red')
+            except:
+                pass
+
+            # Réessayer
+            if self.is_running:
+                self.label.after(100, self._loop)
 
     def get_current_frame(self):
-        """Obtenir le frame actuel"""
-        return self.current_frame
+        """Frame actuel"""
+        return self.current_frame.copy() if self.current_frame is not None else None
 
-    def capture_image(self) -> Optional:
-        """Capturer une image"""
-        if self.current_frame is not None:
-            return self.current_frame.copy()
-        return None
+    def capture_image(self):
+        """Capturer"""
+        return self.get_current_frame()
